@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HDividedBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:kakeibo="kakeibo.*"
+	label="品目"
+	initialize="init(event)">
+	
+	<kakeibo:ItemList id="itemList"/>
+	<kakeibo:ItemEdit id="itemEdit"/>
+	<mx:Script>
+		<![CDATA[
+			public function init(e:Event):void
+			{
+				itemList.ctrl.itemEdit = itemEdit;
+			}
+		]]>
+	</mx:Script>
+</mx:HDividedBox>

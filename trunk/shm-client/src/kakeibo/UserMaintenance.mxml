@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:kakeibo="kakeibo.*"
+	width="100%"
+	height="100%"
+	label="ユーザメンテナンス"
+	>
+	<!-- コントローラ -->
+	<kakeibo:UserMaintenanceCtrl id="ctrl"/>
+	<!-- サービス -->
+	<mx:RemoteObject id="userService" destination="userService"/>
+	
+	<!-- データグリッド -->
+	<mx:DataGrid id="userGrid" width="100%" height="400"
+		dataProvider="{userService.findAll.lastResult}" >
+		<mx:columns>
+			<mx:DataGridColumn headerText="ID" dataField="id" visible="false"/>
+			<mx:DataGridColumn headerText="ユーザID" dataField="userId" />
+			<mx:DataGridColumn headerText="名前" dataField="name" />
+			<mx:DataGridColumn headerText="パスワード" dataField="password" />
+		</mx:columns>
+	</mx:DataGrid>
+	
+	<!-- ボタン -->
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button id="reloadButton" label="再読込" click="ctrl.refresh()" />	
+		<mx:Spacer width="10"/>
+		<mx:Button id="insertButton" label="追加" enabled="true" click="ctrl.onInsertButtonClicked()" />
+		<mx:Spacer width="10"/>
+		<mx:Button id="updateButton" label="訂正" enabled="false" click="ctrl.onUpdateButtonClicked()"/>
+		<mx:Spacer width="10"/>
+		<mx:Button id="deleteButton" label="削除" enabled="false" click="ctrl.onDeleteButtonClicked()"/>
+	</mx:HBox>
+
+	<!-- 状態遷移 -->	
+	<mx:states>
+		<mx:State name="Selected">
+			<mx:SetProperty target="{updateButton}" name="enabled" value="true" />
+			<mx:SetProperty target="{deleteButton}" name="enabled" value="true" />
+		</mx:State>
+		<mx:State name="Unselected">
+			<mx:SetProperty target="{updateButton}" name="enabled" value="false" />
+			<mx:SetProperty target="{deleteButton}" name="enabled" value="false" />
+		</mx:State>
+	</mx:states>
+</mx:VBox>

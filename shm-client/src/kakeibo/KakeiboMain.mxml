@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:kakeibo="kakeibo.*">
+	<mx:VBox id="vbox" width="100%" height="100%">
+		<mx:Spacer height="10" />
+
+		<mx:TabNavigator width="100%" height="100%" >
+			<kakeibo:ItemTab id="itemTab"/>
+			<kakeibo:UserMaintenance id="userMaintenance"/>
+		</mx:TabNavigator>		
+	</mx:VBox>
+</mx:Panel>
+	
+

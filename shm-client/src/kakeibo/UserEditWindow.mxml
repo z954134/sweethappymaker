@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:kakeibo="kakeibo.*"
+	title="記録の追加"
+	showCloseButton="true"
+	>
+	
+	<kakeibo:UserEditWindowCtrl id="ctrl"/>
+	
+	<mx:Form width="100%">
+		<mx:FormHeading label="ユーザの詳細"/>
+		<mx:FormItem label="ユーザID" required="true" >
+			<mx:TextInput id="userIdField"/>
+		</mx:FormItem>
+		<mx:FormItem label="名前" required="true">
+			<mx:TextInput id="nameField"/>
+		</mx:FormItem>
+		<mx:FormItem label="パスワード" required="true">
+			<mx:TextInput id="passwordField"/>
+		</mx:FormItem>
+	</mx:Form>
+
+	<mx:ControlBar horizontalAlign="center">
+		<mx:Button label="この記録を追加" id="executeButton"/>
+		<mx:Button label="キャンセル" id="cancelButton"/>
+	</mx:ControlBar>
+	<mx:states>
+		<mx:State name="Insert">
+			<mx:SetProperty target="{this}" name="title" value="記録の追加"/>
+			<mx:SetProperty target="{executeButton}" name="label" value="この記録を追加"/>
+		</mx:State>
+		<mx:State name="Update">
+			<mx:SetProperty target="{this}" name="title" value="記録の訂正"/>
+			<mx:SetProperty target="{executeButton}" name="label" value="この記録を訂正"/>
+			<mx:SetProperty target="{userIdField}" name="editable" value="false"/>
+		</mx:State>
+		<mx:State name="Delete">
+			<mx:SetProperty target="{this}" name="title" value="記録の削除"/>
+			<mx:SetProperty target="{executeButton}" name="label" value="この記録を削除"/>
+			<mx:SetProperty target="{userIdField}" name="enabled" value="false"/>
+			<mx:SetProperty target="{nameField}" name="enabled" value="false"/>
+			<mx:SetProperty target="{passwordField}" name="enabled" value="false"/>
+		</mx:State>
+	</mx:states>
+	
+	<mx:Array id="validators">
+		<mx:Validator id="userIdValidator" source="{userIdField}"
+			property="text" requiredFieldError="ユーザIDを入力してください"/>
+		<mx:Validator id="nameValidator" source="{nameField}"
+			property="text" requiredFieldError="名前を入力してください"/>
+		<mx:Validator id="passwordValidator" source="{passwordField}"
+			property="text" requiredFieldError="パスワードを入力してください"/>
+	</mx:Array>
+	
+
+</mx:TitleWindow>

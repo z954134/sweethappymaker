@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:kakeibo="kakeibo.*"
+	xmlns:utils="kakeibo.utils.*"
+	xmlns:entity="kakeibo.entity.*"
+	width="100%"
+	height="100%"
+	label="品目編集"
+	>
+	
+	
+	<!-- コントローラ -->
+	<kakeibo:ItemEditCtrl id="ctrl"/>
+	
+	<!-- エンティティ -->
+	<utils:MyArrayCollection id="categories"/>
+	<utils:MyArrayCollection id="subcategories"/>
+	<entity:Item id="item"/>
+
+	<mx:VBox id="inputVBox" visible="true">
+		<mx:Form width="100%" id="itemForm" >
+			<mx:FormHeading id="itemFormHeading" label="品目の詳細"/>
+			<mx:FormItem label="購入日" required="true" >
+				<mx:DateField id="purchaseDateField" formatString="YYYY/MM/DD"
+					selectedDate="{item.purchaseDate}"/>
+			</mx:FormItem>
+			<mx:FormItem label="大分類" required="true">
+				<mx:ComboBox id="categoryField"
+					dataProvider="{categories}" labelField="name"/>
+			</mx:FormItem>
+			<mx:FormItem label="小分類" required="true">
+				<mx:ComboBox id="subcategoryField" 
+					dataProvider="{subcategories}" labelField="name"/>
+			</mx:FormItem>
+			<mx:FormItem label="価格" required="true">
+				<mx:TextInput id="priceField" text="{item.price}" width="100" maxChars="10" />
+			</mx:FormItem>
+			<mx:FormItem label="名前" required="true">
+				<mx:TextInput id="nameField" text="{item.name}" width="160" maxChars="50"
+					imeMode="{IMEConversionMode.JAPANESE_HIRAGANA}" />
+			</mx:FormItem>
+			<mx:FormItem label="備考" required="false">
+				<mx:TextArea id="noteField" text="{item.note}"
+				imeMode="{IMEConversionMode.JAPANESE_HIRAGANA}" />
+			</mx:FormItem>
+		</mx:Form>
+		<mx:HBox width="100%" horizontalAlign="left">
+			<mx:Spacer width="10"/>	
+			<mx:Button id="insertButton" label="新規" click="ctrl.onInsertButtonClicked()" />
+			<mx:Spacer width="10"/>	
+			<mx:Button id="updateButton" label="更新" click="ctrl.onUpdateButtonClicked()" />
+			<mx:Spacer width="10"/>	
+			<mx:Button id="clearButton" label="クリア" click="ctrl.onClearButtonClicked()" />
+			<mx:Spacer width="10"/>	
+		</mx:HBox>
+	</mx:VBox>
+	
+	<mx:Array id="validators">
+		<mx:Validator id="purchaseDateValidator" source="{purchaseDateField}"
+			property="text" requiredFieldError="購入日を入力してください"/>
+		<mx:Validator id="categoryValidator" source="{categoryField}"
+			property="text" requiredFieldError="大分類を入力してください"/>
+		<mx:Validator id="subcategoryValidator" source="{subcategoryField}"
+			property="text" requiredFieldError="小分類を入力してください"/>			
+		<mx:Validator id="nameValidator" source="{nameField}"
+			property="text" requiredFieldError="名前を入力してください"/>
+		<mx:NumberValidator id="priceValidator" source="{priceField}"
+			property="text" requiredFieldError="価格を入力してください"
+			minValue="1" lowerThanMinError="1円以上の金額を入力してください"/>
+	</mx:Array>
+</mx:HBox>

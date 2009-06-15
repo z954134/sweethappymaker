@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Login" showCloseButton="true"
+				xmlns:shm="shm.*" backgroundAlpha="0.7" backgroundColor="#303FB1" borderColor="#5677E4" color="#FFFFFF">
+	<shm:LoginCtrl id="ctrl"/>
+
+	<mx:Form width="100%">
+		<mx:FormHeading label="ログイン情報を入力してください。"/>
+		<mx:FormItem label="Member ID" required="true">
+			<mx:TextInput id="memberIdField"/>
+		</mx:FormItem>
+		<mx:FormItem label="Password" required="true">
+			<mx:TextInput id="passwordText" displayAsPassword="true"/>
+		</mx:FormItem>
+	</mx:Form>
+
+	<mx:ControlBar horizontalAlign="center">
+		<mx:Button label="Login" id="loginButton"/>
+		<mx:Button label="Cancel" id="cancelButton"/>
+	</mx:ControlBar>
+
+</mx:TitleWindow>

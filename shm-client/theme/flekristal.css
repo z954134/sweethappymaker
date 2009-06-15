@@ -1,0 +1,41 @@
+
+@font-face {
+	src: url("ipag.otf");
+	fontFamily: ipaFont;
+	advancedAntiAliasing: true;
+}
+
+
+global {
+	background-alpha: 0.6;
+}
+
+TextArea {
+	backgroundAlpha:0.6;
+}
+
+
+
+
+/*
+//------------------------------
+//  Application
+//------------------------------
+*/
+Application {
+	backgroundColor: #333333; 
+	fontStyle: normal;
+	fontFamily: ipaFont;
+	fontWeight: normal;
+	fontSize: 11;
+	background-image: Embed(source="backgrounds/underwater.jpg");
+	background-alpha:1.0;
+	color: #000066;
+}
+Panel {
+	padding-top:7px;
+	padding-left:7px;
+	padding-right:7px;
+	padding-bottom:7px;
+}
+

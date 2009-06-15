@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" height="100%" width="100%">
+	<mx:HBox>
+
+
+		<mx:Form>
+			<mx:FormHeading label="10このOK"/>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok1" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok2" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok3" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok4" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok5" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok6" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok7" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok8" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok9" text=""/>
+			</mx:FormItem>
+			<mx:FormItem label="ラベル">
+				<mx:TextInput id="ok10" text=""/>
+			</mx:FormItem>
+			<mx:FormItem>
+				<mx:Button label="登録" id="submitBtn" />
+			</mx:FormItem>
+		</mx:Form>
+		<mx:DateChooser/>
+	</mx:HBox>
+</mx:Panel>

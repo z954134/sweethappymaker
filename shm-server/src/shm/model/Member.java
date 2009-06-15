@@ -12,6 +12,8 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Version;
 import javax.jdo.annotations.VersionStrategy;
 
+import org.slim3.util.StringUtil;
+
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
@@ -23,14 +25,17 @@ public class Member {
     @Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")    
     private String key;
     
-    /** 名前 */
+    /** メンバーID */
     @Persistent
-    private String name;
+    private String memberId = "";
+    
+    /** パスワード */
+    @Persistent
+    private String password = "";
     
     /** Eメールアドレス */
     @Persistent
-    private String email;
-
+    private String email = "";
 
     /** OK日記 */
     @Persistent(mappedBy="member")
@@ -44,13 +49,6 @@ public class Member {
         this.key = key;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getEmail() {
         return email;
@@ -71,5 +69,28 @@ public class Member {
     public void addOkDialy(OkDialy okDialy) {
         okDialy.setMember(this);
         okDialyList.add(okDialy);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        if (StringUtil.isEmpty(password)) {
+            throw new IllegalArgumentException("password must not be null or empty.");
+        }
+        this.password = password;
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
+    
+    public boolean isValidPassword(String password) {
+        return this.password.equals(password);
     }
 }

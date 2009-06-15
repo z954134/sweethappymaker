@@ -25,7 +25,7 @@ package shm.common
 		protected function onCreationCompleted(event:FlexEvent):void {
 		}
 		
-		public function serviceCallFaultHandler(e:FaultEvent, token:Object=null):void {
+		public function onServiceCallFailed(e:FaultEvent, token:Object=null):void {
 			throw new Error(e.message);
 		}
 		

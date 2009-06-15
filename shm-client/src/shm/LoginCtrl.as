@@ -2,10 +2,12 @@ package shm
 {
 	import flash.events.MouseEvent;
 	
+	import mx.controls.Alert;
 	import mx.core.UIComponent;
 	import mx.events.CloseEvent;
-	import mx.events.FlexEvent;
 	import mx.managers.PopUpManager;
+	import mx.rpc.events.ResultEvent;
+	import mx.validators.Validator;
 	
 	import shm.common.LoginEvent;
 	import shm.common.UICtrlBase;
@@ -18,35 +20,53 @@ package shm
 		{
 			super();
 		}
-
-		protected override function doInitialize(component:UIComponent, id:String):void
-		{
+		
+		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = LoginWindow(component);
 		}
 
-		protected override function onCreationCompleted(event:FlexEvent):void
+		public function onLoginButtonClicked(event:MouseEvent):void
 		{
-			view.cancelButton.addEventListener(MouseEvent.CLICK, onCancelButtonClick);
-			view.loginButton.addEventListener(MouseEvent.CLICK, onLoginButtonClicked);
-			view.addEventListener(CloseEvent.CLOSE, onCloseButtonClicked);
+			var validationResults:Array = Validator.validateAll(view.validators);
+			if (validationResults.length > 0) {
+				return;
+			}
+			view.serv.send();
 		}
 
-		private function onLoginButtonClicked(event:MouseEvent):void
-		{
-			removePopUp();
-			view.dispatchEvent(new LoginEvent(LoginEvent.LOGIN_COMPLETE));
-		}
-
-		private function onCancelButtonClick(event:MouseEvent):void
+		public function onCancelButtonClick(event:MouseEvent):void
 		{
 			removePopUp();
 		}
 
-		private function onCloseButtonClicked(event:CloseEvent):void
+		public function onCloseButtonClicked(event:CloseEvent):void
 		{
 			removePopUp();
 		}
+		
+		
 
+		public function onServiceCompleted(event:ResultEvent):void
+		{
+			var loginEvent:LoginEvent = new LoginEvent(LoginEvent.LOGIN_COMPLETE);
+
+			var r:Object = event.result;
+			var authResult:String = r.authentication.result;
+			switch (authResult)
+			{
+				case "success":
+					removePopUp();
+					loginEvent.success = true;
+					view.dispatchEvent(loginEvent);
+					break;
+				case "failure":
+					Alert.show("メンバーID、パスワードを確認してください", "ログイン失敗");
+					break;
+				default:
+					throw new Error("変な状態");
+			}
+		}
+		
 		private function removePopUp():void
 		{
 			PopUpManager.removePopUp(view);

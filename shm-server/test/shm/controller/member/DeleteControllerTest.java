@@ -13,7 +13,7 @@ public class DeleteControllerTest extends JDOControllerTestCase {
     public void testRun() throws Exception {
         Member user = new Member();
         user.setEmail("aaa@aaa.com");
-        user.setName("aaa");
+        user.setMemberId("aaa");
         makePersistentInTx(user);
         param("key", user.getKey());
         start("/member/delete");

@@ -1,10 +1,10 @@
-
+/*
 @font-face {
 	src: url("ipag.otf");
 	fontFamily: ipaFont;
 	advancedAntiAliasing: true;
 }
-
+*/
 
 global {
 	background-alpha: 0.6;
@@ -25,7 +25,7 @@ TextArea {
 Application {
 	backgroundColor: #333333; 
 	fontStyle: normal;
-	fontFamily: ipaFont;
+/*	fontFamily: ipaFont; */
 	fontWeight: normal;
 	fontSize: 11;
 	background-image: Embed(source="backgrounds/underwater.jpg");

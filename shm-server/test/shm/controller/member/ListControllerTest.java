@@ -12,7 +12,7 @@ public class ListControllerTest extends MyJDOControllerTestCase {
         
         tx.begin();
         Member newUser = new Member();
-        newUser.setName("aaa");
+        newUser.setMemberId("aaa");
         newUser.setEmail("aaa@aaa.com");
         pm.makePersistent(newUser);
         

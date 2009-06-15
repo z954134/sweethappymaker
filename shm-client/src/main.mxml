@@ -4,7 +4,6 @@
 
 	<mx:Style source="../theme/flekristal.css"/>
 
-
 	<mx:VBox>
 		<shm:Header/>
 		<mx:Spacer height="10"/>

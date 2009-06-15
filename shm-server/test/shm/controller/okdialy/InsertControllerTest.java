@@ -14,7 +14,7 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
      
         deleteAllInTx(new Class[] { Member.class, OkDialy.class });
         tx.begin();
-        m.setName("aaa");
+        m.setMemberId("aaa");
         m.setEmail("aaa@aaa.com");
         pm.makePersistent(m);
         tx.commit();
@@ -38,6 +38,6 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
         
         OkDialy stored = from(OkDialy.class).getFirstResult();
         Member m = stored.getMember();
-        assertEquals("aaa", m.getName());
+        assertEquals("aaa", m.getMemberId());
     }
 }

@@ -2,6 +2,8 @@
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	width="100%" xmlns:shm="shm.*">
+	<shm:HeaderCtrl id="ctrl"/>
+	
 	<mx:Panel width="100%">
 		<mx:HBox width="100%">
 			<mx:Label text="タイトルとかロゴとか"/>
@@ -12,7 +14,7 @@
 			<mx:Button id="loginoutButton" label="Login" visible="true"/>
 		</mx:HBox>
 	</mx:Panel>
-	<shm:HeaderCtrl id="loginCtrl"/>
+	
 		
 	<mx:states>
 		<mx:State name="loggedIn">

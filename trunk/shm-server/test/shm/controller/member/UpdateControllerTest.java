@@ -12,12 +12,12 @@ public class UpdateControllerTest extends JDOControllerTestCase {
 
     public void testRun() throws Exception {
         Member newUser = new Member();
-        newUser.setName("aaa");
+        newUser.setMemberId("aaa");
         newUser.setEmail("aaa@aaa.com");
         makePersistentInTx(newUser);
         
         param("key", newUser.getKey());
-        param("name", "bbb");
+        param("memberId", "bbb");
         param("email", "bbb@bbb.com");
         start("/member/update");
         
@@ -27,7 +27,7 @@ public class UpdateControllerTest extends JDOControllerTestCase {
         assertNull(getNextPath());
         
         Member actual = pm.getObjectById(Member.class, newUser.getKey());
-        assertEquals("bbb", actual.getName());
+        assertEquals("bbb", actual.getMemberId());
         assertEquals("bbb@bbb.com", actual.getEmail());
     }
 }

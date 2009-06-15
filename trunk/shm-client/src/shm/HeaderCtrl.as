@@ -49,10 +49,7 @@ package shm
 		private function login():void
 		{
 			loginWindow = PopUpManager.createPopUp(header, LoginWindow, true) as LoginWindow;
-			loginWindow.addEventListener(LoginEvent.LOGIN_COMPLETE, function(event:LoginEvent):void
-				{
-					header.currentState = "loggedIn";
-				});
+			header.addEventListener(LoginEvent.LOGIN_COMPLETE, onLoginComplete);
 			PopUpManager.centerPopUp(loginWindow);
 		}
 
@@ -61,6 +58,11 @@ package shm
 		{
 			header.currentState = "notLoggedIn";
 			Alert.show("ログアウトしました。", "Logged out");
+		}
+		
+		private function onLoginComplete(event:LoginEvent):void
+		{
+			header.currentState = "loggedIn";
 		}
 	}
 }

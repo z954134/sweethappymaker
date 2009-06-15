@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- ログイン用ポップアップウィンドウ -->
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Login" showCloseButton="true"
-				xmlns:shm="shm.*" backgroundAlpha="0.7" backgroundColor="#303FB1" borderColor="#5677E4" color="#FFFFFF">
+				xmlns:shm="shm.*" backgroundAlpha="0.7" backgroundColor="#303FB1"
+				borderColor="#5677E4" color="#FFFFFF" close="ctrl.onCloseButtonClicked(event)">
+	
+	<!-- コントローラ -->
 	<shm:LoginCtrl id="ctrl"/>
 
+	<!-- ログインフォーム -->
 	<mx:Form width="100%">
 		<mx:FormHeading label="ログイン情報を入力してください。"/>
 		<mx:FormItem label="Member ID" required="true">
 			<mx:TextInput id="memberIdField"/>
 		</mx:FormItem>
 		<mx:FormItem label="Password" required="true">
-			<mx:TextInput id="passwordText" displayAsPassword="true"/>
+			<mx:TextInput id="passwordField" displayAsPassword="true"/>
 		</mx:FormItem>
 	</mx:Form>
-
 	<mx:ControlBar horizontalAlign="center">
-		<mx:Button label="Login" id="loginButton"/>
-		<mx:Button label="Cancel" id="cancelButton"/>
+		<mx:Button label="Login" id="loginButton" click="ctrl.onLoginButtonClicked(event)"/>
+		<mx:Button label="Cancel" id="cancelButton" click="ctrl.onCancelButtonClick(event)"/>
 	</mx:ControlBar>
+	
+	<!-- 精査 -->
+	<mx:Array id="validators">
+		<mx:Validator id="memberIdValidator" source="{memberIdField}" property="text"
+					  requiredFieldError="メンバーIDを入力してください"/>
+		<mx:Validator id="passwordValidator" source="{passwordField}" property="text"
+					  requiredFieldError="パスワードを入力してください"/>
+	</mx:Array>
+
+	<!-- サーバ呼び出し -->
+	<mx:HTTPService id="serv" url="/member/login" method="post" showBusyCursor="true"
+					result="ctrl.onServiceCompleted(event)" fault="ctrl.onServiceCallFailed(event)">
+		<mx:request>
+			<memberId>{memberIdField.text}</memberId>
+			<password>{passwordField.text}</password>
+		</mx:request>
+	</mx:HTTPService>
 
 </mx:TitleWindow>

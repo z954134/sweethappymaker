@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+
+	<mx:VBox width="100%">
+		<mx:HBox width="100%">
+			<mx:Spacer width="100%"/>
+			<mx:Image source="http://code.google.com/appengine/images/appengine-silver-120x30.gif"/>
+		</mx:HBox>
+		<mx:HBox width="100%">
+			<mx:Spacer width="100%"/>
+			<mx:Text text="© 2009 xxxxxx. All rights reserved. " color="#FFFFFF"/>
+			<mx:Spacer width="100%"/>
+		</mx:HBox>
+	</mx:VBox>
+</mx:Canvas>

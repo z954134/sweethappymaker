@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:blg="shm.blog.*" width="100%"
+		   height="100%" backgroundAlpha="0"
+		   xmlns:col="shm.circleoflife.*"
+		   xmlns:okd="shm.okdialy.*">
+
+	<mx:HBox backgroundAlpha="0">
+		<mx:Panel title="Menu" height="500">
+			<mx:VBox verticalGap="6" horizontalAlign="left" verticalAlign="top" x="0" y="0">
+				<mx:Button id="blogButton" label="My Blog" width="200"
+						   click="myViewStack.selectedChild=blog;"/>
+				<mx:Button id="okNikkiButton" label="OK Nikki" width="200"
+						   click="myViewStack.selectedChild=okDialy;"/>
+				<mx:Button id="JinseiButton" label="Jinsei No Wa" width="200"
+						   click="myViewStack.selectedChild=col;"/>
+				<mx:Button id="LinkButton" label="Links" width="200"
+						   click="myViewStack.selectedChild=accountInfo;"/>
+				<mx:Button id="AboutButton" label="About Us" width="200"
+						   click="myViewStack.selectedChild=custInfo;"/>
+				<mx:Button id="contactButton" label="Contact Us" width="200"
+						   click="myViewStack.selectedChild=accountInfo;"/>
+			</mx:VBox>
+		</mx:Panel>
+		<mx:Spacer width="20"/>
+		<mx:ViewStack id="myViewStack" width="100%" height="100%">
+			<blg:Blog id="blog"/>
+
+			<col:ColPanel id="col"/>
+			<okd:OkDialy id="okDialy"/>
+			<mx:Panel id="custInfo" label="Customer Info">
+				<mx:Label text="Customer Info"/>
+			</mx:Panel>
+
+			<mx:Panel id="accountInfo" label="Account Info">
+				<mx:Label text="Account Info"/>
+			</mx:Panel>
+		</mx:ViewStack>
+	</mx:HBox>
+
+</mx:Canvas>

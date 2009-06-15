@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" title="My Blog" xmlns:blg="shm.blog.*">
+
+	<mx:String id="cssText">
+		<![CDATA[
+a:hover{
+color:#ff00ff;
+text-decoration:underline;
+}
+a:link{
+color:#0000ff;
+text-decoration:underline;
+}
+.h1 {
+color:#000044;
+font-size: 18px; 
+font-weight: bold;
+text-decoration: underline;
+}
+.h2 {
+color:#000099;
+font-size:14px;
+text-indent: 5px;
+font-weight: bold;
+text-decoration: underline;
+}
+* {
+color:#000000;
+font-size:12px;
+}
+
+
+		]]>
+	</mx:String>
+
+	<mx:HBox height="100%" width="100%">
+		<mx:VBox height="100%" width="100%">
+			<mx:TextInput id="titleText" text="ｘ月ｘ日の日記" editable="false" width="400"/>
+			<blg:HikiText id="mainText" cssText="{cssText}" height="100%" width="100%">
+				<blg:htmlText>
+				<![CDATA[
+<a href="http://www.google.co.jp/">ハイパーリンク</a></br>
+<span class='h1'>みだし１</span>
+
+<p class='h2'>みだし2</p>
+文章
+<textformat tabstops='[50,100]'>
+<b>Name	Age	Occupation</b>
+Rick	33	Detective</br>
+AJ	34	Detective</br>
+</textformat>
+<ul>
+<li>aaaa</li>
+<li>bbb</li>
+</ul>
+]]>
+				</blg:htmlText>
+			</blg:HikiText>
+
+		</mx:VBox>
+		<mx:DateChooser/>
+	</mx:HBox>
+	<mx:ControlBar>
+		<mx:Button label="Prev"/>
+		<mx:Button label="Next"/>
+	</mx:ControlBar>
+	<mx:states>
+		<mx:State id="edit">
+			<mx:SetProperty target="{titleText}" name="editable" value="true"/>
+			<mx:SetProperty target="{titleText}" name="backgroundAlpha" value="0.9"/>
+			<mx:SetProperty target="{mainText}" name="editable" value="true"/>
+			<mx:SetProperty target="{mainText}" name="backgroundAlpha" value="0.9"/>
+		</mx:State>
+		<mx:State id="readonly">
+			<mx:SetProperty target="{titleText}" name="editable" value="false"/>
+			<mx:SetProperty target="{mainText}" name="editable" value="false"/>
+		</mx:State>
+	</mx:states>
+</mx:Panel>

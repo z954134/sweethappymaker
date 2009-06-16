@@ -7,8 +7,9 @@ package shm
 	import mx.events.FlexEvent;
 	import mx.managers.PopUpManager;
 	
-	import shm.common.LoginEvent;
+	import shm.member.LoginEvent;
 	import shm.common.UICtrlBase;
+	import shm.member.LoginWindow;
 
 	public class HeaderCtrl extends UICtrlBase
 	{
@@ -49,7 +50,7 @@ package shm
 		private function login():void
 		{
 			loginWindow = PopUpManager.createPopUp(header, LoginWindow, true) as LoginWindow;
-			header.addEventListener(LoginEvent.LOGIN_COMPLETE, onLoginComplete);
+			loginWindow.addEventListener(LoginEvent.LOGIN_COMPLETE, onLoginComplete);
 			PopUpManager.centerPopUp(loginWindow);
 		}
 
@@ -62,6 +63,7 @@ package shm
 		
 		private function onLoginComplete(event:LoginEvent):void
 		{
+			header.memberIdText.text = event.memberId;
 			header.currentState = "loggedIn";
 		}
 	}

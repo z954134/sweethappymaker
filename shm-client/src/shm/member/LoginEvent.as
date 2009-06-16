@@ -1,4 +1,4 @@
-package shm.common
+package shm.member
 {
 	import flash.events.Event;
 	
@@ -9,6 +9,10 @@ package shm.common
 
 		public var success:Boolean = false;
 				
+		public var memberId:String;
+		
+		public var memberKey:String;
+		 
 		public function LoginEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false)
 		{
 			super(type, bubbles, cancelable);

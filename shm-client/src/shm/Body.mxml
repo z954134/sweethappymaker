@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:blg="shm.blog.*" width="100%"
-		   height="100%" backgroundAlpha="0"
-		   xmlns:col="shm.circleoflife.*"
-		   xmlns:okd="shm.okdialy.*">
+		   height="100%" backgroundAlpha="0" xmlns:col="shm.circleoflife.*"
+		   xmlns:okd="shm.okdialy.*" xmlns:mbr="shm.member.*">
 
 	<mx:HBox backgroundAlpha="0">
 		<mx:Panel title="Menu" height="500">
@@ -19,22 +18,45 @@
 						   click="myViewStack.selectedChild=custInfo;"/>
 				<mx:Button id="contactButton" label="Contact Us" width="200"
 						   click="myViewStack.selectedChild=accountInfo;"/>
+				<mx:Button id="memberButton" label="Members" width="200"
+						   click="myViewStack.selectedChild=members;"/>
 			</mx:VBox>
 		</mx:Panel>
 		<mx:Spacer width="20"/>
-		<mx:ViewStack id="myViewStack" width="100%" height="100%">
-			<blg:Blog id="blog"/>
 
-			<col:ColPanel id="col"/>
-			<okd:OkDialy id="okDialy"/>
-			<mx:Panel id="custInfo" label="Customer Info">
+
+		<mx:ViewStack id="myViewStack" width="100%" height="100%">
+			<blg:Blog id="blog" showEffect="{showSeq}" hideEffect="{hideSeq}"/>
+			<col:ColPanel id="col" showEffect="{showSeq}" hideEffect="{hideSeq}"/>
+			<okd:OkDialy id="okDialy" showEffect="{showSeq}" hideEffect="{hideSeq}"/>
+			<mx:Panel id="custInfo" label="Customer Info" showEffect="{showSeq}"
+					  hideEffect="{hideSeq}">
 				<mx:Label text="Customer Info"/>
 			</mx:Panel>
 
-			<mx:Panel id="accountInfo" label="Account Info">
+			<mx:Panel id="accountInfo" label="Account Info" showEffect="{showSeq}"
+					  hideEffect="{hideSeq}">
 				<mx:Label text="Account Info"/>
 			</mx:Panel>
+			<mbr:MemberEdit id="members" label="members" showEffect="{showSeq}"
+					  hideEffect="{hideSeq}"/>
+			
 		</mx:ViewStack>
-	</mx:HBox>
 
+	</mx:HBox>
+	<mx:Script>
+		<![CDATA[
+			import mx.effects.easing.*;
+		]]>
+	</mx:Script>
+	
+	<mx:Sequence id="showSeq" duration="250">
+		<mx:Parallel>
+			<mx:Fade alphaFrom="0.0" alphaTo="1.0"/>
+		</mx:Parallel>
+	</mx:Sequence>
+	
+	<mx:Sequence id="hideSeq" duration="250">
+		<mx:Glow alphaTo="0.0"/>
+	</mx:Sequence>
 </mx:Canvas>

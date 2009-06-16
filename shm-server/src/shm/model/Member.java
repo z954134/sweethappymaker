@@ -1,6 +1,5 @@
 package shm.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.Extension;
@@ -39,7 +38,7 @@ public class Member {
 
     /** OK日記 */
     @Persistent(mappedBy="member")
-    private List<OkDialy> okDialyList = new ArrayList<OkDialy>();
+    private List<OkDialy> okDialyList;
     
     public String getKey() {
         return key;
@@ -68,7 +67,7 @@ public class Member {
 
     public void addOkDialy(OkDialy okDialy) {
         okDialy.setMember(this);
-        okDialyList.add(okDialy);
+        getOkDialyList().add(okDialy);
     }
 
     public String getPassword() {

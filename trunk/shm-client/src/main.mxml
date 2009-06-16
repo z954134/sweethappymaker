@@ -2,7 +2,7 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*" width="1000"
 				height="100%">
 
-	<mx:Style source="../theme/flekristal.css"/>
+	<mx:Style source="../assets/flex.css"/>
 
 	<mx:VBox>
 		<shm:Header/>

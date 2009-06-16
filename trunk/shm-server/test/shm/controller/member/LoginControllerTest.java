@@ -25,7 +25,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "secret");
         
         start("/member/login");
-        LoginController controller = getController();
+        MemberController controller = getController();
         assertNotNull(controller);
         assertNull(getNextPath());
         assertEquals(0, response.getStatus());
@@ -38,7 +38,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "secret");
         
         start("/member/login");
-        LoginController controller = getController();
+        MemberController controller = getController();
         assertNotNull(controller);
         assertEquals("/member/failure.jsp", getNextPath());
         assertEquals(401, response.getStatus());
@@ -51,7 +51,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "incollectpassword");
         
         start("/member/login");
-        LoginController controller = getController();
+        MemberController controller = getController();
         assertNotNull(controller);
         assertEquals("/member/failure.jsp", getNextPath());
         assertEquals(401, response.getStatus());

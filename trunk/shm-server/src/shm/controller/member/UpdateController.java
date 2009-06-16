@@ -1,23 +1,40 @@
 package shm.controller.member;
 
 
-import org.slim3.controller.JDOController;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slim3.controller.Navigation;
 import org.slim3.util.BeanUtil;
 
 import shm.model.Member;
 
-public class UpdateController extends JDOController {
+public class UpdateController extends MemberController {
 
     @Override
     public Navigation run() {
-        tx.begin();
+        String memberId = requestScope("memberId");
+        
 
-        Member user = pm.getObjectById(Member.class, requestScope("key"));
-        BeanUtil.copy(request, user);
-        pm.makePersistent(user);
+        tx.begin();
+        // 更新前のメンバー取得
+        Member member = pm.getObjectById(Member.class, requestScope("key"));
+        // メンバーIDの変更確認
+        if (!memberId.equals(member.getMemberId())) {
+            // 変更後のメンバーID存在チェック
+            if (exists(memberId)) {
+                List<String> messageList = new ArrayList<String>();
+                messageList.add("メンバーID [" + memberId + "] は既に存在します。"
+                    + "別のメンバーIDを指定してください。");
+                requestScope("messageList", messageList);
+                return forwardBase("failure.jsp");
+            }
+        }
+        
+        BeanUtil.copy(request, member);
+        pm.makePersistent(member);
         
         tx.commit();
-        return null;
+        return forwardBase("success.jsp");
     }
 }

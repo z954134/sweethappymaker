@@ -9,7 +9,7 @@
 			<mx:Label text="タイトルとかロゴとか"/>
 			<mx:Spacer width="100%"/>
 			<mx:Text id="welcomeText" text="ようこそ" visible="false"/>
-			<mx:Text id="memberNameText" text="hoge" visible="false"/>
+			<mx:Text id="memberIdText" text="" visible="false"/>
 			<mx:Text id="sanText" text="さん" visible="false"/>
 			<mx:Button id="loginoutButton" label="Login" visible="true"/>
 		</mx:HBox>
@@ -19,13 +19,13 @@
 	<mx:states>
 		<mx:State name="loggedIn">
 			<mx:SetProperty target="{welcomeText}" name="visible" value="true"/>
-			<mx:SetProperty target="{memberNameText}" name="visible" value="true"/>
+			<mx:SetProperty target="{memberIdText}" name="visible" value="true"/>
 			<mx:SetProperty target="{sanText}" name="visible" value="true"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="Logout"/>
 		</mx:State>
 		<mx:State name="notLoggedIn">
 			<mx:SetProperty target="{welcomeText}" name="visible" value="false"/>
-			<mx:SetProperty target="{memberNameText}" name="visible" value="false"/>
+			<mx:SetProperty target="{memberIdText}" name="visible" value="false"/>
 			<mx:SetProperty target="{sanText}" name="visible" value="false"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="Login"/>
 		</mx:State>

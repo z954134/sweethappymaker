@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ログイン用ポップアップウィンドウ -->
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Login" showCloseButton="true"
-				xmlns:shm="shm.*" backgroundAlpha="0.7" backgroundColor="#303FB1"
+				xmlns:mbr="shm.member.*" backgroundAlpha="0.7" backgroundColor="#303FB1"
 				borderColor="#5677E4" color="#FFFFFF" close="ctrl.onCloseButtonClicked(event)">
 	
 	<!-- コントローラ -->
-	<shm:LoginCtrl id="ctrl"/>
+	<mbr:LoginCtrl id="ctrl"/>
 
 	<!-- ログインフォーム -->
 	<mx:Form width="100%">

@@ -1,4 +1,4 @@
-package shm
+package shm.member
 {
 	import flash.events.MouseEvent;
 	
@@ -9,7 +9,7 @@ package shm
 	import mx.rpc.events.ResultEvent;
 	import mx.validators.Validator;
 	
-	import shm.common.LoginEvent;
+	import shm.member.LoginEvent;
 	import shm.common.UICtrlBase;
 
 	public class LoginCtrl extends UICtrlBase
@@ -57,6 +57,7 @@ package shm
 				case "success":
 					removePopUp();
 					loginEvent.success = true;
+					loginEvent.memberId = view.memberIdField.text;
 					view.dispatchEvent(loginEvent);
 					break;
 				case "failure":

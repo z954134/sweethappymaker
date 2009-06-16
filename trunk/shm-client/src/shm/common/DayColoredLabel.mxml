@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Label xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+		<![CDATA[
+		
+			import mx.controls.dataGridClasses.DataGridListData;
+			import mx.states.SetStyle;
+			
+			private static const WEEKDAY_COLOR:int = 0x000000;
+			private static const SUNDAY_COLOR:int = 0xFF0000;
+			private static const SATURDAY_COLOR:int = 0x0000FF;
+			
+			override public function set data(value:Object):void
+			{
+				super.data = value;
+
+				var fieldName:String = DataGridListData(listData).dataField;
+				var date:Date = value[fieldName] as Date;
+				if (!date) return;
+
+				switch (date.day)
+				{
+				case 0:
+					setStyle("color", SUNDAY_COLOR);
+					break;
+				case 6:
+					setStyle("color", SATURDAY_COLOR);
+					break;
+				default:
+					setStyle("color", WEEKDAY_COLOR);
+					break;
+				}
+			}
+		]]>
+	</mx:Script>
+</mx:Label>

@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="listService.send()"
-		  title="Member Edit" width="100%" height="100%">
-	<mx:HTTPService id="listService" url="/member/list" showBusyCursor="true"/>
+		  xmlns:mbr="shm.member.*" title="Member Edit" width="100%" height="100%">
 
-	<mx:HTTPService id="updateService" url="/member/update" method="post" showBusyCursor="true"
-					result="listService.send()">
-		<mx:request>
-			<key>{dg.selectedItem.key}</key>
-			<memberId>{memberIdText.text}</memberId>
-			<password>{passwordText.text}</password>
-			<email>{emailText.text}</email>
-		</mx:request>
-	</mx:HTTPService>
-	<mx:HTTPService id="insertService" url="/member/insert" method="post" showBusyCursor="true"
-					result="listService.send()">
-		<mx:request>
-			<memberId>{memberIdText.text}</memberId>
-			<password>{passwordText.text}</password>
-			<email>{emailText.text}</email>
-		</mx:request>
-	</mx:HTTPService>
-
-	<mx:HTTPService id="deleteService" url="/member/delete" method="post" showBusyCursor="true"
-					result="listService.send()">
-		<mx:request>
-			<key>{dg.selectedItem.key}</key>
-		</mx:request>
-	</mx:HTTPService>
+	<mbr:MemberEditCtrl id="ctrl"/>
 
 	<mx:VBox width="100%" height="100%">
 		<mx:DataGrid id="dg" width="100%" left="0" top="0" height="200"
@@ -38,7 +14,7 @@
 				<mx:DataGridColumn headerText="Email" dataField="email"/>
 			</mx:columns>
 		</mx:DataGrid>
-		<mx:Form width="100%" height="100">
+		<mx:Form width="100%" height="100%">
 			<mx:FormItem label="MemberId">
 				<mx:TextInput id="memberIdText" text="{dg.selectedItem.memberId}"/>
 			</mx:FormItem>
@@ -51,9 +27,52 @@
 		</mx:Form>
 
 	</mx:VBox>
+	
 	<mx:ControlBar>
 		<mx:Button label="Insert" click="insertService.send()"/>
 		<mx:Button label="Update" click="updateService.send()"/>
 		<mx:Button label="Delete" click="deleteService.send()"/>
 	</mx:ControlBar>
+
+	<!-- 精査 -->
+	<mx:Array id="validators">
+		<mx:Validator id="memberIdValidator" source="{memberIdText}" property="text"
+					  requiredFieldError="メンバーIDを入力してください"/>
+		<mx:Validator id="passwordValidator" source="{passwordText}" property="text"
+					  requiredFieldError="パスワードを入力してください"/>
+		<mx:EmailValidator id="emailValidator" source="{emailText}" property="text"/>
+	</mx:Array>
+
+	
+	<!-- 一覧取得 -->
+	<mx:HTTPService id="listService" url="/member/list" showBusyCursor="true"/>
+
+	<!-- 更新 -->
+	<mx:HTTPService id="updateService" url="/member/update" method="post" showBusyCursor="true"
+					result="ctrl.onServiceCompleted(event)">
+		<mx:request>
+			<key>{dg.selectedItem.key}</key>
+			<memberId>{memberIdText.text}</memberId>
+			<password>{passwordText.text}</password>
+			<email>{emailText.text}</email>
+		</mx:request>
+	</mx:HTTPService>
+	
+	<!-- 登録 -->
+	<mx:HTTPService id="insertService" url="/member/insert" method="post" showBusyCursor="true"
+					result="ctrl.onServiceCompleted(event)" >
+		<mx:request>
+			<memberId>{memberIdText.text}</memberId>
+			<password>{passwordText.text}</password>
+			<email>{emailText.text}</email>
+		</mx:request>
+	</mx:HTTPService>
+
+	<!-- 削除 -->
+	<mx:HTTPService id="deleteService" url="/member/delete" method="post" showBusyCursor="true"
+					result="listService.send()">
+		<mx:request>
+			<key>{dg.selectedItem.key}</key>
+		</mx:request>
+	</mx:HTTPService>
 </mx:Panel>

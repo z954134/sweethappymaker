@@ -19,7 +19,7 @@ public class LoginController extends MemberController {
         if (member == null || !member.isValidPassword(password)) {
             // メンバーが存在しない（メンバーID誤り）
             // またはパスワード誤り
-            return forward(basePath + "login_failure.jsp");
+            return forwardBase("login_failure.jsp");
         }
         // セッションにログイン情報を格納する
         sessionScope(LOGIN_MEMBER_KEY, member.getKey());

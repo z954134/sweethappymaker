@@ -24,7 +24,7 @@ public class UpdateControllerTest extends JDOControllerTestCase {
         UpdateController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertNull(getNextPath());
+        assertEquals(getNextPath(),"/member/success.jsp");
         
         Member actual = pm.getObjectById(Member.class, newUser.getKey());
         assertEquals("bbb", actual.getMemberId());

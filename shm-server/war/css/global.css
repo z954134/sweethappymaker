@@ -1,6 +1,9 @@
 @CHARSET "utf-8";
 
-body { background-color: #EEEEEE; }
+body {
+	background-color: white;
+
+}
 
 h1 { 
 	height: 33px;
@@ -13,18 +16,34 @@ a:hover { background-color: white; }
 
 input.err { background-color: orange; }
 
+#center{
+ 	margin-left: auto;
+	margin-right: auto;
+     width:800px;
+     height:100%;
+     margin: 0%;
+     padding: 0%;
+	/*border: 1px solid #000;*/
+	
+	height:100%;
+	 	margin-left: auto;
+	margin-right: auto;
+}
+
 #header{
- width:760px;
- background-color: orange;
+ width:800px;
+ background-color: white;
+ 	margin-left: auto;
+	margin-right: auto;
 }
 
 #menu{
- width:160px;
+ width:200px;
  height:400px;
- text-align:left;
- vertical-align: top;
+ /*text-align:left;*/
+ /*vertical-align: top;*/
  float:left;
- background-color: aqua;
+ background-color: white;
 }
 
 #body{
@@ -35,11 +54,15 @@ input.err { background-color: orange; }
 }
 
 #footer{
- width:760px;
+ width:800px;
+ height:50px;
  text-align:left;
- background-color: black;
+ 
+ background-image:url(../img/footerbg.png);
  color: white;
  clear: left;
+ 	margin-left: auto;
+	margin-right: auto; 
 }
 
 

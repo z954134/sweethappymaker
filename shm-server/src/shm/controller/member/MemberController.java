@@ -3,9 +3,8 @@
  */
 package shm.controller.member;
 
-import org.slim3.controller.JDOController;
-import org.slim3.controller.Navigation;
 
+import shm.common.MyJDOController;
 import shm.model.Member;
 import shm.model.MemberMeta;
 
@@ -13,7 +12,7 @@ import shm.model.MemberMeta;
  * @author Tsuyoshi
  *
  */
-public abstract class MemberController extends JDOController {
+public abstract class MemberController extends MyJDOController {
 
     protected final Member getMemberByMemberId(String memberId) {
         MemberMeta m = new MemberMeta();
@@ -25,9 +24,5 @@ public abstract class MemberController extends JDOController {
     protected final boolean exists(String memberId) {
         Member m = getMemberByMemberId(memberId);
         return m != null;
-    }
-
-    protected final Navigation forwardBase(String path) {
-        return forward(basePath + path);
     }
 }

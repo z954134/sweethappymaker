@@ -14,7 +14,6 @@ public class UpdateController extends MemberController {
     @Override
     public Navigation run() {
         String memberId = requestScope("memberId");
-        
 
         tx.begin();
         // 更新前のメンバー取得

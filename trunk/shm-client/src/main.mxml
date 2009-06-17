@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*" width="1000"
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*" width="600"
 				height="100%">
 
 	<mx:Style source="../assets/flex.css"/>
@@ -8,7 +8,9 @@
 		<shm:Header/>
 		<mx:Spacer height="10"/>
 		<shm:Body/>
-		<mx:Spacer height="30"/>
+		<!--
+		<mx:Spacer height="10"/>
 		<shm:Footer/>
+		-->
 	</mx:VBox>
 </mx:Application>

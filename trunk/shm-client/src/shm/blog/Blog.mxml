@@ -35,7 +35,7 @@ font-size:12px;
 
 	<mx:HBox height="100%" width="100%">
 		<mx:VBox height="100%" width="100%">
-			<mx:TextInput id="titleText" text="ｘ月ｘ日の日記" editable="false" width="400"/>
+			<mx:TextInput id="titleText" text="ｘ月ｘ日の日記" editable="false" width="300"/>
 			<blg:HikiText id="mainText" cssText="{cssText}" height="100%" width="100%">
 				<blg:htmlText>
 				<![CDATA[

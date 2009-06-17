@@ -2,7 +2,7 @@
 
 body {
 	background-color: white;
-
+	border: 1px solid #000;
 }
 
 h1 { 
@@ -23,7 +23,7 @@ input.err { background-color: orange; }
      height:100%;
      margin: 0%;
      padding: 0%;
-	/*border: 1px solid #000;*/
+	border: 1px solid #f00;
 	
 	height:100%;
 	 	margin-left: auto;
@@ -32,25 +32,31 @@ input.err { background-color: orange; }
 
 #header{
  width:800px;
- background-color: white;
+ background-color: navy;
+ color:white;
  	margin-left: auto;
 	margin-right: auto;
+		border: 1px solid #0f0;
 }
 
 #menu{
- width:200px;
+ width:180px;
  height:400px;
  /*text-align:left;*/
  /*vertical-align: top;*/
  float:left;
- background-color: white;
+ background-color: #ddddff;
+ padding-left:20px;
+ padding-top:10px;
+ border: 1px solid #00f;
 }
 
 #body{
- width:600px;
+ width:590px;
  height:400px;
  float:left;
- background-color: white;
+ background-color: white
+ border: 1px solid #ff0;;
 }
 
 #footer{

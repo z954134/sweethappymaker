@@ -6,6 +6,12 @@
 		</param-name>
 		<param-value>application</param-value>
 	</context-param>
+	
+	<context-param>
+		<param-name>homeUrl</param-name>
+		<param-value>http://cutenahappymaker.wordpress.com</param-value>
+	</context-param>
+	
 	<filter>
 		<filter-name>frontController</filter-name>
 		<filter-class>org.slim3.controller.FrontController

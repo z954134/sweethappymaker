@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*" width="600"
-				height="100%">
-
-	<mx:Style source="../assets/flex.css"/>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*"
+	 width="600"
+	 height="600">
+<!--
+	<mx:Style source="../assets/flex.css"/>-->
 
 	<mx:VBox>
-		<shm:Header/>
-		<mx:Spacer height="10"/>
-		<shm:Body/>
+		<shm:Header id="header" body="{body}" label="Happy Maker Applications"/>
+		<mx:Spacer height="1"/>
+		<shm:Body id="body"/>
 		<!--
 		<mx:Spacer height="10"/>
 		<shm:Footer/>

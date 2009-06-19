@@ -15,7 +15,7 @@ public class LoginController extends MemberController {
         String password = requestScope("password");
 
         // メンバーIDよりエンティティを取得する
-        Member member = getMemberByMemberId(memberId);
+        Member member = dao.getMemberByMemberId(memberId);
         if (member == null || !member.isValidPassword(password)) {
             // メンバーが存在しない（メンバーID誤り）
             // またはパスワード誤り

@@ -13,7 +13,11 @@ import javax.jdo.annotations.VersionStrategy;
 
 import org.slim3.util.StringUtil;
 
-
+/**
+ * メンバー
+ * @author Tsuyoshi
+ *
+ */
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
 public class Member {

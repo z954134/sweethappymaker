@@ -14,7 +14,7 @@ public class ListController extends MyJDOController {
 
     @Override
     public Navigation run() {
-        List<Member> entityList = from(Member.class).getResultList();
+        List<Member> entityList = select().from(Member.class).getResultList();
         List<BeanMap> memberList = copy(entityList);
         requestScope("memberList", memberList);
         return forwardBase("list.jsp");

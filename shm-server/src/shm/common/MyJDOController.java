@@ -4,6 +4,7 @@
 package shm.common;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.slim3.controller.JDOController;
@@ -16,6 +17,30 @@ import org.slim3.util.BeanUtil;
  * 
  */
 public abstract class MyJDOController extends JDOController {
+
+    
+    
+    
+    @Override
+    protected Navigation run() {
+        tx.begin();
+        Navigation navigation = runInTx();
+        tx.commit();
+        return navigation;
+    }
+    
+    protected Navigation runInTx() {
+        String msg = "'runInTx' method must be overrided when 'run' method is NOT overrided.";
+        throw new RuntimeException(msg);
+    }
+        
+    /**
+     * SELECTを発行する。
+     * @return SELECT
+     */
+    protected Select select() {
+        return new Select(pm);
+    }
 
     /**
      * ベースパスを基準にフォワードする<br>
@@ -40,6 +65,11 @@ public abstract class MyJDOController extends JDOController {
             beanMapList.add(m);
         }
         return beanMapList;
+    }
+    
+    protected void saveMessages(String... msgs) {
+        List<String> messageList = Arrays.asList(msgs);
+        requestScope("messageList", messageList);
     }
 
 }

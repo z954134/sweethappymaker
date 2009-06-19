@@ -1,15 +1,13 @@
 package shm.controller.okdialy;
 
-
-
-import org.slim3.controller.JDOController;
 import org.slim3.controller.Navigation;
 import org.slim3.util.BeanUtil;
 
+import shm.common.MyJDOController;
 import shm.model.Member;
 import shm.model.OkDialy;
 
-public class InsertController extends JDOController {
+public class InsertController extends MyJDOController {
 
     @Override
     public Navigation run() {

@@ -57,11 +57,16 @@ public abstract class MyJDOController extends JDOController {
     protected List<BeanMap> copy(List<?> entityList) {
         List<BeanMap> beanMapList = new ArrayList<BeanMap>(entityList.size());
         for (Object e : entityList) {
-            BeanMap m = new BeanMap();
-            BeanUtil.copy(e, m);
-            beanMapList.add(m);
+            BeanMap map = toBeanMap(e);
+            beanMapList.add(map);
         }
         return beanMapList;
+    }
+    
+    protected BeanMap toBeanMap(Object bean) {
+        BeanMap map = new BeanMap();
+        BeanUtil.copy(bean, map);
+        return map;
     }
     
     protected void saveMessages(String... msgs) {

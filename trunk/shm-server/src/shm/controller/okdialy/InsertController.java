@@ -10,16 +10,15 @@ import shm.model.OkDialy;
 public class InsertController extends MyJDOController {
 
     @Override
-    public Navigation run() {
-        tx.begin();
-        
+    public Navigation runInTx() {
+
         OkDialy okDialy = new OkDialy();
         BeanUtil.copy(request, okDialy);
         
         String memberKey = sessionScope("memberId");
         Member member = pm.getObjectById(Member.class, memberKey);
         member.addOkDialy(okDialy);
-        okDialy.setMember(member);
+
         pm.makePersistent(member);
 
         return null;

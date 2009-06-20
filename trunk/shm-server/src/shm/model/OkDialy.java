@@ -16,6 +16,7 @@ import javax.jdo.annotations.VersionStrategy;
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
 public class OkDialy {
+    private static final int MAX_SIZE = 10;
     
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -26,18 +27,23 @@ public class OkDialy {
     private Date dialyDate;
     
     @Persistent
-    private List<String> items = new ArrayList<String>(10);
+    private List<String> items;
     
     @Persistent(mappedBy = "okDialyList")
     private Member member;
 
     
+    public OkDialy() {
+        super();
+        setItems(new ArrayList<String>());
+    }
+
     public void addItem(String item) {
 
-        if (items.size() == 10) {
+        if (items.size() == MAX_SIZE) {
             throw new IllegalStateException();
         }
-        items.add(item == null ? "" : item);
+        getItems().add(item == null ? "" : item);
     }
     
     public String getKey() {
@@ -55,13 +61,17 @@ public class OkDialy {
     public void setDialyDate(Date dialyDate) {
         this.dialyDate = dialyDate;
     }
-
+    
     public List<String> getItems() {
         return items;
     }
 
     public void setItems(List<String> items) {
-        this.items = (items == null ? new ArrayList<String>(10) : items);
+        if (items == null) {
+            setItems(new ArrayList<String>(10));
+            return;
+        }
+        this.items = items;
     }
 
     public Member getMember() {

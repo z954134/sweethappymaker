@@ -1,5 +1,6 @@
 package shm.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.Extension;
@@ -22,6 +23,11 @@ import org.slim3.util.StringUtil;
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
 public class Member {
 
+    public Member() {
+        super();
+        setOkDialyList(new ArrayList<OkDialy>());
+    }
+    
     /** 主キー */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -66,6 +72,10 @@ public class Member {
     }
 
     public void setOkDialyList(List<OkDialy> okDialyList) {
+        if (okDialyList == null) {
+            setOkDialyList(new ArrayList<OkDialy>(0));
+            return;
+        }
         this.okDialyList = okDialyList;
     }
 

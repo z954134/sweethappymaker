@@ -37,4 +37,9 @@ public class MemberDao extends MyGenericDao<Member> {
         Member m = getMemberByMemberId(memberId);
         return m != null;
     }
+    
+    public String getKeyByMemberId(String memberId) {
+        Member m = getMemberByMemberId(memberId);
+        return m.getKey();
+    }
 }

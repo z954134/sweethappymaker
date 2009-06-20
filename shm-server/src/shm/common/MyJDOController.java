@@ -12,12 +12,24 @@ import org.slim3.controller.Navigation;
 import org.slim3.util.BeanMap;
 import org.slim3.util.BeanUtil;
 
+import shm.dao.MemberDao;
+
 /**
  * @author Tsuyoshi
  * 
  */
 public abstract class MyJDOController extends JDOController {
 
+    /** メンバーデータアクセス */
+    protected MemberDao memberDao;
+
+    
+    @Override
+    protected void setUp() {
+        super.setUp();
+        memberDao = new MemberDao(pm);
+    }
+    
     @Override
     protected Navigation run() {
         tx.begin();
@@ -31,13 +43,6 @@ public abstract class MyJDOController extends JDOController {
         throw new RuntimeException(msg);
     }
         
-    /**
-     * SELECTを発行する。
-     * @return SELECT
-     */
-    protected Select select() {
-        return new Select(pm);
-    }
 
     /**
      * ベースパスを基準にフォワードする<br>
@@ -54,7 +59,7 @@ public abstract class MyJDOController extends JDOController {
      * @param entityList エンティティのリスト
      * @return BeanMapのリスト
      */
-    protected List<BeanMap> copy(List<?> entityList) {
+    protected final List<BeanMap> copy(List<?> entityList) {
         List<BeanMap> beanMapList = new ArrayList<BeanMap>(entityList.size());
         for (Object e : entityList) {
             BeanMap map = toBeanMap(e);
@@ -63,13 +68,13 @@ public abstract class MyJDOController extends JDOController {
         return beanMapList;
     }
     
-    protected BeanMap toBeanMap(Object bean) {
+    protected final BeanMap toBeanMap(Object bean) {
         BeanMap map = new BeanMap();
         BeanUtil.copy(bean, map);
         return map;
     }
     
-    protected void saveMessages(String... msgs) {
+    protected final void saveMessages(String... msgs) {
         List<String> messageList = Arrays.asList(msgs);
         requestScope("messageList", messageList);
     }

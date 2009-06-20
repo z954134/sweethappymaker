@@ -1,7 +1,9 @@
 package shm.test;
+import java.util.Date;
 import java.util.List;
 
 import org.slim3.tester.JDOControllerTestCase;
+import org.slim3.util.DateUtil;
 
 
 public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
@@ -29,5 +31,12 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
         if (!tx.isActive()) {
             tx.begin();
         }
+    }
+
+    protected static void assertEquals(String expected, Date actual) {
+        assertEquals("", expected, actual);
+    }
+    protected static void assertEquals(String msg, String expected, Date actual) {
+        assertEquals(msg, expected, DateUtil.toString(actual));
     }
 }

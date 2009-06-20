@@ -3,11 +3,13 @@ package shm.controller.member;
 
 import org.slim3.controller.Navigation;
 
-public class DeleteController extends MemberController {
+import shm.common.MyJDOController;
+
+public class DeleteController extends MyJDOController {
     
     @Override
     protected Navigation runInTx() {
-        dao.deleteObjectById(requestScope("key"));
+        memberDao.deleteObjectById(requestScope("key"));
         return null;
     }
 }

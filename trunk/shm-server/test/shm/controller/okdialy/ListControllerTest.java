@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slim3.util.DateUtil;
 
+import shm.common.Const;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
@@ -34,6 +35,7 @@ public class ListControllerTest extends MyJDOControllerTestCase {
     }
     
     public void testRun() throws Exception {
+        sessionScope(Const.LOGIN_MEMBER_ID, "aaa");
         start("/okdialy/list");
         ListController controller = getController();
         assertNotNull(controller);

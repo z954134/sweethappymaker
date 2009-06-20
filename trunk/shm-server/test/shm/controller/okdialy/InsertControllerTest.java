@@ -1,5 +1,6 @@
 package shm.controller.okdialy;
 
+import shm.common.Const;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
@@ -26,7 +27,7 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
         param("dialyDate", "2009-01-01");
         param("item1", "aaa");
         param("item2", "bbb");
-        sessionScope("memberId", m.getKey());
+        sessionScope(Const.LOGIN_MEMBER_ID, m.getMemberId());
         
         start("/okdialy/insert");
         

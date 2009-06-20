@@ -5,24 +5,20 @@ import java.util.logging.Logger;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.MyJDOController;
-import shm.controller.member.LoginController;
-import shm.dao.MemberDao;
 import shm.model.Member;
 import shm.model.OkDialy;
 
-public class ListController extends MyJDOController {
+public class ListController extends OkDialyController {
 
     @SuppressWarnings("unused")
     private static final Logger logger = Logger.getLogger(ListController.class.getName());
 
     @Override
-    public Navigation runInTx() {
-        MemberDao memberDao = new MemberDao(pm);
-        String memberId = sessionScope(LoginController.LOGIN_MEMBER_KEY);
-        Member m = memberDao.getMemberByMemberId(memberId);
+    public Navigation run() {
+        tx.begin();
         
-        List<OkDialy> okDialyList = m.getOkDialyList();
+        Member member = getLoginMemberFromSession();
+        List<OkDialy> okDialyList = member.getOkDialyList();
         requestScope("okDialyList", copy(okDialyList));
         return forwardBase("list.jsp");
     }

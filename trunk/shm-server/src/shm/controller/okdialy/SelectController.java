@@ -5,29 +5,25 @@ import java.util.Date;
 import org.slim3.controller.Navigation;
 import org.slim3.util.DateUtil;
 
-import shm.common.MyJDOController;
-import shm.controller.member.LoginController;
-import shm.dao.MemberDao;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.model.OkDialyMeta;
 
-public class SelectController extends MyJDOController {
+public class SelectController extends OkDialyController {
 
     @Override
-    public Navigation runInTx() {
-        Date dialyDate = DateUtil.toDate(requestScope("dialyDate"));
-        MemberDao memberDao = new MemberDao(pm);
-        String memberId = sessionScope(LoginController.LOGIN_MEMBER_KEY);
-        Member m = memberDao.getMemberByMemberId(memberId);
-
+    public Navigation run() {
         OkDialyMeta ok = new OkDialyMeta();
+        
+        Member member = getLoginMemberFromSession();
+        Date dialyDate = DateUtil.toDate(requestScope("dialyDate"));
+
+        tx.begin();
         OkDialy dialy =
             from(ok)
                 .where(ok.dialyDate.eq(dialyDate))
-                .where(ok.member.eq(m))
+                .where(ok.member.eq(member))
                 .getSingleResult();
-        
         requestScope("okDialy", toBeanMap(dialy));
         return forwardBase("select.jsp");
     }

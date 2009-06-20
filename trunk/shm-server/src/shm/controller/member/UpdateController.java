@@ -10,10 +10,12 @@ public class UpdateController extends MemberController {
 
     @Override
     public Navigation runInTx() {
+        // メンバーID取得
         String memberId = requestScope("memberId");
 
-        // 更新前のメンバー取得
-        Member member = dao.getObjectById(requestScope("key"));
+        // IDから更新前のメンバー取得
+        Member member = dao.find(requestScope("key"));
+        
         // メンバーIDの変更確認
         if (!memberId.equals(member.getMemberId())) {
             // 変更後のメンバーID存在チェック

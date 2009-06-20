@@ -7,6 +7,7 @@ public class UpdateController extends Controller {
 
     @Override
     public Navigation run() {
-        return redirect(basePath);
+//        return redirect(basePath);
+        return null;
     }
 }

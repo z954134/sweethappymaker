@@ -11,11 +11,12 @@ import shm.model.Member;
 public class DeleteControllerTest extends JDOControllerTestCase {
 
     public void testRun() throws Exception {
-        Member user = new Member();
-        user.setEmail("aaa@aaa.com");
-        user.setMemberId("aaa");
-        makePersistentInTx(user);
-        param("key", user.getKey());
+        Member member = new Member();
+        member.setEmail("aaa@aaa.com");
+        member.setMemberId("aaa");
+        makePersistentInTx(member);
+        
+        param("key", member.getKey());
         start("/member/delete");
         DeleteController controller = getController();
         assertNotNull(controller);

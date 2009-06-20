@@ -5,7 +5,7 @@ import javax.jdo.PersistenceManager;
 import shm.model.Member;
 import shm.model.MemberMeta;
 
-public class MemberDao extends GenericDao<Member> {
+public class MemberDao extends MyGenericDao<Member> {
 
     private MemberMeta m = new MemberMeta();
 
@@ -22,11 +22,7 @@ public class MemberDao extends GenericDao<Member> {
      */
     public Member getMemberByMemberId(String memberId) {
 
-        Member member =
-            select()
-                .from(Member.class)
-                .where(m.memberId.eq(memberId))
-                .getSingleResult();
+        Member member = from().where(m.memberId.eq(memberId)).getSingleResult();
         return member;
     }
 

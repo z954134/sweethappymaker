@@ -18,9 +18,6 @@ import org.slim3.util.BeanUtil;
  */
 public abstract class MyJDOController extends JDOController {
 
-    
-    
-    
     @Override
     protected Navigation run() {
         tx.begin();

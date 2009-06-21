@@ -4,34 +4,34 @@
 		  
 	<shm:HeaderCtrl id="ctrl"/>
 	
-	<mx:Script>[Bindable]public var body:Body;</mx:Script>
+	<mx:Script>
+		<![CDATA[
+			[Bindable]public var body:Body;
+		]]>
+	</mx:Script>
 	<mx:VBox width="100%">
 		<mx:HBox>
 			<mx:LinkBar dataProvider="{body.viewStack}" borderStyle="solid"/>
 		</mx:HBox>
 		<mx:HBox width="100%">
-			<mx:Text id="welcomeText" text="ようこそ" visible="false"/>
-			<mx:Text id="memberIdText" text="" visible="false"/>
-			<mx:Text id="sanText" text="さん" visible="false"/>
+			<mx:Text id="welcomeText" text="ようこそ" />
+			<mx:Text id="memberIdText" text="guest" />
+			<mx:Text id="sanText" text="さん" />
 			<mx:Spacer width="100%"/>
-			<mx:Button id="joinus" label="Join us" visible="true"/>
-			<mx:Button id="loginoutButton" label="Login" visible="true"/>
+			<mx:Button id="signup" label="サインアップ" visible="true"/>
+			<mx:Button id="loginoutButton" label="Login" />
 		</mx:HBox>
 	</mx:VBox>
 
 	<mx:states>
 		<mx:State name="loggedIn">
-			<mx:SetProperty target="{joinus}" name="visible" value="false"/>
-			<mx:SetProperty target="{welcomeText}" name="visible" value="true"/>
-			<mx:SetProperty target="{memberIdText}" name="visible" value="true"/>
-			<mx:SetProperty target="{sanText}" name="visible" value="true"/>
+			<mx:SetProperty target="{signup}" name="visible" value="false"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="Logout"/>
 		</mx:State>
 		<mx:State name="notLoggedIn">
-			<mx:SetProperty target="{welcomeText}" name="visible" value="false"/>
-			<mx:SetProperty target="{memberIdText}" name="visible" value="false"/>
-			<mx:SetProperty target="{sanText}" name="visible" value="false"/>
+			<mx:SetProperty target="{signup}" name="visible" value="true"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="Login"/>
+			<mx:SetProperty target="{memberIdText}" name="text" value="guest"/>
 		</mx:State>
 	</mx:states>
 </mx:Panel>

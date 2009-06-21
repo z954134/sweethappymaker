@@ -4,7 +4,7 @@
 	<mx:VBox width="100%">
 		<mx:HBox width="100%">
 			<mx:Spacer width="100%"/>
-			<mx:Image source="http://code.google.com/appengine/images/appengine-silver-120x30.gif"/>
+			<mx:Image source="http://code.google.com/intl/ja/appengine/images/appengine-silver-120x30.gif"/>
 		</mx:HBox>
 		<mx:HBox width="100%">
 			<mx:Spacer width="100%"/>

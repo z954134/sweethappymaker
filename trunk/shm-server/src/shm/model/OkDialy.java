@@ -35,11 +35,10 @@ public class OkDialy {
     
     public OkDialy() {
         super();
-        setItems(new ArrayList<String>());
+        setItems(new ArrayList<String>(MAX_SIZE));
     }
 
     public void addItem(String item) {
-
         if (items.size() == MAX_SIZE) {
             throw new IllegalStateException();
         }
@@ -81,5 +80,16 @@ public class OkDialy {
     public void setMember(Member member) {
         this.member = member;
     }
-
+    
+    public int getItemCount() {
+        return items.size();
+    }
+    
+    public String getFirstItem() {
+        if (getItemCount() == 0) {
+            return "";
+        }
+        String first = getItems().get(0);
+        return first == null ? "" : first;
+    }
 }

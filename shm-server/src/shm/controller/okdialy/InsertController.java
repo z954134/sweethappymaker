@@ -1,7 +1,7 @@
 package shm.controller.okdialy;
 
 import org.slim3.controller.Navigation;
-import org.slim3.util.BeanUtil;
+import org.slim3.util.DateUtil;
 
 import shm.model.Member;
 import shm.model.OkDialy;
@@ -12,7 +12,13 @@ public class InsertController extends OkDialyController {
     public Navigation runInTx() {
 
         OkDialy okDialy = new OkDialy();
-        BeanUtil.copy(request, okDialy);
+        okDialy.setDialyDate(DateUtil.toDate(requestScope("okDialyDate").toString(), "yyyy/MM/dd"));
+        
+        for (int i = 1;i <= 10; i++) {
+            String key = "item_" + i;
+            String item = requestScope(key);
+            okDialy.addItem(item);
+        }
         
         Member member = getLoginMemberFromSession();
         member.addOkDialy(okDialy);

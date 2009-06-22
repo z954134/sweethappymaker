@@ -15,7 +15,17 @@
 				super.data = value;
 
 				var fieldName:String = DataGridListData(listData).dataField;
-				var date:Date = value[fieldName] as Date;
+				
+				var obj:Object = value[fieldName];
+				var date:Date;
+				if (obj is Date) {
+					date = obj as Date;
+				} else if (obj is String && obj != "") {
+					date = new Date(obj);
+				} else {
+					return;
+				}
+				
 				if (!date) return;
 
 				switch (date.day)

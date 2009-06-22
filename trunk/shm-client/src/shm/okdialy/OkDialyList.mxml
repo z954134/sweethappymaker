@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300"
-		  xmlns:okdialy="shm.okdialy.*" >
+		  xmlns:okdialy="shm.okdialy.*" xmlns:cmn="shm.common.*"
+		  creationComplete="listService.send()">
 
 
 	<okdialy:OkDialyListCtrl id="ctrl"/>
-
+	<cmn:DateColumnFormatter id="dcf"/>
 	<mx:VBox width="100%" height="100%">
 		<mx:DataGrid id="dg" width="100%" left="0" top="0" height="200"
 					 dataProvider="{listService.lastResult.okDialyList.okDialy}">
 			<mx:columns>
 				<mx:DataGridColumn headerText="Key" dataField="key" visible="false"/>
-				<mx:DataGridColumn headerText="日付" dataField="dialyDate" width="80"/>
-				<mx:DataGridColumn headerText="OK数" dataField="itemCount" width="50"/>
+				<mx:DataGridColumn headerText="日付" dataField="dialyDate" width="100"
+								   labelFunction="dcf.format"
+								   itemRenderer="shm.common.DayColoredLabel"/>
+				<mx:DataGridColumn headerText="OK数" dataField="itemCount" width="40"/>
 				<mx:DataGridColumn headerText="１つめ" dataField="firstItem"/>
 			</mx:columns>
 		</mx:DataGrid>

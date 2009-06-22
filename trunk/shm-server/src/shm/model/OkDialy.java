@@ -13,6 +13,11 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Version;
 import javax.jdo.annotations.VersionStrategy;
 
+import org.slim3.util.DateUtil;
+import org.slim3.util.StringUtil;
+
+import shm.common.Const;
+
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
 public class OkDialy {
@@ -32,6 +37,8 @@ public class OkDialy {
     @Persistent(mappedBy = "okDialyList")
     private Member member;
 
+    @Persistent
+    private String memberId;
     
     public OkDialy() {
         super();
@@ -79,17 +86,32 @@ public class OkDialy {
 
     public void setMember(Member member) {
         this.member = member;
+        this.memberId = member.getMemberId();
+    }
+    
+    public String getMemberId() {
+        return this.memberId;
     }
     
     public int getItemCount() {
-        return items.size();
+        int cnt = 0;
+        for (String item : items) {
+            if (!StringUtil.isEmpty(item)) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
     
     public String getFirstItem() {
-        if (getItemCount() == 0) {
+        if (getItems().size() == 0) {
             return "";
         }
         String first = getItems().get(0);
         return first == null ? "" : first;
+    }
+    
+    public String getDialyDateText() {
+        return DateUtil.toString(dialyDate, Const.DATE_FORMAT);
     }
 }

@@ -1,57 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
-		 xmlns:cmn="shm.common.*">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+		   xmlns:okdialy="shm.okdialy.*">
+	<okdialy:DailyInputFormCtrl id="ctrl"/>
 
-	<cmn:DateColumnFormatter id="dateColumnFormatter"/>
-	<mx:Form>
-		<mx:FormHeading label="10このOK"/>
-		<mx:FormItem label="日付">
-			<mx:DateField id="okDialyDate" />
-		</mx:FormItem>
-		<mx:FormItem label="1">
-			<mx:TextInput id="ok1"/>
-		</mx:FormItem>
-		<mx:FormItem label="2">
-			<mx:TextInput id="ok2"/>
-		</mx:FormItem>
-		<mx:FormItem label="3">
-			<mx:TextInput id="ok3"/>
-		</mx:FormItem>
-		<mx:FormItem label="4">
-			<mx:TextInput id="ok4"/>
-		</mx:FormItem>
-		<mx:FormItem label="5">
-			<mx:TextInput id="ok5"/>
-		</mx:FormItem>
-		<mx:FormItem label="6">
-			<mx:TextInput id="ok6"/>
-		</mx:FormItem>
-		<mx:FormItem label="7">
-			<mx:TextInput id="ok7"/>
-		</mx:FormItem>
-		<mx:FormItem label="8">
-			<mx:TextInput id="ok8"/>
-		</mx:FormItem>
-		<mx:FormItem label="9">
-			<mx:TextInput id="ok9"/>
-		</mx:FormItem>
-		<mx:FormItem label="10">
-			<mx:TextInput id="ok10"/>
-		</mx:FormItem>
-		<mx:FormItem>
-			<mx:Button label="登録" id="submitButton" click="insertService.send()"/>
-			<mx:Button id="hintButton" label="ヒント"/>
-		</mx:FormItem>
+	<mx:HBox>
+		<mx:Form>
+			<mx:FormHeading label="10このOK"/>
 
-	</mx:Form>
-	<!--	<mx:VBox>
-		 <mx:Spacer height="10"/>
-		 <mx:DateChooser id="okDialyDate" showToday="true"/>
-		 </mx:VBox>
-	-->
+			<mx:FormItem label="1">
+				<mx:TextInput id="ok1" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="2">
+				<mx:TextInput id="ok2" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="3">
+				<mx:TextInput id="ok3" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="4">
+				<mx:TextInput id="ok4" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="5">
+				<mx:TextInput id="ok5" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="6">
+				<mx:TextInput id="ok6" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="7">
+				<mx:TextInput id="ok7" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="8">
+				<mx:TextInput id="ok8" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="9">
+				<mx:TextInput id="ok9" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem label="10">
+				<mx:TextInput id="ok10" width="280"/>
+			</mx:FormItem>
+			<mx:FormItem>
+				<mx:Button label="登録" id="submitButton" click="insertService.send()"/>
+			</mx:FormItem>
+		</mx:Form>
+		<mx:VBox>
+			<mx:Spacer height="37"/>
+			<mx:FormItem label="日付">
+				<mx:TextInput id="okDialyDateText" width="100"/>
+			</mx:FormItem>
+			<mx:DateChooser id="dateChooser" showToday="true"
+							change="ctrl.onDateChooserChanged(event)"/>
+			<mx:Spacer height="10"/>
+			<mx:Button id="hintButton" label="思いつかない時のヒント" width="100%"/>
+		</mx:VBox>
+	</mx:HBox>
+
+
+
+	<mx:HTTPService id="selectService" url="/okdialy/select" method="post" showBusyCursor="true"
+					result="ctrl.onSelectCompleted(event)" fault="ctrl.onServiceCallFailed(event)">
+		<mx:request>
+			<dialyDate>{okDialyDateText.text}</dialyDate>
+		</mx:request>
+	</mx:HTTPService>
+
 	<mx:HTTPService id="insertService" url="/okdialy/insert" method="post" showBusyCursor="true">
 		<mx:request>
-			<okDialyDate>{okDialyDate.text}</okDialyDate>
+			<okDialyDate>{okDialyDateText.text}</okDialyDate>
 			<item_1>{ok1.text}</item_1>
 			<item_2>{ok2.text}</item_2>
 			<item_3>{ok3.text}</item_3>
@@ -64,4 +77,4 @@
 			<item_10>{ok10.text}</item_10>
 		</mx:request>
 	</mx:HTTPService>
-</mx:HBox>
+</mx:Canvas>

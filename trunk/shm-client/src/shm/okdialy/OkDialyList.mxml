@@ -22,7 +22,7 @@
 
 	<mx:ControlBar>
 		<mx:Button label="再読込" click="listService.send()"/>
-		<mx:Button label="呼出"/>
+		<mx:Button label="呼出" click="ctrl.onLoadButtonClicked(event)"/>
 		<mx:Button label="削除"/>
 	</mx:ControlBar>
 

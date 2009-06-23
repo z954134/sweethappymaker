@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" height="100%" width="100%"
-	xmlns:okd="shm.okdialy.*">
-	<mx:TabNavigator width="100%" height="100%">
-		<okd:OkDialyList label="今までの一覧"/>
-		<okd:DailyInputForm label="編集"/>
-		
-	</mx:TabNavigator>
-	
+		  xmlns:okd="shm.okdialy.*">
 
-	
+	<okd:OkDialyCtrl id="ctrl"/>
+	<mx:TabNavigator id="okTab" width="100%" height="100%">
+		<okd:DailyInputForm id="okForm" label="編集"/>
+		<okd:OkDialyList id="okList" label="今までの一覧"/>
+
+	</mx:TabNavigator>
+
+
 </mx:Panel>

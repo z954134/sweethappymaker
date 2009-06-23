@@ -1,5 +1,7 @@
 package shm.okdialy
 {
+	import flash.events.MouseEvent;
+	
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	
@@ -23,6 +25,10 @@ package shm.okdialy
 			
 		}
 		
-		
+		public function onLoadButtonClicked(event:MouseEvent):void {
+			var e:OkDialyEvent = new OkDialyEvent(OkDialyEvent.LOAD_REQUIRED);
+			e.requiredDate = view.dg.selectedItem['dialyDate']; 
+			view.dispatchEvent(e);
+		}
 	}
 }

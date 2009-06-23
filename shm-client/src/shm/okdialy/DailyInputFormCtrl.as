@@ -21,17 +21,31 @@ package shm.okdialy {
 
 		protected override function onCreationCompleted(event:FlexEvent):void {
 			view.okDialyDateText.text = dateFormatter.format(new Date());
+			view.addEventListener(OkDialyEvent.LOAD_REQUIRED, onLoadRequired);
 		}
 
 		public function onDateChooserChanged(event:CalendarLayoutChangeEvent):void {
 			var selected:Date = view.dateChooser.selectedDate;
-			view.okDialyDateText.text = dateFormatter.format(selected);
-			view.selectService.send();
+			select(dateFormatter.format(selected));
+		}
+
+		public function onLoadRequired(event:OkDialyEvent):void {
+			var dt:String = event.requiredDate;
+			select(dt);
 		}
 		
+		private function select(dt:String):void {
+			view.okDialyDateText.text = dt; 
+			view.selectService.send();
+		}
+
 		public function onSelectCompleted(event:ResultEvent):void {
 			var dialy:Object = event.result.okDialy;
+			if (dialy == null)
+				return;
 			var items:ArrayCollection = dialy.item as ArrayCollection;
+			if (items == null)
+				return;
 			for (var i:int = 0; i < items.length; i++) {
 				view['ok' + (i + 1)].text = items[i];
 			}

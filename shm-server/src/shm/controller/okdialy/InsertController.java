@@ -13,16 +13,16 @@ public class InsertController extends OkDialyController {
 
         OkDialy okDialy = new OkDialy();
         okDialy.setDialyDate(Utils.toDate(requestScope("okDialyDate")));
-        
-        for (int i = 1;i <= 10; i++) {
+
+        for (int i = 1; i <= 10; i++) {
             String key = "item_" + i;
             String item = requestScope(key);
             okDialy.addItem(item);
         }
-        
+
         Member member = getLoginMemberFromSession();
         member.addOkDialy(okDialy);
-        
+
         pm.makePersistent(member);
 
         return null;

@@ -24,7 +24,7 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
     
     public void testRun() throws Exception {
         
-        param("dialyDate", "2009-01-01");
+        param("okDialyDate", "2009/01/01");
         param("item1", "aaa");
         param("item2", "bbb");
         sessionScope(Const.LOGIN_MEMBER_ID, m.getMemberId());
@@ -36,7 +36,7 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
         assertFalse(isRedirect());
         assertNull(getNextPath());
         assertEquals(1, count(OkDialy.class));
-        
+        tx.begin();
         OkDialy stored = from(OkDialy.class).getFirstResult();
         Member m = stored.getMember();
         assertEquals("aaa", m.getMemberId());

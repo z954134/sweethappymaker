@@ -4,7 +4,7 @@
 	<okdialy:DailyInputFormCtrl id="ctrl"/>
 
 	<mx:HBox>
-		<mx:Form>
+		<mx:Form id="inputForm">
 			<mx:FormHeading label="10このOK"/>
 
 			<mx:FormItem label="1">

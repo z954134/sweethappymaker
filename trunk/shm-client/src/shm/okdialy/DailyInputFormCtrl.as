@@ -5,10 +5,11 @@ package shm.okdialy {
 	import mx.events.FlexEvent;
 	import mx.formatters.DateFormatter;
 	import mx.rpc.events.ResultEvent;
-	
+
 	import shm.common.UICtrlBase;
 
 	public class DailyInputFormCtrl extends UICtrlBase {
+
 
 		private var view:DailyInputForm;
 
@@ -33,21 +34,29 @@ package shm.okdialy {
 			var dt:String = event.requiredDate;
 			select(dt);
 		}
-		
+
 		private function select(dt:String):void {
-			view.okDialyDateText.text = dt; 
+			view.okDialyDateText.text = dt;
 			view.selectService.send();
 		}
 
 		public function onSelectCompleted(event:ResultEvent):void {
+
+			clearForm();
+
 			var dialy:Object = event.result.okDialy;
-			if (dialy == null)
-				return;
 			var items:ArrayCollection = dialy.item as ArrayCollection;
-			if (items == null)
+			if (items == null) {
 				return;
+			}
 			for (var i:int = 0; i < items.length; i++) {
 				view['ok' + (i + 1)].text = items[i];
+			}
+		}
+		
+		private function clearForm():void {
+			for (var i:int = 1; i <= 10; i++) {
+				view['ok' + i].text = "";
 			}
 		}
 	}

@@ -22,7 +22,12 @@ public class DeleteController extends OkDialyController {
             from(ok)
                 .where(ok.member.eq(member), ok.dialyDate.eq(okDialyDate))
                 .getSingleResult();
+        
         pm.deletePersistent(okDialy);
+        
+//        String key = requestScope("key");
+//        OkDialy okDialy = pm.getObjectById(OkDialy.class, key);
+//        pm.deletePersistent(okDialy);
         return null;
     }
 }

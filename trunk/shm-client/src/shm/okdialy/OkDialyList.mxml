@@ -21,7 +21,7 @@
 		<mx:ControlBar>
 			<mx:Button label="再読込" click="listService.send()"/>
 			<mx:Button label="呼出" click="ctrl.onLoadButtonClicked(event)"/>
-			<mx:Button label="削除"/>
+			<mx:Button label="削除" click="deleteService.send()"/>
 		</mx:ControlBar>
 	</mx:VBox>
 
@@ -30,6 +30,14 @@
 
 	<!-- 一覧取得 -->
 	<mx:HTTPService id="listService" url="/okdialy/list" showBusyCursor="true"/>
+	<!-- 削除 -->
+	<mx:HTTPService id="deleteService" url="/okdialy/delete" showBusyCursor="true"
+		result="listService.send()">
+		<mx:request>
+			<okDialyDate>{dg.selectedItem.dialyDate}</okDialyDate>
+			<key>{dg.selectedItem.key}</key>
+		</mx:request>
+	</mx:HTTPService>
 
 
 </mx:Canvas>

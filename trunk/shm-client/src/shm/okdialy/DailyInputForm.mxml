@@ -62,7 +62,7 @@
 		</mx:request>
 	</mx:HTTPService>
 
-	<mx:HTTPService id="insertService" url="/okdialy/insert" method="post" showBusyCursor="true">
+	<mx:HTTPService id="insertService" url="/okdialy/save" method="post" showBusyCursor="true">
 		<mx:request>
 			<okDialyDate>{okDialyDateText.text}</okDialyDate>
 			<item_1>{ok1.text}</item_1>

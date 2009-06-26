@@ -22,5 +22,5 @@ public class OkDialyController extends MyJDOController {
         }
         return member;
     }
-
+    
 }

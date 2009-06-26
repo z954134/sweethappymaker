@@ -13,17 +13,18 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
      * @param modelClasses
      */
     protected final void deleteAllInTx(Class<?>...  modelClasses) {
-        if (!tx.isActive()) {
-            tx.begin();
-        }
-        for (Class<?> modelClass : modelClasses) {
-            List<?> all = from(modelClass).getResultList();
-            if (!all.isEmpty()) { 
-                pm.deletePersistentAll();
-            }
-        }
+        tx.begin();
+        deleteAll();
         tx.commit();
         refreshPersistenceManager();
+    }
+    
+    protected final void deleteAll(Class<?>... modelClasses) {
+        for (Class<?> modelClass : modelClasses) {
+            List<?> all = from(modelClass).getResultList();
+            if (all == null || all.isEmpty()) continue;
+            pm.deletePersistentAll(all);
+        }        
     }
     
     /** トランザクションを開始する */

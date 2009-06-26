@@ -41,6 +41,7 @@
 				<mx:Button label="登録" id="submitButton" click="insertService.send()"/>
 			</mx:FormItem>
 		</mx:Form>
+		
 		<mx:VBox>
 			<mx:Spacer height="37"/>
 			<mx:FormItem label="日付">
@@ -49,7 +50,11 @@
 			<mx:DateChooser id="dateChooser" showToday="true"
 							change="ctrl.onDateChooserChanged(event)"/>
 			<mx:Spacer height="10"/>
-			<mx:Button id="hintButton" label="思いつかない時のヒント" width="100%"/>
+			<mx:Label text="思いつかないときのヒント"/>
+			<mx:TextArea width="100%"  borderStyle="solid" editable="false"/>
+			<mx:Button id="nextHintButton" label="次のヒント" />	
+
+			
 		</mx:VBox>
 	</mx:HBox>
 

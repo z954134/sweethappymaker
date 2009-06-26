@@ -12,6 +12,11 @@ import org.slim3.jdo.GenericDao;
  */
 public abstract class MyGenericDao<T> extends GenericDao<T> {
 
+    
+    public MyGenericDao(Class<T> modelClass) {
+        super(modelClass);
+    }
+
     /**
      * コンストラクタ
      * @param pm PersistentManager

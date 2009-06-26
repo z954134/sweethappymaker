@@ -9,6 +9,10 @@ public class MemberDao extends MyGenericDao<Member> {
 
     private MemberMeta m = new MemberMeta();
 
+    public MemberDao() {
+        super(Member.class);
+    }
+    
     public MemberDao(PersistenceManager pm) {
         super(Member.class, pm);
     }

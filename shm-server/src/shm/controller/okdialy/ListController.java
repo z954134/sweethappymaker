@@ -15,11 +15,11 @@ public class ListController extends OkDialyController {
 
     @Override
     public Navigation run() {
-        tx.begin();
-        
+        begin();
         Member member = getLoginMemberFromSession();
         List<OkDialy> okDialyList = member.getOkDialyList();
-        requestScope("okDialyList", copy(okDialyList));
+        
+        requestScope("okDialyList", detachAndCopy(okDialyList));
         return forwardBase("list.jsp");
     }
 }

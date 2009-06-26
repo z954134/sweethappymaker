@@ -4,10 +4,9 @@ package shm.controller.member;
 import org.slim3.controller.Navigation;
 import org.slim3.util.BeanUtil;
 
-import shm.common.MyJDOController;
 import shm.model.Member;
 
-public class UpdateController extends MyJDOController {
+public class UpdateController extends MemberController {
 
     @Override
     public Navigation runInTx() {
@@ -27,7 +26,7 @@ public class UpdateController extends MyJDOController {
             }
         }
         BeanUtil.copy(request, member);
-        pm.makePersistent(member);
+        memberDao.makePersistent(member);
         return forwardBase("success.jsp");
     }
 }

@@ -3,10 +3,9 @@ package shm.controller.member;
 import org.slim3.controller.Navigation;
 
 import shm.common.Const;
-import shm.common.MyJDOController;
 import shm.model.Member;
 
-public class LoginController extends MyJDOController {
+public class LoginController extends MemberController {
 
     @Override
     public Navigation run() {

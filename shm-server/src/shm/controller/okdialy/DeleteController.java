@@ -17,17 +17,9 @@ public class DeleteController extends OkDialyController {
     @Override
     public Navigation runInTx() {
         Member member = getLoginMemberFromSession();
-        Date okDialyDate = Utils.toDate(requestScope("okDialyDate"));
-        OkDialy okDialy =
-            from(ok)
-                .where(ok.member.eq(member), ok.dialyDate.eq(okDialyDate))
-                .getSingleResult();
-        
-        pm.deletePersistent(okDialy);
-        
-//        String key = requestScope("key");
-//        OkDialy okDialy = pm.getObjectById(OkDialy.class, key);
-//        pm.deletePersistent(okDialy);
+        Date dialyDate = Utils.toDate(requestScope("okDialyDate"));
+        OkDialy okDialy = okDialyDao.select(member, dialyDate);
+        okDialyDao.deletePersistent(okDialy);
         return null;
     }
 }

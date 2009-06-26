@@ -8,17 +8,14 @@ import org.slim3.util.BeanMap;
 import shm.common.Utils;
 import shm.model.Member;
 import shm.model.OkDialy;
-import shm.model.OkDialyMeta;
 
 public class SelectController extends OkDialyController {
-    
-    private OkDialyMeta ok = new OkDialyMeta();
     
     @Override
     public Navigation run() {
 
         Member member = getLoginMemberFromSession();
-        Date dialyDate = Utils.toDate(requestScope("okDialyDate"));
+        Date dialyDate = Utils.toDate(requestScope("dialyDate"));
 
         tx.begin();
         OkDialy dialy =

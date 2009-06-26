@@ -38,7 +38,7 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
     }
     public void testRun() throws Exception {
         sessionScope(Const.LOGIN_MEMBER_ID, "aaa");
-        param("okDialyDate", "2009/01/22");
+        param("dialyDate", "2009/01/22");
         start("/okdialy/select");
         SelectController controller = getController();
         assertNotNull(controller);

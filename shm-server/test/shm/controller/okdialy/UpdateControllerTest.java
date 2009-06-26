@@ -39,7 +39,7 @@ public class UpdateControllerTest extends MyJDOControllerTestCase {
         sessionScope(Const.LOGIN_MEMBER_ID, m.getMemberId());
 
         start("/okdialy/update");
-        UpdateController controller = getController();
+        OkDialyController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertNull(getNextPath());

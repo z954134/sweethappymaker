@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300"
-		  xmlns:okdialy="shm.okdialy.*" xmlns:cmn="shm.common.*"
-		  creationComplete="listService.send()">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+		   xmlns:okdialy="shm.okdialy.*" xmlns:cmn="shm.common.*"
+		   creationComplete="listService.send()">
 
 
 	<okdialy:OkDialyListCtrl id="ctrl"/>
@@ -18,17 +18,18 @@
 				<mx:DataGridColumn headerText="１つめ" dataField="firstItem"/>
 			</mx:columns>
 		</mx:DataGrid>
+		<mx:ControlBar>
+			<mx:Button label="再読込" click="listService.send()"/>
+			<mx:Button label="呼出" click="ctrl.onLoadButtonClicked(event)"/>
+			<mx:Button label="削除"/>
+		</mx:ControlBar>
 	</mx:VBox>
 
-	<mx:ControlBar>
-		<mx:Button label="再読込" click="listService.send()"/>
-		<mx:Button label="呼出" click="ctrl.onLoadButtonClicked(event)"/>
-		<mx:Button label="削除"/>
-	</mx:ControlBar>
+
 
 
 	<!-- 一覧取得 -->
 	<mx:HTTPService id="listService" url="/okdialy/list" showBusyCursor="true"/>
 
 
-</mx:Panel>
+</mx:Canvas>

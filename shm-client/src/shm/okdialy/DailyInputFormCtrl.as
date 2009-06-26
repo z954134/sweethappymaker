@@ -5,7 +5,7 @@ package shm.okdialy {
 	import mx.events.FlexEvent;
 	import mx.formatters.DateFormatter;
 	import mx.rpc.events.ResultEvent;
-
+	
 	import shm.common.UICtrlBase;
 
 	public class DailyInputFormCtrl extends UICtrlBase {
@@ -32,6 +32,7 @@ package shm.okdialy {
 
 		public function onLoadRequired(event:OkDialyEvent):void {
 			var dt:String = event.requiredDate;
+			view.dateChooser.selectedDate = new Date(dt);
 			select(dt);
 		}
 

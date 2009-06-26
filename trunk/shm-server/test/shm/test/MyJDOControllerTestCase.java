@@ -16,7 +16,7 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
         tx.begin();
         deleteAll();
         tx.commit();
-        refreshPersistenceManager();
+
     }
     
     protected final void deleteAll(Class<?>... modelClasses) {

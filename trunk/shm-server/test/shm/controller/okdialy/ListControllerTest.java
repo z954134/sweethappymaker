@@ -30,7 +30,7 @@ public class ListControllerTest extends MyJDOControllerTestCase {
         m.addOkDialy(okDialy);
         m.addOkDialy(okDialy);
         makePersistentInTx(m);
-        refreshPersistenceManager();
+
         
     }
     

@@ -1,14 +1,20 @@
 package shm.controller.okdialy;
 
-import org.slim3.tester.JDOControllerTestCase;
+import shm.test.MyJDOControllerTestCase;
 
-public class HintControllerTest extends JDOControllerTestCase {
+public class HintControllerTest extends MyJDOControllerTestCase {
 
+    
     public void testRun() throws Exception {
+        requestScope("previousHintKey", "hint.001");
+        
         start("/okdialy/hint");
         HintController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertEquals("/okdialy/hint.jsp", getNextPath());
+        assertNotNull(requestScope("hint"));
+        assertNotNull(requestScope("hintKey"));
+        assertFalse("hint.001".equals(requestScope("hintKey")));
     }
 }

@@ -41,7 +41,7 @@
 				<mx:Button label="登録" id="submitButton" click="insertService.send()"/>
 			</mx:FormItem>
 		</mx:Form>
-		
+
 		<mx:VBox>
 			<mx:Spacer height="37"/>
 			<mx:FormItem label="日付">
@@ -51,10 +51,8 @@
 							change="ctrl.onDateChooserChanged(event)"/>
 			<mx:Spacer height="10"/>
 			<mx:Label text="思いつかないときのヒント"/>
-			<mx:TextArea width="100%"  borderStyle="solid" editable="false"/>
-			<mx:Button id="nextHintButton" label="次のヒント" />	
-
-			
+			<mx:TextArea id="hintText" width="100%" borderStyle="solid" editable="false"/>
+			<mx:Button id="nextHintButton" label="次のヒント" click="hintService.send()"/>
 		</mx:VBox>
 	</mx:HBox>
 
@@ -80,6 +78,19 @@
 			<item_8>{ok8.text}</item_8>
 			<item_9>{ok9.text}</item_9>
 			<item_10>{ok10.text}</item_10>
+		</mx:request>
+	</mx:HTTPService>
+
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var previousHintKey:String = "";
+		]]>
+	</mx:Script>
+	<mx:HTTPService id="hintService" url="/okdialy/hint" method="get"
+					result="ctrl.onHintCompleted(event)">
+		<mx:request>
+			<previousHintKey>{previousHintKey}</previousHintKey>
 		</mx:request>
 	</mx:HTTPService>
 </mx:Canvas>

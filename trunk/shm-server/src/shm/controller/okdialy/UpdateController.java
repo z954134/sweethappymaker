@@ -6,19 +6,16 @@ import java.util.List;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.Utils;
+import shm.common.Const;
 import shm.model.Member;
 import shm.model.OkDialy;
-import shm.model.OkDialyMeta;
 
 public class UpdateController extends OkDialyController {
-    private OkDialyMeta ok = new OkDialyMeta();
-
     @Override
     public Navigation runInTx() {
 
         Member member = getLoginMemberFromSession();
-        Date okDialyDate = Utils.toDate(requestScope("okDialyDate"));
+        Date okDialyDate = asDate("okDialyDate", Const.DATE_FORMAT);
         OkDialy okDialy =
             from(ok)
                 .where(ok.member.eq(member), ok.dialyDate.eq(okDialyDate))

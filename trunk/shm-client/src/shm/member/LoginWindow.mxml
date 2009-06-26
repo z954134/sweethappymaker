@@ -2,7 +2,7 @@
 <!-- ログイン用ポップアップウィンドウ -->
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Login" showCloseButton="true"
 				xmlns:mbr="shm.member.*" backgroundAlpha="0.7" backgroundColor="#303FB1"
-				borderColor="#5677E4" color="#FFFFFF" close="ctrl.onCloseButtonClicked(event)">
+				borderColor="#5677E4" close="ctrl.onCloseButtonClicked(event)">
 	
 	<!-- コントローラ -->
 	<mbr:LoginCtrl id="ctrl"/>

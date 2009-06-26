@@ -6,6 +6,8 @@ package shm.common;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.slim3.controller.JDOController;
 import org.slim3.controller.Navigation;
@@ -19,7 +21,9 @@ import shm.dao.MemberDao;
  * 
  */
 public abstract class MyJDOController extends JDOController {
-
+    
+    private static final Logger logger = Logger.getLogger(MyJDOController.class.getName());
+    
     /** メンバーデータアクセス */
     protected MemberDao memberDao;
 
@@ -28,6 +32,11 @@ public abstract class MyJDOController extends JDOController {
     protected void setUp() {
         super.setUp();
         memberDao = new MemberDao(pm);
+        logRequest();
+    }
+    
+    private void logRequest() {
+        logger.log(Level.FINE, request.getParameterMap().toString());
     }
     
     @Override
@@ -40,7 +49,7 @@ public abstract class MyJDOController extends JDOController {
     
     protected Navigation runInTx() {
         String msg = "'runInTx' method must be overrided when 'run' method is NOT overrided.";
-        throw new RuntimeException(msg);
+        throw new SystemException(msg);
     }
         
 

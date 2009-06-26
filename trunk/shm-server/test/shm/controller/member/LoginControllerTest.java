@@ -1,7 +1,7 @@
 package shm.controller.member;
 
 import shm.common.Const;
-import shm.common.MyJDOController;
+import shm.common.MyController;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 
@@ -27,7 +27,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "secret");
         
         start("/member/login");
-        MyJDOController controller = getController();
+        MyController controller = getController();
         assertNotNull(controller);
         assertEquals(getNextPath(), "/member/login_success.jsp");
         
@@ -40,7 +40,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "secret");
         
         start("/member/login");
-        MyJDOController controller = getController();
+        MyController controller = getController();
         assertNotNull(controller);
         assertEquals("/member/login_failure.jsp", getNextPath());
         
@@ -53,7 +53,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "incollectpassword");
         
         start("/member/login");
-        MyJDOController controller = getController();
+        MyController controller = getController();
         assertNotNull(controller);
         assertEquals("/member/login_failure.jsp", getNextPath());
         

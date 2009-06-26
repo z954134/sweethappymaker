@@ -1,14 +1,16 @@
 package shm.controller.okdialy;
 
 import shm.common.Const;
-import shm.common.MyJDOController;
+import shm.common.MyController;
 import shm.common.SystemException;
+import shm.dao.MemberDao;
+import shm.dao.OkDialyDao;
 import shm.model.Member;
-import shm.model.OkDialyMeta;
 
-public class OkDialyController extends MyJDOController {
+public abstract class OkDialyController extends MyController {
 
-    protected OkDialyMeta ok = new OkDialyMeta();
+    protected MemberDao memberDao = new MemberDao();
+    protected OkDialyDao okDialyDao = new OkDialyDao();
 
     protected final Member getLoginMemberFromSession() {
         String memberId = sessionScope(Const.LOGIN_MEMBER_ID);

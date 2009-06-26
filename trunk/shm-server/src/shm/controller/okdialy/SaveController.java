@@ -18,11 +18,7 @@ public class SaveController extends OkDialyController {
         
         Member member = getLoginMemberFromSession();
         Date dialyDate = asDate("okDialyDate", Const.DATE_FORMAT);
-        OkDialy okDialy =
-            from(ok)
-                .where(ok.member.eq(member), ok.dialyDate.eq(dialyDate))
-                .getSingleResult();
-        
+        OkDialy okDialy = okDialyDao.select(member, dialyDate);
         if (okDialy == null) {
             save(member, dialyDate);
         } else {
@@ -35,7 +31,7 @@ public class SaveController extends OkDialyController {
         List<String> items = createItemsFromRequest();
         okDialy.setDialyDate(dialyDate);
         okDialy.setItems(items);
-        pm.makePersistent(okDialy);
+        okDialyDao.makePersistent(okDialy);
     }
 
     private void save(Member member, Date dialyDate) {
@@ -45,7 +41,7 @@ public class SaveController extends OkDialyController {
         okDialy.setDialyDate(dialyDate);
         okDialy.setItems(items);
         member.addOkDialy(okDialy);
-        pm.makePersistent(member);
+        memberDao.makePersistent(member);
     }
     
     private List<String> createItemsFromRequest() {

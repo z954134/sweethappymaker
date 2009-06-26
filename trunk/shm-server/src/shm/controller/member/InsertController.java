@@ -7,10 +7,9 @@ import java.util.List;
 import org.slim3.controller.Navigation;
 import org.slim3.util.BeanUtil;
 
-import shm.common.MyJDOController;
 import shm.model.Member;
 
-public class InsertController extends MyJDOController {
+public class InsertController extends MemberController {
     
     @Override
     public Navigation run() {
@@ -23,9 +22,10 @@ public class InsertController extends MyJDOController {
             return forwardBase("failure.jsp");
         }
         
-        Member user = new Member();
-        BeanUtil.copy(request, user);
-        makePersistentInTx(user);
+        Member member = new Member();
+        BeanUtil.copy(request, member);
+        memberDao.makePersistentInTx(member);
+        
         return forwardBase("success.jsp");
     }
 }

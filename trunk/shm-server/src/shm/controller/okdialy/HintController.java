@@ -10,10 +10,10 @@ import java.util.logging.Logger;
 import org.slim3.controller.Navigation;
 import org.slim3.util.RuntimeExceptionUtil;
 
-import shm.common.MyJDOController;
+import shm.common.MyController;
 import shm.common.SystemException;
 
-public class HintController extends MyJDOController {
+public class HintController extends MyController {
 
     @SuppressWarnings("unused")
     private static final Logger logger =

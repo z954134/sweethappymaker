@@ -28,7 +28,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         pm.makePersistent(m);
         tx.commit();
         okDialyKey = d.getKey();
-        refreshPersistenceManager();
+
     }
     
     public void testInsert() throws Exception {

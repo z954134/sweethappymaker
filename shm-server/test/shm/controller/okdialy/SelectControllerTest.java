@@ -32,8 +32,7 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         m.addOkDialy(okDialy);
         m.addOkDialy(okDialy);
         makePersistentInTx(m);
-        refreshPersistenceManager();
-        if (tx.isActive()) tx.rollback();
+
         
     }
     public void testRun() throws Exception {

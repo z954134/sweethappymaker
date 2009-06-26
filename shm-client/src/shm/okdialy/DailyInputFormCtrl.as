@@ -23,6 +23,13 @@ package shm.okdialy {
 		protected override function onCreationCompleted(event:FlexEvent):void {
 			view.okDialyDateText.text = dateFormatter.format(new Date());
 			view.addEventListener(OkDialyEvent.LOAD_REQUIRED, onLoadRequired);
+			view.hintService.send();
+		}
+		
+		public function onHintCompleted(event:ResultEvent):void {
+			var hint:Object = event.result.hint;
+			view.previousHintKey = hint.key;
+			view.hintText.text = hint.value; 
 		}
 
 		public function onDateChooserChanged(event:CalendarLayoutChangeEvent):void {

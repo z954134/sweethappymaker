@@ -1,49 +1,78 @@
 package shm.controller.okdialy;
 
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.DecimalFormat;
+import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Logger;
 
 import org.slim3.controller.Navigation;
+import org.slim3.util.RuntimeExceptionUtil;
 
 import shm.common.MyJDOController;
-import shm.dao.OkDialyHintDao;
-import shm.model.OkDialyHint;
+import shm.common.SystemException;
 
 public class HintController extends MyJDOController {
 
     @SuppressWarnings("unused")
-    private static final Logger logger = Logger.getLogger(HintController.class.getName());
+    private static final Logger logger =
+        Logger.getLogger(HintController.class.getName());
+
+    private static Properties hints;
 
     
-    private OkDialyHintDao dao; 
     
     @Override
     protected void setUp() {
         super.setUp();
-        dao = new OkDialyHintDao(pm);
+        loadHints();
     }
 
     @Override
     public Navigation run() {
-        OkDialyHint nextHint = getNextHint(asString("previousHintKey"));
-        requestScope("hint", nextHint.getHint());
+        String nextHintKey = getNextHintKey(asString("previousHintKey"));
+        String nextHint = hints.getProperty(nextHintKey);
+        if (nextHint == null) {
+            throw new SystemException("Hint [" + nextHintKey + "] does not exists.");
+        }
+        
+        requestScope("hintKey", nextHintKey);
+        requestScope("hint", nextHint);
+        
         return forwardBase("hint.jsp");
     }
-    
-    private OkDialyHint getNextHint(String previousHintKey) {
-        List<OkDialyHint> hints = dao.findAll();
-        int cnt = hints.size();
+
+    private synchronized void loadHints() {
+        if (hints != null) {
+            return;
+        }
         
+        InputStream is = getClass().getResourceAsStream("hints.properties");
+        hints = new Properties();
+        try {
+            hints.load(is);
+        } catch (IOException e) {
+            RuntimeExceptionUtil.wrapAndThrow(e);
+        }
+    }
+
+    private String getNextHintKey(String previousHintKey) {
+        
+        DecimalFormat df = new DecimalFormat();
+        df.applyLocalizedPattern("000");
+
+        int cnt = hints.size();
+        if (cnt == 0) {
+            throw new SystemException("No Hint exists.");
+        }
+
         Random rand = new Random(System.currentTimeMillis());
-        OkDialyHint nextHint = null;
+        String nextHintKey = null;
         do {
-            int next = rand.nextInt(cnt);
-            nextHint = hints.get(next);
-            if (!nextHint.getKey().equals(previousHintKey)) {
-                break;
-            }
-        } while(true);
-        return nextHint;
+            int i = rand.nextInt(cnt) + 1;
+            nextHintKey = "hint." + df.format(i);
+        } while (nextHintKey.equals(previousHintKey));
+        return nextHintKey;
     }
 }

@@ -23,7 +23,7 @@ public class DeleteControllerTest extends MyJDOControllerTestCase {
         m.addOkDialy(d);
         pm.makePersistent(m);
         tx.commit();
-        refreshPersistenceManager();
+
     }
     
     public void testRun() throws Exception {

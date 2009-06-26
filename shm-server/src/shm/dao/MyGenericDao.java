@@ -17,13 +17,13 @@ public abstract class MyGenericDao<T> extends GenericDao<T> {
      * @param pm PersistentManager
      * @param clazz 対象モデルクラス
      */
-    public MyGenericDao(PersistenceManager pm, Class<T> modelClass) {
-        super(pm, modelClass);
+    public MyGenericDao(Class<T> modelClass, PersistenceManager pm) {
+        super(modelClass, pm);
     }
 
     public void deleteObjectById(Object key) {
         T model = find(key);
-        delete(model);
+        deletePersistent(model);
     }
     
     public T find(Object key) {

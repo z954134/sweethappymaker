@@ -1,15 +1,2 @@
-<%@page pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>okdialy Hint</title>
-<link rel="stylesheet" type="text/css" href="/css/global.css" />
-</head>
-<body>
-<a href="${f:url('hint')}">${f:url('hint')}</a>
-</body>
-</html>
+<?xml version="1.0" encoding="utf-8"?>
+<hint key="${hintKey}" value="${hint}"/>

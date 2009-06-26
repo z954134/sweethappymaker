@@ -3,24 +3,29 @@ package shm.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slim3.tester.JDOTestCase;
 import org.slim3.util.DateUtil;
 
 import shm.model.Member;
 import shm.model.OkDialy;
 
-public class Importer extends JDOTestCase {
+public class Importer extends MyJDOControllerTestCase {
 
+    @Override
+    protected void setUp() throws Exception {
+        System.setProperty("slim3.controllerPackage", "shm.controller");
+        super.setUp();
+    }
     public void test() throws Exception {
-
+        tx.begin();
+        deleteAll(new Class[] { Member.class, OkDialy.class });
         importData();
-        
+        tx.commit();
     }
     private void importData() throws Exception {
         Member m = newMember();
         OkDialy d = newOkDialy();
         m.addOkDialy(d);
-        makePersistentInTx(m);
+        pm.makePersistent(m);
     }
     
     private Member newMember() throws Exception {

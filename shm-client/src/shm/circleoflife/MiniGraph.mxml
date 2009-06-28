@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" initialize="init()">
-	<mx:Image id="score1" y="60.05" source="../assets/graph/chart_10.png" x="295.85"/>
-	<mx:Image id="score2" y="103.05" source="../assets/graph/chart_9.png" x="429.85" rotation="36"/>
-	<mx:Image id="score3" y="217.1" source="../assets/graph/chart_6.png" x="512.6" rotation="72"/>
-	<mx:Image id="score4" y="357.6" source="../assets/graph/chart_7.png" x="512.9" rotation="108"/>
-	<mx:Image id="score5" y="471.9" source="../assets/graph/chart_3.png" x="430.85" rotation="144"/>
-	<mx:Image id="score6" y="516.05" source="../assets/graph/chart_2.png" x="296.8" rotation="180"/>
-	<mx:Image id="score7" y="472.85" source="../assets/graph/chart_8.png" x="162.55" rotation="216"/>
-	<mx:Image id="score8" y="217.1" source="../assets/graph/chart_7.png" x="78.55" rotation="288"/>
-	<mx:Image id="score9" y="358.6" source="../assets/graph/chart_8.png" x="79.55" rotation="252"/>
-	<mx:Image id="score10" y="102.55" source="../assets/graph/chart_3.png" x="162.55"
-			  rotation="-35.5"/>
-
+	<mx:Image id="score1" y="10" source="../assets/graph/chart_4.png" scaleX="0.5" scaleY="0.5"  x="250.75"/>
+	<mx:Image id="score2" y="31" source="../assets/graph/chart_9.png" scaleX="0.5" scaleY="0.5"  x="317.75" rotation="36"/>
+	<mx:Image id="score3" y="87.95" source="../assets/graph/chart_6.png" scaleX="0.5" scaleY="0.5"  x="359.5" rotation="72"/>
+	<mx:Image id="score4" y="158.45" source="../assets/graph/chart_7.png" scaleX="0.5" scaleY="0.5"  x="359.9" rotation="108"/>
+	<mx:Image id="score5" y="215.6" source="../assets/graph/chart_3.png" scaleX="0.5" scaleY="0.5"  x="318.75" rotation="144"/>
+	<mx:Image id="score6" y="238" source="../assets/graph/chart_2.png" scaleX="0.5" scaleY="0.5"  x="251.75" rotation="180"/>
+	<mx:Image id="score7" y="216.45" source="../assets/graph/chart_8.png" scaleX="0.5" scaleY="0.5"  x="184.4" rotation="216"/>
+	<mx:Image id="score8" y="89.25" source="../assets/graph/chart_7.png" scaleX="0.5" scaleY="0.5"  x="142.1" rotation="288"/>
+	<mx:Image id="score9" y="159.65" source="../assets/graph/chart_8.png" scaleX="0.5" scaleY="0.5"  x="142.45" rotation="252"/>
+	<mx:Image id="score10" y="31.95" source="../assets/graph/chart_3.png" scaleX="0.5" scaleY="0.5"  x="183.6" rotation="-36"/>
+	
 	<mx:Script>
 		<![CDATA[
 			import mx.collections.ArrayCollection;
@@ -62,12 +61,12 @@
 			private function drawGraph(ac:ArrayCollection):void {
 				for (var i:int = 0; i < ac.length; i++) {
 					var score:int = ac.getItemAt(i) as int;
-					var src:Class = getAssetName(score);
+					var src:Class = getAssetClass(score);
 					this['score' + (i + 1)].source = src;
 				}
 			}
 
-			private function getAssetName(score:int):Class {
+			private function getAssetClass(score:int):Class {
 
 				var nm:String = 'graph' + score;
 				return this[nm];
@@ -79,5 +78,5 @@
 			}
 		]]>
 	</mx:Script>
-
+	
 </mx:Canvas>

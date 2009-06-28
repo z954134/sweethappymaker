@@ -8,34 +8,34 @@
 			<mx:FormHeading label="10このOK"/>
 
 			<mx:FormItem label="1">
-				<mx:TextInput id="ok1" width="280"/>
+				<mx:TextInput id="ok1" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="2">
-				<mx:TextInput id="ok2" width="280"/>
+				<mx:TextInput id="ok2" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="3">
-				<mx:TextInput id="ok3" width="280"/>
+				<mx:TextInput id="ok3" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="4">
-				<mx:TextInput id="ok4" width="280"/>
+				<mx:TextInput id="ok4" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="5">
-				<mx:TextInput id="ok5" width="280"/>
+				<mx:TextInput id="ok5" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="6">
-				<mx:TextInput id="ok6" width="280"/>
+				<mx:TextInput id="ok6" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="7">
-				<mx:TextInput id="ok7" width="280"/>
+				<mx:TextInput id="ok7" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="8">
-				<mx:TextInput id="ok8" width="280"/>
+				<mx:TextInput id="ok8" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="9">
-				<mx:TextInput id="ok9" width="280"/>
+				<mx:TextInput id="ok9" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem label="10">
-				<mx:TextInput id="ok10" width="280"/>
+				<mx:TextInput id="ok10" width="270"/>
 			</mx:FormItem>
 			<mx:FormItem>
 				<mx:Button label="登録" id="submitButton" click="insertService.send()"/>

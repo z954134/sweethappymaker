@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+	<mx:Image id="score1" y="60.05" source="../assets/graph/chart_4.png" scaleX="0.5" scaleY="0.5"  x="295.85"/>
+	<mx:Image id="score2" y="81.05" source="../assets/graph/chart_9.png" scaleX="0.5" scaleY="0.5"  x="362.85" rotation="36"/>
+	<mx:Image id="score3" y="138" source="../assets/graph/chart_6.png" scaleX="0.5" scaleY="0.5"  x="404.6" rotation="72"/>
+	<mx:Image id="score4" y="208.5" source="../assets/graph/chart_7.png" scaleX="0.5" scaleY="0.5"  x="405" rotation="108"/>
+	<mx:Image id="score5" y="265.65" source="../assets/graph/chart_3.png" scaleX="0.5" scaleY="0.5"  x="363.85" rotation="144"/>
+	<mx:Image id="score6" y="288.05" source="../assets/graph/chart_2.png" scaleX="0.5" scaleY="0.5"  x="296.85" rotation="180"/>
+	<mx:Image id="score7" y="266.5" source="../assets/graph/chart_8.png" scaleX="0.5" scaleY="0.5"  x="229.5" rotation="216"/>
+	<mx:Image id="score8" y="139.3" source="../assets/graph/chart_7.png" scaleX="0.5" scaleY="0.5"  x="187.2" rotation="288"/>
+	<mx:Image id="score9" y="209.7" source="../assets/graph/chart_8.png" scaleX="0.5" scaleY="0.5"  x="187.55" rotation="252"/>
+	<mx:Image id="score10" y="82.0" source="../assets/graph/chart_3.png" scaleX="0.5" scaleY="0.5"  x="228.7" rotation="-36"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			private function drawGraph(ac:ArrayCollection):void {
+				for (int i = 0; i < ac.length; i++) {
+					var int score = ac.getItemAt(i) as int;
+					var src:String = getAssetName(score);
+					this['score' + i].source = 
+					
+				}
+			}
+			
+			private function getAssetName(score:int):String {
+				var temp = score / 10; 
+				var s:String = String(temp == 10 ? temp : '0' + temp));   
+				return "../assets/graph/chart_"  + s + ".png";
+			}
+		]]>
+	</mx:Script>
+	
+</mx:Canvas>

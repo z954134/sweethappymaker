@@ -2,21 +2,33 @@
 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.4">
 	<context-param>
+		<param-name>slim3.rootPackage</param-name>
+		<param-value>shm</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>slim3.staticPackages</param-name>
+		<param-value>model</param-value>
+	</context-param>
+
+	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext
 		</param-name>
 		<param-value>application</param-value>
 	</context-param>
-	
+
 	<context-param>
 		<param-name>homeUrl</param-name>
-		<param-value>http://cutenahappymaker.wordpress.com</param-value>
+		<param-value>http://cutenahappymaker.wordpress.com
+		</param-value>
 	</context-param>
-	
+
 	<filter>
 		<filter-name>frontController</filter-name>
-		<filter-class>org.slim3.controller.FrontController
+		<filter-class>org.slim3.controller.JDOFrontController
 		</filter-class>
 	</filter>
+
 	<filter-mapping>
 		<filter-name>frontController</filter-name>
 		<url-pattern>/*</url-pattern>

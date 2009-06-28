@@ -43,15 +43,15 @@
 		</mx:Form>
 
 		<mx:VBox>
-			<mx:Spacer height="37"/>
+			<mx:Spacer height="36"/>
 			<mx:FormItem label="日付">
 				<mx:TextInput id="okDialyDateText" width="100"/>
 			</mx:FormItem>
 			<mx:DateChooser id="dateChooser" showToday="true"
 							change="ctrl.onDateChooserChanged(event)"/>
-			<mx:Spacer height="10"/>
+			<mx:Spacer height="8"/>
 			<mx:Label text="思いつかないときのヒント"/>
-			<mx:TextArea id="hintText" width="100%" borderStyle="solid" editable="false"/>
+			<mx:TextArea id="hintText" width="100%" borderStyle="inset" editable="false"/>
 			<mx:Button id="nextHintButton" label="次のヒント" click="hintService.send()"/>
 		</mx:VBox>
 	</mx:HBox>

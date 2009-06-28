@@ -14,15 +14,18 @@
 			<mx:LinkBar dataProvider="{body.viewStack}" borderStyle="none"/>
 		</mx:HBox>
 		<mx:HBox width="100%">
-			<mx:Text id="welcomeText" text="ようこそ" />
-			<mx:Text id="memberIdText" text="guest"  fontWeight="bold"/>
-			<mx:Text id="sanText" text="さん" />
+			<mx:Label id="welcomeText" text="ようこそ" />
+			<mx:Text id="memberIdText" text="guest" fontWeight="bold" />
+			<mx:Label id="sanText" text="さん" />
 			<mx:Spacer width="100%"/>
 			<mx:Button id="signup" label="サインアップ" visible="true"/>
 			<mx:Button id="loginoutButton" label="ログイン" />
 		</mx:HBox>
 	</mx:VBox>
 
+	<!-- サーバ呼び出し -->
+	<mx:HTTPService id="logoutService" url="/member/logout" method="post"/>
+					
 	<mx:states>
 		<mx:State name="loggedIn">
 			<mx:SetProperty target="{signup}" name="visible" value="false"/>
@@ -31,7 +34,6 @@
 		<mx:State name="notLoggedIn">
 			<mx:SetProperty target="{signup}" name="visible" value="true"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="ログイン"/>
-			<mx:SetProperty target="{memberIdText}" name="text" value="guest"/>
 		</mx:State>
 	</mx:states>
 </mx:Panel>

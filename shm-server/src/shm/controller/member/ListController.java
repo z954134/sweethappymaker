@@ -10,9 +10,9 @@ import shm.model.Member;
 public class ListController extends MemberController {
     
     @Override
-    public Navigation run() {
+    public Navigation runInTx() {
         List<Member> memberList = memberDao.findAll();
-        requestScope("memberList", detachAndCopy(memberList));
+        requestScope("memberList", copy(memberList));
         return forwardBase("list.jsp");
     }
 }

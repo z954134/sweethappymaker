@@ -1,12 +1,11 @@
 package shm {
 	import flash.events.MouseEvent;
-
+	
 	import mx.controls.Alert;
-	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	import mx.managers.PopUpManager;
-
+	
 	import shm.common.UICtrlBase;
 	import shm.member.LoginEvent;
 	import shm.member.LoginWindow;
@@ -51,8 +50,10 @@ package shm {
 
 
 		private function logout():void {
+			header.logoutService.send();
+			header.memberIdText.text = "guest";
 			header.currentState = "notLoggedIn";
-			Alert.show("ログアウトしました。", "Logged out");
+			Alert.show("ログアウトしました。", "ログアウト");
 		}
 
 		private function onLoginComplete(event:LoginEvent):void {

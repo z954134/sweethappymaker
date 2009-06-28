@@ -55,6 +55,34 @@
 					<mx:Text text="{elem6.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
+			<mx:FormItem label="要素7">
+				<mx:HBox>
+					<mx:HSlider id="elem7" maximum="100" minimum="0" value="50" tickInterval="10"
+								snapInterval="10" labels="['0, '100']"/>
+					<mx:Text text="{elem7.value}"/>
+				</mx:HBox>
+			</mx:FormItem>
+			<mx:FormItem label="要素8">
+				<mx:HBox>
+					<mx:HSlider id="elem8" maximum="100" minimum="0" value="50" tickInterval="10"
+								snapInterval="10" labels="['0, '100']"/>
+					<mx:Text text="{elem8.value}"/>
+				</mx:HBox>
+			</mx:FormItem>
+			<mx:FormItem label="要素9">
+				<mx:HBox>
+					<mx:HSlider id="elem9" maximum="100" minimum="0" value="50" tickInterval="10"
+								snapInterval="10" labels="['0, '100']"/>
+					<mx:Text text="{elem9.value}"/>
+				</mx:HBox>
+			</mx:FormItem>
+			<mx:FormItem label="要素10">
+				<mx:HBox>
+					<mx:HSlider id="elem10" maximum="100" minimum="0" value="50" tickInterval="10"
+								snapInterval="10" labels="['0, '100']"/>
+					<mx:Text text="{elem10.value}"/>
+				</mx:HBox>
+			</mx:FormItem>												
 			<mx:FormItem>
 				<mx:Button label="判定" id="submitBtn" click="ctrl.onSubmitBtnClicked()"/>
 			</mx:FormItem>

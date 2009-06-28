@@ -86,14 +86,18 @@ public abstract class MyController extends Controller {
     }
 
     /**
-     * エンティティのリストをBeanMapのリストにコピーする
+     * モデルのリストをBeanMapのリストにコピーする
      * 
      * @param modelList
-     *            エンティティのリスト
+     *            モデルのリスト
      * @return BeanMapのリスト
      */
     protected final List<BeanMap> detachAndCopy(List<?> modelList) {
         pm().detachCopyAll(modelList);
+        return copy(modelList);
+    }
+    
+    protected final List<BeanMap> copy(List<?> modelList) {
         List<BeanMap> beanMapList = new ArrayList<BeanMap>(modelList.size());
         for (Object model : modelList) {
             BeanMap map = detachAndCopy(model);
@@ -104,6 +108,10 @@ public abstract class MyController extends Controller {
 
     protected final BeanMap detachAndCopy(Object bean) {
         pm().detachCopy(bean);
+        return copy(bean);
+    }
+    
+    protected final BeanMap copy(Object bean) {
         BeanMap map = new BeanMap();
         BeanUtil.copy(bean, map);
         return map;
@@ -111,7 +119,7 @@ public abstract class MyController extends Controller {
 
     protected final void saveMessages(String... msgs) {
         List<String> messageList = Arrays.asList(msgs);
-        requestScope("messageList", messageList);
+        requestScope(Const.MESSAGE_KEY, messageList);
     }
 
 }

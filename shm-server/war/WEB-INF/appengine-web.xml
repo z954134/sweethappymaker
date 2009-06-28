@@ -4,7 +4,6 @@
 	<version>1</version>
 	
 	<system-properties>
-	    <property name="slim3.controllerPackage" value="shm.controller"/>
 		<property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties"/>
 	</system-properties>
 	

@@ -5,7 +5,7 @@
 
 	<mx:VBox>
 
-		<mx:ViewStack id="viewStack" width="550" height="450" resizeToContent="true">
+		<mx:ViewStack id="viewStack" width="550" height="500" resizeToContent="true">
 
 			<welcom:Whatsthis id="whatsthis" label="これは何？" title="これは何？" showEffect="{showSeq}"
 							  hideEffect="{hideSeq}"/>
@@ -15,6 +15,11 @@
 						 hideEffect="{hideSeq}"/>
 			<mbr:MemberEdit id="members" label="メンバー" title="メンバー" showEffect="{showSeq}"
 							hideEffect="{hideSeq}"/>
+			<mx:Panel id="graph" label="graph">
+				<col:MiniGraph  />
+			</mx:Panel>
+				
+			
 		</mx:ViewStack>
 	</mx:VBox>
 

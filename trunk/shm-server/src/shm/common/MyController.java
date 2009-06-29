@@ -119,7 +119,10 @@ public abstract class MyController extends Controller {
 
     protected final void saveMessages(String... msgs) {
         List<String> messageList = Arrays.asList(msgs);
-        requestScope(Const.MESSAGE_KEY, messageList);
+        saveMessages(messageList);
     }
 
+    protected final void saveMessages(List<String> msgs) {
+        requestScope(Const.MESSAGE_KEY, msgs);
+    }
 }

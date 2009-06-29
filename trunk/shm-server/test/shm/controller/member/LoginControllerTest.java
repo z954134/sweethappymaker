@@ -1,7 +1,6 @@
 package shm.controller.member;
 
 import shm.common.Const;
-import shm.common.MyController;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 
@@ -27,9 +26,9 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "secret");
         
         start("/member/login");
-        MyController controller = getController();
+        LoginController controller = getController();
         assertNotNull(controller);
-        assertEquals(getNextPath(), "/member/login_success.jsp");
+        assertEquals(getNextPath(), "/member/success.jsp");
         
         assertNotNull(sessionScope(Const.LOGIN_MEMBER_ID));
     }
@@ -40,9 +39,9 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "secret");
         
         start("/member/login");
-        MyController controller = getController();
+        LoginController controller = getController();
         assertNotNull(controller);
-        assertEquals("/member/login_failure.jsp", getNextPath());
+        assertEquals("/member/failure.jsp", getNextPath());
         
         assertNull(sessionScope(Const.LOGIN_MEMBER_ID));
     }
@@ -53,9 +52,9 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         param("password", "incollectpassword");
         
         start("/member/login");
-        MyController controller = getController();
+        LoginController controller = getController();
         assertNotNull(controller);
-        assertEquals("/member/login_failure.jsp", getNextPath());
+        assertEquals("/member/failure.jsp", getNextPath());
         
         assertNull(sessionScope(Const.LOGIN_MEMBER_ID));
     }

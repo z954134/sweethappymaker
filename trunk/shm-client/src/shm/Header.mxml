@@ -18,7 +18,7 @@
 			<mx:Text id="memberIdText" text="guest" fontWeight="bold" />
 			<mx:Label id="sanText" text="さん" />
 			<mx:Spacer width="100%"/>
-			<mx:Button id="signup" label="サインアップ" visible="true"/>
+			<mx:Button id="signupButton" label="サインアップ" visible="true"/>
 			<mx:Button id="loginoutButton" label="ログイン" />
 		</mx:HBox>
 	</mx:VBox>
@@ -28,11 +28,11 @@
 					
 	<mx:states>
 		<mx:State name="loggedIn">
-			<mx:SetProperty target="{signup}" name="visible" value="false"/>
+			<mx:SetProperty target="{signupButton}" name="visible" value="false"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="ログアウト"/>
 		</mx:State>
 		<mx:State name="notLoggedIn">
-			<mx:SetProperty target="{signup}" name="visible" value="true"/>
+			<mx:SetProperty target="{signupButton}" name="visible" value="true"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="ログイン"/>
 		</mx:State>
 	</mx:states>

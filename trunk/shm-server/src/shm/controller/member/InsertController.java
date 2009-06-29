@@ -1,9 +1,6 @@
 package shm.controller.member;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slim3.controller.Navigation;
 import org.slim3.util.BeanUtil;
 
@@ -15,10 +12,10 @@ public class InsertController extends MemberController {
     public Navigation run() {
         String memberId = requestScope("memberId");
         if (memberDao.exists(memberId)) {
-            List<String> messageList = new ArrayList<String>();
-            messageList.add("メンバーID [" + memberId + "] は既に存在します。"
-                + "別のメンバーIDを指定してください。");
-            requestScope("messageList", messageList);
+            String msg =
+            "メンバーID [" + memberId + "] は既に存在します。"
+                + "別のメンバーIDを指定してください。";
+            saveMessages(msg);
             return forwardBase("failure.jsp");
         }
         

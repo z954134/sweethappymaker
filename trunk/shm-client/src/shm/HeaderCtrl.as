@@ -9,6 +9,7 @@ package shm {
 	import shm.common.UICtrlBase;
 	import shm.member.LoginEvent;
 	import shm.member.LoginWindow;
+	import shm.member.SignUpWindow;
 
 	public class HeaderCtrl extends UICtrlBase {
 
@@ -16,6 +17,7 @@ package shm {
 
 		private var loginWindow:LoginWindow;
 
+		private var signupWindow:SignUpWindow;
 
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			header = Header(component);
@@ -25,7 +27,7 @@ package shm {
 		protected override function onCreationCompleted(event:FlexEvent):void {
 			header.currentState = "notLoggedIn";
 			header.loginoutButton.addEventListener(MouseEvent.CLICK, onLoginOutButttonClicked);
-
+			header.signupButton.addEventListener(MouseEvent.CLICK, onSignUpButtonClicked);
 		}
 
 		private function onLoginOutButttonClicked(event:MouseEvent):void {
@@ -39,6 +41,12 @@ package shm {
 				default:
 					break;
 			}
+		}
+
+		private function onSignUpButtonClicked(event:MouseEvent):void {
+			signupWindow = PopUpManager.createPopUp(header, SignUpWindow, true) as
+				SignUpWindow;
+			PopUpManager.centerPopUp(signupWindow);
 		}
 
 		private function login():void {

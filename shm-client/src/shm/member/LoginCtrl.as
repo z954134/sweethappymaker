@@ -40,24 +40,32 @@ package shm.member {
 
 
 
-		public function onServiceCompleted(event:ResultEvent):void {
-			var loginEvent:LoginEvent = new LoginEvent(LoginEvent.LOGIN_COMPLETE);
+//		public function onServiceCompleted(event:ResultEvent):void {
+//			var loginEvent:LoginEvent = new LoginEvent(LoginEvent.LOGIN_COMPLETE);
+//
+//			var r:Object = event.result;
+//			var authResult:String = r.authentication.result;
+//			switch (authResult) {
+//				case "success":
+//					loginEvent.success = true;
+//					loginEvent.memberId = view.memberIdField.text;
+//					view.dispatchEvent(loginEvent);
+//					removePopUp();
+//					break;
+//				case "failure":
+//					Alert.show("メンバーID、パスワードを確認してください", "ログイン失敗");
+//					break;
+//				default:
+//					throw new Error("変な状態");
+//			}
+//		}
 
-			var r:Object = event.result;
-			var authResult:String = r.authentication.result;
-			switch (authResult) {
-				case "success":
-					loginEvent.success = true;
-					loginEvent.memberId = view.memberIdField.text;
-					view.dispatchEvent(loginEvent);
-					removePopUp();
-					break;
-				case "failure":
-					Alert.show("メンバーID、パスワードを確認してください", "ログイン失敗");
-					break;
-				default:
-					throw new Error("変な状態");
-			}
+		protected override function doOnServiceSuccess(event:ResultEvent):void {
+			var loginEvent:LoginEvent = new LoginEvent(LoginEvent.LOGIN_COMPLETE);
+			loginEvent.success = true;
+			loginEvent.memberId = view.memberIdField.text;
+			view.dispatchEvent(loginEvent);
+			removePopUp();
 		}
 
 		private function removePopUp():void {

@@ -15,10 +15,6 @@
 						 hideEffect="{hideSeq}"/>
 			<mbr:MemberEdit id="members" label="メンバー" title="メンバー" showEffect="{showSeq}"
 							hideEffect="{hideSeq}"/>
-			<mx:Panel id="graph" label="graph">
-				<col:MiniGraph  />
-			</mx:Panel>
-				
 			
 		</mx:ViewStack>
 	</mx:VBox>

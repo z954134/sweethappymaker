@@ -18,10 +18,12 @@ public class LoginController extends MemberController {
         if (member == null || !member.isValidPassword(password)) {
             // メンバーが存在しない（メンバーID誤り）
             // またはパスワード誤り
-            return forwardBase("login_failure.jsp");
+            String msg = "メンバーIDまたはパスワードが違います。";
+            saveMessages(msg);
+            return forwardBase("failure.jsp");
         }
         // セッションにログイン情報を格納する
         sessionScope(Const.LOGIN_MEMBER_ID, member.getMemberId());
-        return forwardBase("login_success.jsp");
+        return forwardBase("success.jsp");
     }
 }

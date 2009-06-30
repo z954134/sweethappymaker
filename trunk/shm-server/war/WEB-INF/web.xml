@@ -19,7 +19,7 @@
 
 	<context-param>
 		<param-name>homeUrl</param-name>
-		<param-value>http://cutenahappymaker.wordpress.com
+		<param-value>http://happymaker.byteact.com/
 		</param-value>
 	</context-param>
 

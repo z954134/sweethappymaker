@@ -21,7 +21,7 @@ package shm.member {
 			view = SignUpWindow(component);
 		}
 
-		public function onLoginButtonClicked(event:MouseEvent):void {
+		public function onRegisterButtonClicked(event:MouseEvent):void {
 			var validationResults:Array = Validator.validateAll(view.validators);
 			if (validationResults.length > 0) {
 				return;

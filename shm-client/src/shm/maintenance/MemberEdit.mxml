@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="listService.send()"
-		  xmlns:mbr="shm.member.*" width="100%" height="100%">
+		  xmlns:mnt="shm.maintenance.*" width="100%" height="100%">
 
-	<mbr:MemberEditCtrl id="ctrl"/>
+	<mnt:MemberEditCtrl id="ctrl"/>
 
 	<mx:VBox width="100%" height="100%">
 		<mx:DataGrid id="dg" width="100%" left="0" top="0" height="200"

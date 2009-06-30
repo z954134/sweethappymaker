@@ -1,4 +1,4 @@
-package shm.member {
+package shm.maintenance {
 	import mx.core.UIComponent;
 	import mx.rpc.events.ResultEvent;
 	

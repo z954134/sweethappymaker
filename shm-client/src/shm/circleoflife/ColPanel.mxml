@@ -79,15 +79,20 @@
 					<mx:Text width="30" text="{elem10.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<!--
-				 <mx:FormItem>
-				 <mx:Button label="判定" id="submitBtn" click="ctrl.onSubmitBtnClicked()"/>
-				 </mx:FormItem>
-			-->
+
+			 <mx:FormItem>
+				 <mx:Button label="リセット" id="resetButton" click="onResetButtonClicked(event)"/>
+			 </mx:FormItem>
+
 		</mx:Form>
 		<col:MiniGraph id="graph"/>
-		<!--
-			 <mx:Image id="chart" horizontalAlign="center"/>
-		-->
 	</mx:HBox>
+	<mx:Script>
+		<![CDATA[
+			private function onResetButtonClicked(event:MouseEvent):void {
+				ctrl.reset(event);
+				graph.ctrl.reset(event);
+			} 
+		]]>
+	</mx:Script>
 </mx:Panel>

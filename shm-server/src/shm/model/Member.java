@@ -106,4 +106,5 @@ public class Member {
     public boolean isValidPassword(String password) {
         return this.password.equals(password);
     }
+
 }

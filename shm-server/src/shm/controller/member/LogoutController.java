@@ -2,10 +2,10 @@ package shm.controller.member;
 
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpSession;
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
-
-import shm.common.Const;
 
 public class LogoutController extends Controller {
 
@@ -14,7 +14,14 @@ public class LogoutController extends Controller {
 
     @Override
     public Navigation run() {
-        removeSessionScope(Const.LOGIN_MEMBER_ID);        
+        resetSession();
         return null;
+    }
+    
+    private void resetSession() {
+        HttpSession session = request.getSession();
+        if (session != null) {
+            session.invalidate();
+        }
     }
 }

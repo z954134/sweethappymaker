@@ -3,6 +3,7 @@ package shm.controller.okdialy;
 import java.util.List;
 
 import shm.common.Const;
+import shm.common.MyController;
 import shm.common.Utils;
 import shm.model.Member;
 import shm.model.OkDialy;
@@ -61,7 +62,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         sessionScope(Const.LOGIN_MEMBER_ID, m.getMemberId());
 
         start("/okdialy/save");
-        OkDialyController controller = getController();
+        MyController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertNull(getNextPath());

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:mtn="shm.maintenance.*"
+	initialize="init()">
+
+	<mtn:LoginForm id="loginForm"/>
+	<mx:VBox width="100%">
+		<mx:LinkBar id="linkBar" dataProvider="{viewStack}" borderStyle="none" visible="false"
+					enabled="false"/>
+		<mx:ViewStack id="viewStack" width="550" height="500" resizeToContent="true" visible="false"
+					  enabled="false">
+			<mtn:MemberEdit id="members" label="メンバー" title="メンバー"/>
+		</mx:ViewStack>
+	</mx:VBox>
+	<mx:states>
+		<mx:State name="login">
+			<mx:SetProperty target="{linkBar}" name="visible" value="true"/>
+			<mx:SetProperty target="{linkBar}" name="enabled" value="true"/>
+			<mx:SetProperty target="{viewStack}" name="visible" value="true"/>
+			<mx:SetProperty target="{viewStack}" name="enabled" value="true"/>
+			<mx:SetProperty target="{loginForm}" name="visible" value="false"/>
+			<mx:SetProperty target="{loginForm}" name="enabled" value="false"/>
+		</mx:State>
+		<mx:State name="logout">
+			<mx:SetProperty target="{linkBar}" name="visible" value="false"/>
+			<mx:SetProperty target="{linkBar}" name="enabled" value="false"/>
+			<mx:SetProperty target="{viewStack}" name="visible" value="false"/>
+			<mx:SetProperty target="{viewStack}" name="enabled" value="false"/>
+		</mx:State>
+	</mx:states>
+	<mx:Script>
+		<![CDATA[
+			import shm.member.LoginEvent;
+			private function init():void {
+				this.currentState = "logout";
+				this.addEventListener(LoginEvent.LOGIN_COMPLETE, onLogin);
+			}
+			
+			private function onLogin(event:LoginEvent):void {
+				this.currentState = "login";
+			}
+		]]>
+	</mx:Script>
+</mx:Canvas>

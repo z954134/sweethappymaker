@@ -1,5 +1,8 @@
 package shm.okdialy {
+	import flash.events.Event;
+	
 	import mx.collections.ArrayCollection;
+	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.CalendarLayoutChangeEvent;
 	import mx.events.FlexEvent;
@@ -7,6 +10,7 @@ package shm.okdialy {
 	import mx.rpc.events.ResultEvent;
 	
 	import shm.common.UICtrlBase;
+	import shm.member.LoginEvent;
 
 	public class DailyInputFormCtrl extends UICtrlBase {
 
@@ -15,9 +19,15 @@ package shm.okdialy {
 
 		private var dateFormatter:DateFormatter = new DateFormatter();
 
+		protected function reset(event:Event):void {
+			clearForm();
+			view.dateChooser.selectedDate = new Date();
+		}
+
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = DailyInputForm(component);
 			dateFormatter.format("YYYY/MM/DD");
+			Application.application.addEventListener(LoginEvent.LOGIN_COMPLETE, reset);
 		}
 
 		protected override function onCreationCompleted(event:FlexEvent):void {

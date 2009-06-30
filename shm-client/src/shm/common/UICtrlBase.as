@@ -1,11 +1,16 @@
 package shm.common {
+	import flash.events.Event;
+	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
+	import mx.core.Application;
 	import mx.core.IMXMLObject;
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
+	
+	import shm.member.LoginEvent;
 
 	public class UICtrlBase implements IMXMLObject {
 		public function UICtrlBase() {

@@ -31,7 +31,7 @@ public class SaveController extends OkDialyController {
         List<String> items = createItemsFromRequest();
         okDialy.setDialyDate(dialyDate);
         okDialy.setItems(items);
-        okDialyDao.makePersistent(okDialy);
+//        okDialyDao.makePersistent(okDialy);
     }
 
     private void save(Member member, Date dialyDate) {

@@ -2,17 +2,19 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*"
 	 width="620"
 	 height="100%">
-<!--
+
 	<mx:Style source="../assets/flex.css"/>
-	-->
+
 
 	<mx:VBox>
-		<shm:Header id="header" body="{body}" label="Happy Maker Applications"/>
+		<shm:Header id="header" body="{body}" title="Happy Maker Applications"/>
 		<mx:Spacer height="1"/>
 		<shm:Body id="body"/>
 		<mx:Spacer height="2"/>
 		<shm:Footer/>
 	</mx:VBox>
+	
+	
 	<mx:Script>
 		<![CDATA[
 			public function get memberId():String {

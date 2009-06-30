@@ -11,27 +11,33 @@
 	<mx:Form width="100%">
 		<mx:FormHeading label="ログイン情報を入力してください。"/>
 		<mx:FormItem label="メンバーID" required="true">
-			<mx:TextInput id="memberIdField"/>
+			<mx:TextInput id="memberIdField" toolTip="メンバーを一意にするIDです(半角英数字ハイフン 8～16文字)"/>
 		</mx:FormItem>
 		<mx:FormItem label="パスワード" required="true">
-			<mx:TextInput id="passwordField" displayAsPassword="true"/>
+			<mx:TextInput id="passwordField" displayAsPassword="true"
+						  toolTip="上記IDに対するパスワードです(半角英数字ハイフン 8～16文字)"/>
 		</mx:FormItem>
 		<mx:FormItem label="Eメール" required="false">
-			<mx:TextInput id="emailField"/>
+			<mx:TextInput id="emailField" toolTip="Eメールアドレスを入力してください(任意)。"/>
 		</mx:FormItem>
 	</mx:Form>
 	<mx:ControlBar horizontalAlign="center">
-		<mx:Button label="Login" id="loginButton" click="ctrl.onLoginButtonClicked(event)"/>
-		<mx:Button label="Cancel" id="cancelButton" click="ctrl.onCancelButtonClick(event)"/>
+		<mx:Button label="登録" id="registerButton" click="ctrl.onRegisterButtonClicked(event)"/>
+		<mx:Button label="キャンセル" id="cancelButton" click="ctrl.onCancelButtonClick(event)"/>
 	</mx:ControlBar>
 
 	<!-- 精査 -->
 	<mx:Array id="validators">
-		<mx:Validator id="memberIdValidator" source="{memberIdField}" property="text"
-					  requiredFieldError="メンバーIDを入力してください"/>
-		<mx:Validator id="passwordValidator" source="{passwordField}" property="text"
-					  requiredFieldError="パスワードを入力してください"/>
-		<mx:EmailValidator id="emailValidator" source="{emailField}" property="text" required="false"/>
+		<!-- メンバーID精査 -->
+		<mx:RegExpValidator source="{memberIdField}" property="text" expression="^\w{8,16}"
+							required="true" noMatchError="半角英数字ハイフン 8～16文字で入力してください。"/>
+
+		<!-- パスワード精査 -->
+		<mx:RegExpValidator source="{passwordField}" property="text" expression="^\w{8,16}"
+							required="true" noMatchError="半角英数字ハイフン 8～16文字で入力してください。"/>
+
+		<!-- Eメール精査 -->
+		<mx:EmailValidator source="{emailField}" property="text" required="false"/>
 	</mx:Array>
 
 	<!-- サーバ呼び出し -->

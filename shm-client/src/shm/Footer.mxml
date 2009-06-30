@@ -3,12 +3,13 @@
 
 	<mx:VBox width="100%">
 		<mx:HBox width="100%">
+			<mx:Text text="© 2009 Happy Maker" color="#FFFFFF"/>
 			<mx:Spacer width="100%"/>
-			<mx:Image source="http://code.google.com/intl/ja/appengine/images/appengine-silver-120x30.gif"/>
+			<mx:Image source="@Embed('../assets/appengine-silver-120x30.gif')"/>
 		</mx:HBox>
 		<mx:HBox width="100%">
 			<mx:Spacer width="100%"/>
-			<mx:Text text="© 2009 xxxxxx. All rights reserved. " color="#FFFFFF"/>
+			
 			<mx:Spacer width="100%"/>
 		</mx:HBox>
 	</mx:VBox>

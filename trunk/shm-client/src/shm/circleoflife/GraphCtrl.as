@@ -1,25 +1,37 @@
 package shm.circleoflife {
+	import flash.events.Event;
+	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Image;
+	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	
 	import shm.common.UICtrlBase;
+	import shm.member.LoginEvent;
 
 	public class GraphCtrl extends UICtrlBase {
 		private var view:MiniGraph;
 		private var elems:ArrayCollection;
 		private var graphs:ArrayCollection;
 
+		public function reset(event:Event):void {
+			for (var i:int = 0; i < elems.length; i++) {
+				var elem:Image = elems.getItemAt(i) as Image;
+				elem.source = graph0;
+			}
+		}
+
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = MiniGraph(component);
+			Application.application.addEventListener(LoginEvent.LOGIN_COMPLETE, reset);
 		}
 
 		protected override function onCreationCompleted(event:FlexEvent):void {
 			initScores();
 			initGraphs();
 		}
-		
+
 		private function initScores():void {
 			elems = new ArrayCollection();
 			for (var i:int = 1; i <= 10; i++) {
@@ -41,7 +53,7 @@ package shm.circleoflife {
 		public function draw(elemIdx:int, score:int):void {
 			var e:Image = elems.getItemAt(elemIdx - 1) as Image;
 			e.source = graphs.getItemAt(score);
-		} 
+		}
 
 
 		[Embed(source="../assets/graph/chart_0.png")]

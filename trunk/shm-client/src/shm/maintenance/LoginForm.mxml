@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:mtn="shm.maintenance.*">
+
+	<mx:Form width="100%">
+		<mx:FormItem label="Admin ID" required="true">
+			<mx:TextInput id="adminIdField"/>
+		</mx:FormItem>
+		<mx:FormItem label="Password" required="true">
+			<mx:TextInput id="passwordField" displayAsPassword="true"/>
+		</mx:FormItem>
+		<mx:FormItem>
+			<mx:Button id="submit" label="submit" click="login.send()"/>
+		</mx:FormItem>
+	</mx:Form>
+
+	<mx:HTTPService id="login" url="/member/login" method="post" showBusyCursor="true"
+					result="resultHandler(event)">
+		<mx:request>
+			<memberId>{adminIdField.text}</memberId>
+			<password>{passwordField.text}</password>
+		</mx:request>
+	</mx:HTTPService>
+
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import shm.member.LoginEvent;
+			import mx.rpc.events.ResultEvent;
+
+			private function resultHandler(event:ResultEvent):void {
+				var result:Object = event.result;
+				var kind:String = result.response.kind;
+				switch (kind) {
+					case "success":
+						parent.dispatchEvent(new LoginEvent(LoginEvent.LOGIN_COMPLETE));
+						break;
+					case "failure":
+						Alert.show("しっぱお");
+						break;
+					default:
+						throw new Error("変な状態" + kind);
+						break;
+				}
+			}
+		]]>
+	</mx:Script>
+</mx:Canvas>

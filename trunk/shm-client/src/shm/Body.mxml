@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:welcom="shm.welcom.*"
-		   xmlns:col="shm.circleoflife.*" xmlns:okd="shm.okdialy.*" xmlns:mbr="shm.member.*"
-		   height="100%" width="100%" styleName="toumei" xmlns:shm="shm.*">
+		   xmlns:col="shm.circleoflife.*" xmlns:okd="shm.okdialy.*" height="100%" width="100%"
+		   styleName="toumei" xmlns:shm="shm.*">
 
 	<mx:VBox>
 
-		<mx:ViewStack id="viewStack" width="550" height="500" resizeToContent="true">
+		<mx:ViewStack id="viewStack" width="550" resizeToContent="true">
 
 			<welcom:Whatsthis id="whatsthis" label="これは何？" title="これは何？" showEffect="{showSeq}"
 							  hideEffect="{hideSeq}"/>
@@ -13,9 +13,7 @@
 						  hideEffect="{hideSeq}"/>
 			<okd:OkDialy id="okDialy" label="OK日記" title="OK日記" showEffect="{showSeq}"
 						 hideEffect="{hideSeq}"/>
-			<mbr:MemberEdit id="members" label="メンバー" title="メンバー" showEffect="{showSeq}"
-							hideEffect="{hideSeq}"/>
-			
+
 		</mx:ViewStack>
 	</mx:VBox>
 

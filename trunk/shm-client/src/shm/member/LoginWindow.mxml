@@ -31,7 +31,7 @@
 	</mx:Array>
 
 	<!-- サーバ呼び出し -->
-	<mx:HTTPService id="serv" url="/member/login" method="post" showBusyCursor="true"
+	<mx:HTTPService id="loginService" url="/member/login" method="post" showBusyCursor="true"
 					result="ctrl.onServiceCompleted(event)" fault="ctrl.onServiceCallFailed(event)">
 		<mx:request>
 			<memberId>{memberIdField.text}</memberId>

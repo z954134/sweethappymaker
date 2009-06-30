@@ -1,6 +1,5 @@
 package shm.controller.member;
 
-import shm.common.MyController;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 
@@ -23,7 +22,7 @@ public class ListControllerTest extends MyJDOControllerTestCase {
     public void testRun() throws Exception {
         
         start("/member/list");
-        MyController controller = getController();
+        ListController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertEquals("/member/list.jsp", getNextPath());

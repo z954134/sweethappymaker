@@ -1,6 +1,5 @@
 package shm.controller.member;
 
-import shm.common.Const;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 
@@ -18,7 +17,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         m.setEmail("aaa@aaa.com");
         pm.makePersistent(m);
         tx.commit();
-        sessionScope(Const.LOGIN_MEMBER_ID, null);
+        sessionScope(MemberController.MEMBER_ID_KEY, null);
     }
     
     public void testRun() throws Exception {
@@ -30,7 +29,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         assertNotNull(controller);
         assertEquals(getNextPath(), "/member/success.jsp");
         
-        assertNotNull(sessionScope(Const.LOGIN_MEMBER_ID));
+        assertNotNull(sessionScope(MemberController.MEMBER_ID_KEY));
     }
     
     public void testWhenMemberIdIncollect() throws Exception {
@@ -43,7 +42,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         assertNotNull(controller);
         assertEquals("/member/failure.jsp", getNextPath());
         
-        assertNull(sessionScope(Const.LOGIN_MEMBER_ID));
+        assertNull(sessionScope(MemberController.MEMBER_ID_KEY));
     }
     
     public void testWhenPasswordIncollect() throws Exception {
@@ -56,7 +55,7 @@ public class LoginControllerTest extends MyJDOControllerTestCase {
         assertNotNull(controller);
         assertEquals("/member/failure.jsp", getNextPath());
         
-        assertNull(sessionScope(Const.LOGIN_MEMBER_ID));
+        assertNull(sessionScope(MemberController.MEMBER_ID_KEY));
     }
     
     

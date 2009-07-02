@@ -22,11 +22,18 @@
 					   click="ctrl.onSignUpOrEditButtonClicked(event)"/>
 			<mx:Button id="loginoutButton" label="ログイン"
 					   click="ctrl.onLoginOutButttonClicked(event)"/>
+			<mx:Button id="logintestButton" label="test"
+					   click="ctrl.test(event)"/>
+
 		</mx:HBox>
 	</mx:VBox>
 
 	<!-- サーバ呼び出し -->
 	<mx:HTTPService id="logoutService" url="/member/logout" method="post"/>
+
+	<mx:HTTPService id="loginUrlService" url="/member/loginUrl" result="ctrl.onLoginUrlSet(event)"/>
+
+	<mx:HTTPService id="logintestService" url="http://localhost:8080/member/logintest" result="ctrl.dummy(event)"/>
 
 	<mx:states>
 		<mx:State name="loggedIn">

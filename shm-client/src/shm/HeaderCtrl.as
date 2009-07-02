@@ -1,11 +1,15 @@
 package shm {
+	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	
 	import mx.controls.Alert;
 	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	import mx.managers.PopUpManager;
+	import mx.rpc.events.ResultEvent;
 	
 	import shm.common.UICtrlBase;
 	import shm.member.LoginEvent;
@@ -16,6 +20,8 @@ package shm {
 	public class HeaderCtrl extends UICtrlBase {
 
 		private var header:Header;
+		
+		private var loginUrl:String;
 
 		private var loginWindow:LoginWindow;
 
@@ -31,6 +37,7 @@ package shm {
 		protected override function onCreationCompleted(event:FlexEvent):void {
 			header.logoutService.send();
 			header.currentState = "notLoggedIn";
+			header.loginUrlService.send();
 		}
 
 		public function onLoginOutButttonClicked(event:MouseEvent):void {
@@ -59,13 +66,33 @@ package shm {
 			}
 		}
 
+		public function test(event:Event):void {
+			header.logintestService.send();
+		}
+		
+		public function dummy(event:Event):void {
+			
+		}
 		private function login():void {
-			loginWindow = PopUpManager.createPopUp(header, LoginWindow, true) as
-				LoginWindow;
-			loginWindow.addEventListener(LoginEvent.LOGIN_COMPLETE, onLoginComplete);
-			PopUpManager.centerPopUp(loginWindow);
+
+			var request:URLRequest = new URLRequest(loginUrl);
+			navigateToURL(request, "_self");
+//			loginWindow = PopUpManager.createPopUp(header, LoginWindow, true) as
+//				LoginWindow;
+//			loginWindow.addEventListener(LoginEvent.LOGIN_COMPLETE, onLoginComplete);
+//			PopUpManager.centerPopUp(loginWindow);
 		}
 
+
+		public function onLoginUrlSet(event:ResultEvent):void {
+			var result:Object = event.result;
+			var loginUrl:String = String(result.loginUrl);
+			if (!loginUrl) {
+				
+			}
+			this.loginUrl = loginUrl;
+
+		}
 
 		private function logout():void {
 			header.logoutService.send();

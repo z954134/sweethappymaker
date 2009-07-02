@@ -1,7 +1,7 @@
 package shm.controller.okdialy;
 
-import shm.common.Const;
 import shm.common.Utils;
+import shm.controller.member.MemberController;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
@@ -28,7 +28,7 @@ public class DeleteControllerTest extends MyJDOControllerTestCase {
     
     public void testRun() throws Exception {
         param("okDialyDate", "2009/01/01");
-        sessionScope(Const.LOGIN_MEMBER_ID, m.getMemberId());
+        sessionScope(MemberController.MEMBER_ID_KEY, m.getMemberId());
         
         start("/okdialy/delete");
         DeleteController controller = getController();

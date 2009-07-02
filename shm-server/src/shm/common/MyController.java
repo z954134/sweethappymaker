@@ -3,13 +3,16 @@
  */
 package shm.common;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
@@ -70,6 +73,24 @@ public abstract class MyController extends Controller {
         logRequest();
     }
 
+    @Override
+    protected Navigation handleError(Throwable error) {
+            
+        if (error instanceof SecurityViolationException) {
+            pretend404();
+            return null;
+        }
+        return super.handleError(error);
+    }
+    
+    private void pretend404() {
+        try {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } catch (IOException e) {
+            logger.log(Level.WARNING, "予期しない例外", e);
+        }
+    }
+    
     private void logRequest() {
         logger.fine(request.getParameterMap().toString());
     }
@@ -125,6 +146,5 @@ public abstract class MyController extends Controller {
     protected final void saveMessages(List<String> msgs) {
         requestScope(Const.MESSAGE_KEY, msgs);
     }
-
 
 }

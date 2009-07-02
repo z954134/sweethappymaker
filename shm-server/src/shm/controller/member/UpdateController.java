@@ -10,8 +10,11 @@ public class UpdateController extends MemberController {
 
     @Override
     public Navigation runInTx() {
+        // IDチェック
+        checkIdentity();
+        
         // メンバーID取得
-        String memberId = requestScope("memberId");
+        String memberId = getMemberIdInRequest();
 
         // Keyから更新前のメンバー取得
         Member member = memberDao.find(requestScope("key"));
@@ -26,7 +29,7 @@ public class UpdateController extends MemberController {
             }
         }
         BeanUtil.copy(request, member);
-        memberDao.makePersistent(member);
+//        memberDao.makePersistent(member);
         return forwardBase("success.jsp");
     }
 }

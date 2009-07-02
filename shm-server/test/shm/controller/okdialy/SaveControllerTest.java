@@ -2,9 +2,9 @@ package shm.controller.okdialy;
 
 import java.util.List;
 
-import shm.common.Const;
 import shm.common.MyController;
 import shm.common.Utils;
+import shm.controller.member.MemberController;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
@@ -37,7 +37,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         param("okDialyDate", "2009/01/02");
         param("item_1", "aaa");
         param("item_2", "bbb");
-        sessionScope(Const.LOGIN_MEMBER_ID, m.getMemberId());
+        sessionScope(MemberController.MEMBER_ID_KEY, m.getMemberId());
         
         start("/okdialy/save");
         
@@ -59,7 +59,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         param("item_1", "aaa");
         param("item_2", "bbb");
         param("item_3", "ccc");
-        sessionScope(Const.LOGIN_MEMBER_ID, m.getMemberId());
+        sessionScope(MemberController.MEMBER_ID_KEY, m.getMemberId());
 
         start("/okdialy/save");
         MyController controller = getController();

@@ -5,6 +5,7 @@ package shm.member {
 	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.CloseEvent;
+	import mx.events.FlexEvent;
 	import mx.managers.PopUpManager;
 	import mx.rpc.events.ResultEvent;
 	import mx.validators.Validator;
@@ -20,6 +21,20 @@ package shm.member {
 
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = LoginWindow(component);
+		}
+		
+		protected override function onCreationCompleted(event:FlexEvent):void {
+			view.loginUrlService.send();
+		}
+		
+		public function onLoginUrlSet(event:ResultEvent):void {
+			var result:Object = event.result;
+			var loginUrl:String = String(result.loginUrl);
+			if (!loginUrl) {
+				
+			}
+			view.loginService.url = loginUrl;
+
 		}
 
 		public function onLoginButtonClicked(event:MouseEvent):void {

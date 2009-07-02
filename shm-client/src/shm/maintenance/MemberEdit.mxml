@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="listService.send()"
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" 
 		  xmlns:mnt="shm.maintenance.*" width="100%" height="100%">
 
 	<mnt:MemberEditCtrl id="ctrl"/>
@@ -29,6 +29,7 @@
 	</mx:VBox>
 	
 	<mx:ControlBar>
+		<mx:Button label="Reload" click="listService.send()"/>
 		<mx:Button label="Insert" click="insertService.send()"/>
 		<mx:Button label="Update" click="updateService.send()"/>
 		<mx:Button label="Delete" click="deleteService.send()"/>

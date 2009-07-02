@@ -6,7 +6,7 @@ import org.slim3.tester.JDOControllerTestCase;
 
 import shm.controller.member.UpdateController;
 import shm.model.Member;
-
+import static shm.controller.member.MemberController.*;
 
 public class UpdateControllerTest extends JDOControllerTestCase {
 
@@ -17,8 +17,9 @@ public class UpdateControllerTest extends JDOControllerTestCase {
         makePersistentInTx(newUser);
         
         param("key", newUser.getKey());
-        param("memberId", "bbb");
+        param(MEMBER_ID_KEY, "bbb");
         param("email", "bbb@bbb.com");
+        sessionScope(MEMBER_ID_KEY, "bbb");
         start("/member/update");
         
         UpdateController controller = getController();

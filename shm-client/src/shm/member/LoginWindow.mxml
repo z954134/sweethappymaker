@@ -38,5 +38,7 @@
 			<password>{passwordField.text}</password>
 		</mx:request>
 	</mx:HTTPService>
+	
+	<mx:HTTPService id="loginUrlService" url="/member/loginUrl" result="ctrl.onLoginUrlSet(event)"/>
 
 </mx:TitleWindow>

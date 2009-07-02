@@ -7,7 +7,7 @@ import org.slim3.util.BeanMap;
 import org.slim3.util.BeanUtil;
 import org.slim3.util.DateUtil;
 
-import shm.common.Const;
+import shm.controller.member.MemberController;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
@@ -36,7 +36,7 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         
     }
     public void testRun() throws Exception {
-        sessionScope(Const.LOGIN_MEMBER_ID, "aaa");
+        sessionScope(MemberController.MEMBER_ID_KEY, "aaa");
         param("dialyDate", "2009/01/22");
         start("/okdialy/select");
         SelectController controller = getController();

@@ -2,7 +2,6 @@ package shm.controller.member;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.Const;
 import shm.model.Member;
 
 public class LoginController extends MemberController {
@@ -10,7 +9,7 @@ public class LoginController extends MemberController {
     @Override
     public Navigation run() {
 
-        String memberId = requestScope("memberId");
+        String memberId = getMemberIdInRequest();
         String password = requestScope("password");
 
         // メンバーIDよりエンティティを取得する
@@ -22,8 +21,14 @@ public class LoginController extends MemberController {
             saveMessages(msg);
             return forwardBase("failure.jsp");
         }
+        // セッションをリセット
+        resetSession();
         // セッションにログイン情報を格納する
-        sessionScope(Const.LOGIN_MEMBER_ID, member.getMemberId());
+        sessionScope(MEMBER_ID_KEY, member.getMemberId());
         return forwardBase("success.jsp");
+    }
+    
+    private void resetSession() {
+        request.getSession(true).invalidate();
     }
 }

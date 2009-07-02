@@ -2,6 +2,8 @@ package shm.test;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.slim3.tester.JDOControllerTestCase;
 import org.slim3.util.DateUtil;
 
@@ -40,4 +42,12 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
     protected static void assertEquals(String msg, String expected, Date actual) {
         assertEquals(msg, expected, DateUtil.toString(actual));
     }
+    
+    protected void assert404(String msg) {
+        assertEquals(msg, HttpServletResponse.SC_NOT_FOUND, response.getStatus());
+    }
+    protected void assert404() {
+        assert404("");
+    }
+
 }

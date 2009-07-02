@@ -1,6 +1,5 @@
 package shm.controller.member;
 
-import shm.common.Const;
 import shm.test.MyJDOControllerTestCase;
 
 public class LogoutControllerTest extends MyJDOControllerTestCase {
@@ -8,16 +7,16 @@ public class LogoutControllerTest extends MyJDOControllerTestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        sessionScope(Const.LOGIN_MEMBER_ID, "aaa");
+        sessionScope(MemberController.MEMBER_ID_KEY, "aaa");
     }
     
     public void testRun() throws Exception {
-        assertEquals("aaa", sessionScope(Const.LOGIN_MEMBER_ID));
+        assertEquals("aaa", sessionScope(MemberController.MEMBER_ID_KEY));
         start("/member/logout");
         LogoutController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertNull(getNextPath());
-        assertNull(sessionScope(Const.LOGIN_MEMBER_ID));
+        assertNull(sessionScope(MemberController.MEMBER_ID_KEY));
     }
 }

@@ -10,7 +10,6 @@ public class ListController extends MemberController {
 
     @Override
     public Navigation runInTx() {
-        assertAdminMember();    // 管理者であるはず
 
         List<Member> memberList = memberDao.findAll();
         requestScope("memberList", copy(memberList));

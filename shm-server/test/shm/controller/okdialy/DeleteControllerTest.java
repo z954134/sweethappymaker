@@ -15,7 +15,7 @@ public class DeleteControllerTest extends MyJDOControllerTestCase {
         deleteAllInTx(new Class[] { Member.class, OkDialy.class });
         beginTx();
         m.setMemberId("aaa");
-        m.setEmail("aaa@aaa.com");
+//        m.setEmail("aaa@aaa.com");
         OkDialy d = new OkDialy();
         d.setDialyDate(Utils.toDate("2009/01/01"));
         d.addItem("あああ");

@@ -18,8 +18,7 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
     
     public void testRun() throws Exception {
         assertEquals(0, count(Member.class));
-        param("name", "川崎健");
-        param("email", "sambatriste");
+
         start("/member/insert");
         InsertController controller = getController();
         assertNotNull(controller);
@@ -31,7 +30,6 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
     public void testRunDuplicated() throws Exception {
         Member m = new Member();
         m.setMemberId("aaa");
-        m.setPassword("pass");
         makePersistentInTx(m);
         assertEquals(1, count(Member.class));
         

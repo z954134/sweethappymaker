@@ -2,6 +2,9 @@ package shm.controller.member;
 
 import org.slim3.util.BeanMap;
 
+import com.google.appengine.api.users.User;
+
+import shm.common.user.MockUserService;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 
@@ -12,14 +15,14 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         super.setUp();
         deleteAllInTx(Member.class);
         
-        tx.begin();
-        Member newUser = new Member();
-        newUser.setMemberId("guest");
-        newUser.setPassword("secret");
-        newUser.setEmail("aaa@aaa.com");
-        pm.makePersistent(newUser);
+        Member member = new Member();
+        member.setMemberId("aaa");
+        member.setUser(new User("aaa@gmail.com", "gmail.com"));
+        makePersistentInTx(member);
+
+        MockUserService mus = new MockUserService("aaa@gmail.com", "gmail.com", false, true);
+        mus.register();
         
-        tx.commit();
     }
     
     public void testRun() throws Exception {
@@ -31,8 +34,6 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         assertEquals("/member/select.jsp", getNextPath());
         
         BeanMap actual = requestScope("member");
-        assertEquals("guest", actual.get("memberId"));
-        assertEquals("secret", actual.get("password"));
-        assertEquals("aaa@aaa.com",actual.get("email"));
+        assertEquals("aaa", actual.get("memberId"));
     }
 }

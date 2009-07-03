@@ -16,7 +16,7 @@ public class SaveController extends OkDialyController {
     @Override
     public Navigation runInTx() {
         
-        Member member = getLoginMemberFromSession();
+        Member member = getMember();
         Date dialyDate = asDate("okDialyDate", Const.DATE_FORMAT);
         OkDialy okDialy = okDialyDao.select(member, dialyDate);
         if (okDialy == null) {

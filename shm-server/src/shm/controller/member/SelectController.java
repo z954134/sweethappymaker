@@ -15,7 +15,7 @@ public class SelectController extends MemberController {
     @Override
     public Navigation run() {
         begin();
-        Member member = getLoginMemberFromSession();
+        Member member = getMember();
         requestScope("member", detachAndCopy(member));
         return forwardBase("select.jsp");
     }

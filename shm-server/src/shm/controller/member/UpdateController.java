@@ -10,9 +10,7 @@ public class UpdateController extends MemberController {
 
     @Override
     public Navigation runInTx() {
-        // IDチェック
-        checkIdentity();
-        
+         
         // メンバーID取得
         String memberId = getMemberIdInRequest();
 
@@ -21,15 +19,10 @@ public class UpdateController extends MemberController {
         
         // メンバーIDの変更確認
         if (!memberId.equals(member.getMemberId())) {
-            // 変更後のメンバーID存在チェック
-            if (memberDao.exists(memberId)) {
-                saveMessages("メンバーID [" + memberId + "] は既に存在します。"
-                    + "別のメンバーIDを指定してください。");
+                saveMessages("メンバーIDの変更はできません。");
                 return forwardBase("failure.jsp");
-            }
         }
         BeanUtil.copy(request, member);
-//        memberDao.makePersistent(member);
         return forwardBase("success.jsp");
     }
 }

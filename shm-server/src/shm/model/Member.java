@@ -12,7 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Version;
 import javax.jdo.annotations.VersionStrategy;
 
-import org.slim3.util.StringUtil;
+import com.google.appengine.api.users.User;
 
 /**
  * メンバー
@@ -38,13 +38,9 @@ public class Member {
     @Persistent
     private String memberId = "";
     
-    /** パスワード */
+    /** Google ユーザー */
     @Persistent
-    private String password = "";
-    
-    /** Eメールアドレス */
-    @Persistent
-    private String email = "";
+    private User user;
 
     /** OK日記 */
     @Persistent(mappedBy="member")
@@ -58,15 +54,22 @@ public class Member {
         this.key = key;
     }
 
-
-    public String getEmail() {
-        return email;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
     
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public List<OkDialy> getOkDialyList() {
         return okDialyList;
     }
@@ -82,29 +85,6 @@ public class Member {
     public void addOkDialy(OkDialy okDialy) {
         okDialy.setMember(this);
         getOkDialyList().add(okDialy);
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        if (StringUtil.isEmpty(password)) {
-            throw new IllegalArgumentException("password must not be null or empty.");
-        }
-        this.password = password;
-    }
-
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
-    }
-    
-    public boolean isValidPassword(String password) {
-        return this.password.equals(password);
     }
 
 }

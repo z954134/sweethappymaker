@@ -16,7 +16,7 @@ public class DeleteController extends OkDialyController {
 
     @Override
     public Navigation runInTx() {
-        Member member = getLoginMemberFromSession();
+        Member member = memberDao.findMember(getUser());
         Date dialyDate = Utils.toDate(requestScope("okDialyDate"));
         OkDialy okDialy = okDialyDao.select(member, dialyDate);
         okDialyDao.deletePersistent(okDialy);

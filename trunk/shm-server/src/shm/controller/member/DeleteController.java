@@ -9,8 +9,7 @@ public class DeleteController extends MemberController {
     protected Navigation runInTx() {
         
         
-        assertAdminMember(); //管理者であるはず
-        
+
         memberDao.deleteObjectById(requestScope("key"));
         return null;
     }

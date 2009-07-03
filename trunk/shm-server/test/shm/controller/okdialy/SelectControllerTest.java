@@ -21,7 +21,7 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         deleteAllInTx(new Class[] { Member.class, OkDialy.class });
         
         m.setMemberId("aaa");
-        m.setEmail("aaa@aaa.com");
+//        m.setEmail("aaa@aaa.com");
         OkDialy okDialy = new OkDialy();
         okDialy.setDialyDate(DateUtil.toDate("2009-01-22"));
         List<String> items = new ArrayList<String>();

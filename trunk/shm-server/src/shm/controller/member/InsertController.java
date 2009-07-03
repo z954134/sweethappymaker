@@ -10,7 +10,7 @@ public class InsertController extends MemberController {
     
     @Override
     public Navigation run() {
-        String memberId = getMemberIdInRequest();
+        String memberId = requestScope("memberId");
         if (memberDao.exists(memberId)) {
             String msg =
             "メンバーID [" + memberId + "] は既に存在します。"

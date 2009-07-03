@@ -2,6 +2,8 @@ package shm.dao;
 
 import javax.jdo.PersistenceManager;
 
+import com.google.appengine.api.users.User;
+
 import shm.model.Member;
 import shm.model.MemberMeta;
 
@@ -24,9 +26,13 @@ public class MemberDao extends MyGenericDao<Member> {
      *            メンバーID
      * @return メンバー
      */
-    public Member getMemberByMemberId(String memberId) {
-
+    public Member findMember(String memberId) {
         Member member = from().where(m.memberId.eq(memberId)).getSingleResult();
+        return member;
+    }
+    
+    public Member findMember(User user) {
+        Member member = from().where(m.user.eq(user)).getSingleResult();
         return member;
     }
 
@@ -38,12 +44,12 @@ public class MemberDao extends MyGenericDao<Member> {
      * @return 判定結果
      */
     public boolean exists(String memberId) {
-        Member m = getMemberByMemberId(memberId);
+        Member m = findMember(memberId);
         return m != null;
     }
     
     public String getKeyByMemberId(String memberId) {
-        Member m = getMemberByMemberId(memberId);
+        Member m = findMember(memberId);
         return m.getKey();
     }
 }

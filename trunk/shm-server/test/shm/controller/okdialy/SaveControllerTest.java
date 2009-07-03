@@ -4,10 +4,13 @@ import java.util.List;
 
 import shm.common.MyController;
 import shm.common.Utils;
+import shm.common.user.MockUserService;
 import shm.controller.member.MemberController;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
+
+import com.google.appengine.api.users.User;
 
 public class SaveControllerTest extends MyJDOControllerTestCase {
 
@@ -20,7 +23,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         deleteAllInTx(new Class[] { Member.class, OkDialy.class });
         tx.begin();
         m.setMemberId("aaa");
-        m.setEmail("aaa@aaa.com");
+        m.setUser(new User("aaa@gmail.com", "gmail.com"));
         OkDialy d = new OkDialy();
         d.setDialyDate(Utils.toDate("2009/01/01"));
         d.addItem("あああ");
@@ -29,7 +32,9 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         pm.makePersistent(m);
         tx.commit();
         okDialyKey = d.getKey();
-
+        MockUserService mus = new MockUserService("aaa@gmail.com", "gmail.com", false, true);
+        mus.register();
+     
     }
     
     public void testInsert() throws Exception {

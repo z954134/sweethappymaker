@@ -17,8 +17,8 @@ public class LogoutUrlController extends MyController {
     @Override
     public Navigation run() {
         UserService userService = UserServiceFactory.getUserService();
-        String logoutUrl = userService.createLogoutURL("/");
-        requestScope("logoutUrl", logoutUrl);
+        String loginUrl = userService.createLogoutURL("/");
+        requestScope("loginUrl", loginUrl);
         return forward("logoutUrl.jsp");
     }
 }

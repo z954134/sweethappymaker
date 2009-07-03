@@ -14,7 +14,7 @@ public class SelectController extends OkDialyController {
     @Override
     public Navigation run() {
         begin();
-        Member member = getLoginMemberFromSession();
+        Member member = getMember();
         Date dialyDate = Utils.toDate(requestScope("dialyDate"));
 
         OkDialy dialy = okDialyDao.select(member, dialyDate);

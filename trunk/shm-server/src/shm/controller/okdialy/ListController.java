@@ -16,7 +16,7 @@ public class ListController extends OkDialyController {
     @Override
     public Navigation run() {
         begin();
-        Member member = getLoginMemberFromSession();
+        Member member = getMember();
         List<OkDialy> okDialyList = member.getOkDialyList();
         
         requestScope("okDialyList", detachAndCopy(okDialyList));

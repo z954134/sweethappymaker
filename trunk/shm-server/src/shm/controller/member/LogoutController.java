@@ -22,6 +22,6 @@ public class LogoutController extends Controller {
         HttpSession session = request.getSession();
         if (session != null) {
             session.invalidate();
-        }
+        }   
     }
 }

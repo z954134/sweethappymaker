@@ -11,16 +11,7 @@ public class InitController extends MemberController {
         
         Member guest = new Member();
         guest.setMemberId("guest");
-        guest.setPassword("guest");
-        guest.setEmail("");
         createMemberIfNotExists(guest);
-
-        Member admin = new Member();
-        admin.setMemberId(ADMIN_ACCOUNT);
-        admin.setPassword("poohchang");
-        admin.setEmail("");
-        createMemberIfNotExists(admin);
-        
         return null;
     }
 

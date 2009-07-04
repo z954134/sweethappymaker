@@ -47,7 +47,7 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         assertNotNull(map);
         OkDialy okDialy = new OkDialy();
         BeanUtil.copy(map, okDialy);
-        assertEquals("2009-01-22", okDialy.getDialyDate());
+        assertEquals("2009/01/22", okDialy.getDialyDate());
         List<String> items = okDialy.getItems();
         assertEquals(2, items.size());
     }

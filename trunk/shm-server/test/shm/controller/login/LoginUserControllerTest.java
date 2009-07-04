@@ -1,10 +1,8 @@
 package shm.controller.login;
 
-import org.slim3.tester.JDOControllerTestCase;
+import shm.test.MyJDOControllerTestCase;
 
-import shm.controller.login.LoginUserController;
-
-public class LoginUserControllerTest extends JDOControllerTestCase {
+public class LoginUserControllerTest extends MyJDOControllerTestCase {
 
     public void testRun() throws Exception {
         start("/login/loginUser");

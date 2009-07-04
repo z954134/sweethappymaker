@@ -20,4 +20,8 @@ public final class Utils {
         }
         return toDate(dateObj.toString());
     }
+    
+    public static String toString(Date date) {
+        return DateUtil.toString(date, Const.DATE_FORMAT);
+    }
 }

@@ -8,7 +8,7 @@
 	</system-properties>
 
 	<static-files>
-		<include path="/**.swf" />
+		<include path="/flex-bin/**.*" />
 	</static-files>
 
 	<ssl-enabled>false</ssl-enabled>

@@ -19,7 +19,7 @@
 		<link>
 			<name>bin-debug</name>
 			<type>2</type>
-			<location>C:/Documents and Settings/Tsuyoshi/workspace/shm-server/war/flex-bin-debug</location>
+			<location>C:/Documents and Settings/Tsuyoshi/workspace/shm-server/war/flex-bin</location>
 		</link>
 		<link>
 			<name>bin-release</name>

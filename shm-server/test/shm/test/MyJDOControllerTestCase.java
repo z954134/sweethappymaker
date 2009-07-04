@@ -3,11 +3,19 @@ import java.util.Date;
 import java.util.List;
 
 import org.slim3.tester.JDOControllerTestCase;
-import org.slim3.util.DateUtil;
+
+import shm.common.Utils;
+import shm.common.user.UserServiceUtil;
 
 
 public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
     
+    @Override
+    protected void tearDown() throws Exception {
+        UserServiceUtil.resetUserServiceFactory();
+        super.tearDown();
+    }
+
     /**
      * モデルを削除する。
      * @param modelClasses
@@ -16,7 +24,6 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
         tx.begin();
         deleteAll();
         tx.commit();
-
     }
     
     protected final void deleteAll(Class<?>... modelClasses) {
@@ -38,8 +45,6 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
         assertEquals("", expected, actual);
     }
     protected static void assertEquals(String msg, String expected, Date actual) {
-        assertEquals(msg, expected, DateUtil.toString(actual));
+        assertEquals(msg, expected, Utils.toString(actual));
     }
-    
-
 }

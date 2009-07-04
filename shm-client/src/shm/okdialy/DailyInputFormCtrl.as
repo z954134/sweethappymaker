@@ -10,7 +10,7 @@ package shm.okdialy {
 	import mx.rpc.events.ResultEvent;
 	
 	import shm.common.UICtrlBase;
-	import shm.member.LoginEvent;
+
 
 	public class DailyInputFormCtrl extends UICtrlBase {
 
@@ -27,7 +27,6 @@ package shm.okdialy {
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = DailyInputForm(component);
 			dateFormatter.format("YYYY/MM/DD");
-			Application.application.addEventListener(LoginEvent.LOGIN_COMPLETE, reset);
 		}
 
 		protected override function onCreationCompleted(event:FlexEvent):void {

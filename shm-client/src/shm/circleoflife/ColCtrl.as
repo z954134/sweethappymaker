@@ -9,7 +9,6 @@ package shm.circleoflife {
 	import mx.events.SliderEvent;
 	
 	import shm.common.UICtrlBase;
-	import shm.member.LoginEvent;
 
 	public class ColCtrl extends UICtrlBase {
 		private var view:ColPanel;
@@ -26,7 +25,6 @@ package shm.circleoflife {
 
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = ColPanel(component);
-			Application.application.addEventListener(LoginEvent.LOGIN_COMPLETE, reset);
 		}
 
 		protected override function onCreationCompleted(event:FlexEvent):void {

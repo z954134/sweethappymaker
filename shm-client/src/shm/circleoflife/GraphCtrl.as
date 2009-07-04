@@ -8,7 +8,7 @@ package shm.circleoflife {
 	import mx.events.FlexEvent;
 	
 	import shm.common.UICtrlBase;
-	import shm.member.LoginEvent;
+
 
 	public class GraphCtrl extends UICtrlBase {
 		private var view:MiniGraph;
@@ -24,7 +24,6 @@ package shm.circleoflife {
 
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = MiniGraph(component);
-			Application.application.addEventListener(LoginEvent.LOGIN_COMPLETE, reset);
 		}
 
 		protected override function onCreationCompleted(event:FlexEvent):void {

@@ -10,7 +10,7 @@ package shm.common {
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
 	
-	import shm.member.LoginEvent;
+	
 
 	public class UICtrlBase implements IMXMLObject {
 		public function UICtrlBase() {

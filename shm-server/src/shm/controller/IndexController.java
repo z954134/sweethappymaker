@@ -6,8 +6,8 @@ import shm.common.MyController;
 
 public class IndexController extends MyController {
 
-    static String HOME_URL_KEY = "homeUrl";
-
+    private static final String HOME_URL="/flex-bin/main.html";
+    
     @Override
     public Navigation run() {
         String redirectUrl = getRedirectUrl();
@@ -15,10 +15,6 @@ public class IndexController extends MyController {
     }
 
     private String getRedirectUrl() {
-        String url =
-            isDevelopment()
-                ? "/flex-bin-debug/main.html"
-                : "/flex-bin/main.html";
-        return url;
+        return HOME_URL;
     }
 }

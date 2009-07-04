@@ -7,7 +7,6 @@ package shm.okdialy {
 	import mx.events.FlexEvent;
 	
 	import shm.common.UICtrlBase;
-	import shm.member.LoginEvent;
 
 	public class OkDialyListCtrl extends UICtrlBase {
 		private var view:OkDialyList;
@@ -18,7 +17,6 @@ package shm.okdialy {
 
 		protected override function doInitialize(component:UIComponent, id:String):void {
 			view = OkDialyList(component);
-			Application.application.addEventListener(LoginEvent.LOGIN_COMPLETE, reset);
 		}
 
 		protected override function onCreationCompleted(event:FlexEvent):void {

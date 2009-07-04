@@ -1,10 +1,4 @@
-<!-- Indices written at Fri, 3 Jul 2009 20:37:09 JST -->
+<!-- Indices written at Sat, 4 Jul 2009 03:00:44 UTC -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 10 times in query history -->
-    <datastore-index kind="OkDialy" ancestor="true" source="auto">
-        <property name="okDialyList_INTEGER_IDX" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>

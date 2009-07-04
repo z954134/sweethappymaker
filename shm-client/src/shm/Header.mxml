@@ -10,38 +10,37 @@
 		]]>
 	</mx:Script>
 	<mx:VBox width="100%">
-		<mx:HBox>
-			<mx:LinkBar dataProvider="{body.viewStack}" borderStyle="none"/>
-		</mx:HBox>
+		<mx:LinkBar dataProvider="{body.viewStack}" borderStyle="none"/>
 		<mx:HBox width="100%">
-			<mx:Label id="welcomeText" text="ようこそ"/>
-			<mx:Text id="memberIdText" text="guest" fontWeight="bold"/>
-			<mx:Label id="sanText" text="さん"/>
+			<mx:Label text="ようこそ"/>
+			<mx:Text id="loginUserText" text="{loginUserService.lastResult.loginUser}"
+					 fontWeight="bold"/>
+			<mx:Label text="さん"/>
 			<mx:Spacer width="100%"/>
-			<mx:Button id="signUpOrEditButton" label="サインアップ"
-					   click="ctrl.onSignUpOrEditButtonClicked(event)"/>
-			<mx:Button id="loginoutButton" label="ログイン"
-					   click="ctrl.onLoginOutButttonClicked(event)"/>
-			<mx:Button id="logintestButton" label="test"
-					   click="ctrl.test(event)"/>
-
+			<mx:Button id="loginoutButton" label="ログイン" click="ctrl.onLoginOutButttonClicked(event)"/>
 		</mx:HBox>
 	</mx:VBox>
 
-	<!-- サーバ呼び出し -->
-	<mx:HTTPService id="logoutService" url="/member/logout" method="post"/>
 
-	<mx:HTTPService id="loginUrlService" url="/member/loginUrl" result="ctrl.onLoginUrlSet(event)"/>
+	<mx:Model id="urlModel">
+		<url>
+			<login>{loginUrlService.lastResult.loginUrl}</login>
+			<logout>{logoutUrlService.lastResult.logoutUrl}</logout>
+		</url>
+	</mx:Model>
 
-	<mx:HTTPService id="logintestService" url="http://localhost:8080/member/logintest" result="ctrl.dummy(event)"/>
+
+	<mx:HTTPService id="loginUserService" url="/login/loginUser" showBusyCursor="true"
+					result="ctrl.onLoginUserLoaded(event)"/>
+	<mx:HTTPService id="loginUrlService" url="/login/loginUrl" showBusyCursor="true"/>
+	<mx:HTTPService id="logoutUrlService" url="/login/logoutUrl" showBusyCursor="true"/>
+
 
 	<mx:states>
 		<mx:State name="loggedIn">
-			<mx:SetProperty target="{signUpOrEditButton}" name="label" value="アカウント編集"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="ログアウト"/>
 		</mx:State>
 		<mx:State name="notLoggedIn">
-			<mx:SetProperty target="{signUpOrEditButton}" name="label" value="サインアップ"/>
 			<mx:SetProperty target="{loginoutButton}" name="label" value="ログイン"/>
 		</mx:State>
 	</mx:states>

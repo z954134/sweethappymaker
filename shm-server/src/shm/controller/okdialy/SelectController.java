@@ -6,18 +6,20 @@ import org.slim3.controller.Navigation;
 import org.slim3.util.BeanMap;
 
 import shm.common.Utils;
-import shm.model.Member;
+import shm.common.user.UserServiceUtil;
 import shm.model.OkDialy;
+
+import com.google.appengine.api.users.User;
 
 public class SelectController extends OkDialyController {
     
     @Override
     public Navigation run() {
         begin();
-        Member member = getMember();
+        User user = UserServiceUtil.getCurrentUser();
         Date dialyDate = Utils.toDate(requestScope("dialyDate"));
 
-        OkDialy dialy = okDialyDao.select(member, dialyDate);
+        OkDialy dialy = okDialyDao.select(user, dialyDate);
         if (dialy == null) {
             dialy = new OkDialy();
             dialy.setDialyDate(dialyDate);

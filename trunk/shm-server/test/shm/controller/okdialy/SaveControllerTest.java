@@ -5,8 +5,6 @@ import java.util.List;
 import shm.common.MyController;
 import shm.common.Utils;
 import shm.common.user.MockUserService;
-import shm.controller.member.MemberController;
-import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
 
@@ -14,27 +12,24 @@ import com.google.appengine.api.users.User;
 
 public class SaveControllerTest extends MyJDOControllerTestCase {
 
-    private Member m = new Member();
     private String okDialyKey;
     
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        deleteAllInTx(new Class[] { Member.class, OkDialy.class });
-        tx.begin();
-        m.setMemberId("aaa");
-        m.setUser(new User("aaa@gmail.com", "gmail.com"));
+        deleteAllInTx(OkDialy.class);
+
         OkDialy d = new OkDialy();
         d.setDialyDate(Utils.toDate("2009/01/01"));
         d.addItem("あああ");
         d.addItem("いいい");
-        m.addOkDialy(d);
-        pm.makePersistent(m);
-        tx.commit();
+        User user = new User("aaa@gmail.com", "gmail.com");
+        d.setUser(user);
+        makePersistentInTx(d);
+        
         okDialyKey = d.getKey();
-        MockUserService mus = new MockUserService("aaa@gmail.com", "gmail.com", false, true);
+        MockUserService mus = new MockUserService(user);
         mus.register();
-     
     }
     
     public void testInsert() throws Exception {
@@ -42,7 +37,6 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         param("okDialyDate", "2009/01/02");
         param("item_1", "aaa");
         param("item_2", "bbb");
-        sessionScope(MemberController.MEMBER_ID_KEY, m.getMemberId());
         
         start("/okdialy/save");
         
@@ -54,8 +48,8 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         tx.begin();
         OkDialy stored = pm.getObjectById(OkDialy.class, okDialyKey);
         assertNotNull(stored);
-        Member m = stored.getMember();
-        assertEquals("aaa", m.getMemberId());
+        User user = stored.getUser();
+        assertEquals("aaa@gmail.com", user.getEmail()); 
     }
     
     public void testUpdate() throws Exception {
@@ -64,7 +58,6 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         param("item_1", "aaa");
         param("item_2", "bbb");
         param("item_3", "ccc");
-        sessionScope(MemberController.MEMBER_ID_KEY, m.getMemberId());
 
         start("/okdialy/save");
         MyController controller = getController();
@@ -80,8 +73,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         assertEquals("bbb", actualItems.get(1));
         assertEquals("ccc", actualItems.get(2));
         
-        Member m = actual.getMember();
-        assertEquals("aaa", m.getMemberId());
-        
+        User m = actual.getUser();
+        assertEquals("aaa@gmail.com", m.getEmail());
     }
 }

@@ -17,8 +17,8 @@
 	
 	<mx:Script>
 		<![CDATA[
-			public function get memberId():String {
-				return header.memberIdText.text;
+			public function get loginUser():String {
+				return header.loginUserText.text;
 			}
 		]]>
 	</mx:Script>

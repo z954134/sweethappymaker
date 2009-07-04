@@ -7,8 +7,10 @@ import java.util.List;
 import org.slim3.controller.Navigation;
 
 import shm.common.Const;
-import shm.model.Member;
+import shm.common.user.UserServiceUtil;
 import shm.model.OkDialy;
+
+import com.google.appengine.api.users.User;
 
 
 public class SaveController extends OkDialyController {
@@ -16,11 +18,12 @@ public class SaveController extends OkDialyController {
     @Override
     public Navigation runInTx() {
         
-        Member member = getMember();
+        User user = UserServiceUtil.getCurrentUser();
+        
         Date dialyDate = asDate("okDialyDate", Const.DATE_FORMAT);
-        OkDialy okDialy = okDialyDao.select(member, dialyDate);
+        OkDialy okDialy = okDialyDao.select(user, dialyDate);
         if (okDialy == null) {
-            save(member, dialyDate);
+            save(user, dialyDate);
         } else {
             update(okDialy, dialyDate);
         }
@@ -31,17 +34,16 @@ public class SaveController extends OkDialyController {
         List<String> items = createItemsFromRequest();
         okDialy.setDialyDate(dialyDate);
         okDialy.setItems(items);
-//        okDialyDao.makePersistent(okDialy);
     }
 
-    private void save(Member member, Date dialyDate) {
+    private void save(User user, Date dialyDate) {
         List<String> items = createItemsFromRequest();
         OkDialy okDialy;
         okDialy = new OkDialy();
         okDialy.setDialyDate(dialyDate);
         okDialy.setItems(items);
-        member.addOkDialy(okDialy);
-        memberDao.makePersistent(member);
+        okDialy.setUser(user);
+        okDialyDao.makePersistent(okDialy);
     }
     
     private List<String> createItemsFromRequest() {

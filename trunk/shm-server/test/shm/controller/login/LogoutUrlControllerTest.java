@@ -1,14 +1,16 @@
-package shm.controller.member;
+package shm.controller.login;
 
 import org.slim3.tester.JDOControllerTestCase;
 
 public class LogoutUrlControllerTest extends JDOControllerTestCase {
 
     public void testRun() throws Exception {
-        start("/member/logoutUrl");
+        start("/login/logoutUrl");
         LogoutUrlController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/member/logoutUrl.jsp", getNextPath());
+        assertEquals("/login/logoutUrl.jsp", getNextPath());
+        
+        assertNotNull(requestScope("logoutUrl"));
     }
 }

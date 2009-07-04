@@ -16,6 +16,8 @@ import javax.jdo.annotations.VersionStrategy;
 import org.slim3.util.DateUtil;
 import org.slim3.util.StringUtil;
 
+import com.google.appengine.api.users.User;
+
 import shm.common.Const;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
@@ -34,11 +36,8 @@ public class OkDialy {
     @Persistent
     private List<String> items;
     
-    @Persistent(mappedBy = "okDialyList")
-    private Member member;
-
     @Persistent
-    private String memberId;
+    private User user;
     
     public OkDialy() {
         super();
@@ -80,19 +79,17 @@ public class OkDialy {
         this.items = items;
     }
 
-    public Member getMember() {
-        return member;
+    
+    
+
+    public User getUser() {
+        return user;
     }
 
-    public void setMember(Member member) {
-        this.member = member;
-        this.memberId = member.getMemberId();
+    public void setUser(User user) {
+        this.user = user;
     }
-    
-    public String getMemberId() {
-        return this.memberId;
-    }
-    
+
     public int getItemCount() {
         int cnt = 0;
         for (String item : items) {

@@ -16,7 +16,7 @@ public class OkDialyDao extends MyGenericDao<OkDialy> {
         super(OkDialy.class);
     }
 
-    public OkDialy select(User user, Date dialyDate) {
+    public OkDialy find(User user, Date dialyDate) {
         OkDialy okDialy =
             from()
                 .where(ok.user.eq(user), ok.dialyDate.eq(dialyDate))
@@ -24,7 +24,7 @@ public class OkDialyDao extends MyGenericDao<OkDialy> {
         return okDialy;
     }
     
-    public List<OkDialy> selectAll(User user) {
+    public List<OkDialy> findAll(User user) {
         List<OkDialy> list = from().where(ok.user.eq(user)).getResultList();
         return list;
     }

@@ -20,7 +20,7 @@ public class DeleteController extends OkDialyController {
     public Navigation runInTx() {
         User user = UserServiceUtil.getCurrentUser();
         Date dialyDate = Utils.toDate(requestScope("okDialyDate"));
-        OkDialy okDialy = okDialyDao.select(user, dialyDate);
+        OkDialy okDialy = okDialyDao.find(user, dialyDate);
         okDialyDao.deletePersistent(okDialy);
         return null;
     }

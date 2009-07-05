@@ -9,6 +9,7 @@
 
 	<static-files>
 		<include path="/flex-bin/**.*" />
+		<include path="/favicon.ico"/>
 	</static-files>
 
 	<ssl-enabled>false</ssl-enabled>

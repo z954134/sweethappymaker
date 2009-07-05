@@ -19,7 +19,7 @@ public class ListController extends OkDialyController {
     public Navigation run() {
         begin();
         User user = UserServiceUtil.getCurrentUser();
-        List<OkDialy> okDialyList = okDialyDao.selectAll(user);
+        List<OkDialy> okDialyList = okDialyDao.findAll(user);
         
         requestScope("okDialyList", detachAndCopy(okDialyList));
         return forwardBase("list.jsp");

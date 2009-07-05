@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.jdo.JDOHelper;
 import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
@@ -13,12 +14,11 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Version;
 import javax.jdo.annotations.VersionStrategy;
 
-import org.slim3.util.DateUtil;
 import org.slim3.util.StringUtil;
 
-import com.google.appengine.api.users.User;
+import shm.common.Utils;
 
-import shm.common.Const;
+import com.google.appengine.api.users.User;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
@@ -79,8 +79,6 @@ public class OkDialy {
         this.items = items;
     }
 
-    
-    
 
     public User getUser() {
         return user;
@@ -109,6 +107,13 @@ public class OkDialy {
     }
     
     public String getDialyDateText() {
-        return DateUtil.toString(dialyDate, Const.DATE_FORMAT);
+        return Utils.toString(dialyDate);
+    }
+    
+    /**
+     * @return the version
+     */
+    public long getVersion() {
+        return (Long) JDOHelper.getVersion(this);
     }
 }

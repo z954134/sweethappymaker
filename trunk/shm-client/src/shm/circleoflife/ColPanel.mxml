@@ -5,10 +5,11 @@
 	<col:ColCtrl id="ctrl" graph="{graph}"/>
 	<mx:HBox>
 		<mx:Form id="myForm">
-			<mx:FormHeading label="ラベルです"/>
+			<!--
+				 <mx:FormHeading label="ラベルです"/>
+			-->
 
-
-			<mx:FormItem label="要素1">
+			<mx:FormItem label="仕事・キャリア">
 				<mx:HBox>
 					<mx:HSlider id="elem1" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
@@ -16,83 +17,70 @@
 				</mx:HBox>
 			</mx:FormItem>
 
-			<mx:FormItem label="要素2">
+			<mx:FormItem label="お金・経済">
 				<mx:HBox>
 					<mx:HSlider id="elem2" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
 					<mx:Text width="30" text="{elem2.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<mx:FormItem label="要素3">
+			<mx:FormItem label="健康        ">
 				<mx:HBox>
 					<mx:HSlider id="elem3" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
 					<mx:Text width="30" text="{elem3.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<mx:FormItem label="要素4">
+			<mx:FormItem label="家族・パートナー">
 				<mx:HBox>
 					<mx:HSlider id="elem4" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
 					<mx:Text width="30" text="{elem4.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<mx:FormItem label="要素5">
+			<mx:FormItem label="人間関係">
 				<mx:HBox>
 					<mx:HSlider id="elem5" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
 					<mx:Text width="30" text="{elem5.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<mx:FormItem label="要素6">
+			<mx:FormItem label="学び・自己啓発">
 				<mx:HBox>
 					<mx:HSlider id="elem6" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
 					<mx:Text width="30" text="{elem6.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<mx:FormItem label="要素7">
+			<mx:FormItem label="遊び・余暇">
 				<mx:HBox>
 					<mx:HSlider id="elem7" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
 					<mx:Text width="30" text="{elem7.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<mx:FormItem label="要素8">
+			<mx:FormItem label="物理的環境">
 				<mx:HBox>
 					<mx:HSlider id="elem8" maximum="10" minimum="0" value="0" tickInterval="1"
 								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
 					<mx:Text width="30" text="{elem8.value}"/>
 				</mx:HBox>
 			</mx:FormItem>
-			<mx:FormItem label="要素9">
-				<mx:HBox>
-					<mx:HSlider id="elem9" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
-					<mx:Text width="30" text="{elem9.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
-			<mx:FormItem label="要素10">
-				<mx:HBox>
-					<mx:HSlider id="elem10" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="80" liveDragging="true"/>
-					<mx:Text width="30" text="{elem10.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
 
-			 <mx:FormItem>
-				 <mx:Button label="リセット" id="resetButton" click="onResetButtonClicked(event)"/>
-			 </mx:FormItem>
+			<mx:FormItem>
+				<mx:Button label="リセット" id="resetButton" click="onResetButtonClicked(event)"/>
+			</mx:FormItem>
 
 		</mx:Form>
-		<col:MiniGraph id="graph"/>
+		<col:MiniGraph id="graph" width="250" height="250" horizontalScrollPolicy="off"
+					   verticalScrollPolicy="off"/>
 	</mx:HBox>
 	<mx:Script>
 		<![CDATA[
 			private function onResetButtonClicked(event:MouseEvent):void {
 				ctrl.reset(event);
 				graph.ctrl.reset(event);
-			} 
+			}
 		]]>
 	</mx:Script>
 </mx:Panel>

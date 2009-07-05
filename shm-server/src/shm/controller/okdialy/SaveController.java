@@ -21,7 +21,7 @@ public class SaveController extends OkDialyController {
         User user = UserServiceUtil.getCurrentUser();
         
         Date dialyDate = asDate("okDialyDate", Const.DATE_FORMAT);
-        OkDialy okDialy = okDialyDao.select(user, dialyDate);
+        OkDialy okDialy = okDialyDao.find(user, dialyDate);
         if (okDialy == null) {
             save(user, dialyDate);
         } else {

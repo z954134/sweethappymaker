@@ -19,7 +19,7 @@ public class SelectController extends OkDialyController {
         User user = UserServiceUtil.getCurrentUser();
         Date dialyDate = Utils.toDate(requestScope("dialyDate"));
 
-        OkDialy dialy = okDialyDao.select(user, dialyDate);
+        OkDialy dialy = okDialyDao.find(user, dialyDate);
         if (dialy == null) {
             dialy = new OkDialy();
             dialy.setDialyDate(dialyDate);

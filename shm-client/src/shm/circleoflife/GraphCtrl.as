@@ -33,7 +33,7 @@ package shm.circleoflife {
 
 		private function initScores():void {
 			elems = new ArrayCollection();
-			for (var i:int = 1; i <= 10; i++) {
+			for (var i:int = 1; i <= 8; i++) {
 				var id:String = 'score' + i;
 				var elem:Image = view[id];
 				elem.source = graph0;

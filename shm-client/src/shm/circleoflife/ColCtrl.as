@@ -16,7 +16,7 @@ package shm.circleoflife {
 		public var graph:MiniGraph;
 
 		public function reset(event:Event):void {
-			for (var i:int = 1; i <= 10; i++) {
+			for (var i:int = 1; i <= 8; i++) {
 				var slider:HSlider = view['elem' + i] as HSlider;
 				if (slider)	slider.value = 0;
 			}
@@ -28,7 +28,7 @@ package shm.circleoflife {
 		}
 
 		protected override function onCreationCompleted(event:FlexEvent):void {
-			for (var i:int = 1; i <= 10; i++) {
+			for (var i:int = 1; i <= 8; i++) {
 				var slider:HSlider = view['elem' + i] as HSlider;
 				slider.addEventListener(SliderEvent.CHANGE, onSliderChanged);
 			}

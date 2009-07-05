@@ -8,37 +8,37 @@
 			<mx:FormHeading label="10このOK"/>
 
 			<mx:FormItem label="1">
-				<mx:TextInput id="ok1" width="270"/>
+				<mx:TextInput id="ok1" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="2">
-				<mx:TextInput id="ok2" width="270"/>
+				<mx:TextInput id="ok2" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="3">
-				<mx:TextInput id="ok3" width="270"/>
+				<mx:TextInput id="ok3" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="4">
-				<mx:TextInput id="ok4" width="270"/>
+				<mx:TextInput id="ok4" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="5">
-				<mx:TextInput id="ok5" width="270"/>
+				<mx:TextInput id="ok5" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="6">
-				<mx:TextInput id="ok6" width="270"/>
+				<mx:TextInput id="ok6" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="7">
-				<mx:TextInput id="ok7" width="270"/>
+				<mx:TextInput id="ok7" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="8">
-				<mx:TextInput id="ok8" width="270"/>
+				<mx:TextInput id="ok8" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="9">
-				<mx:TextInput id="ok9" width="270"/>
+				<mx:TextInput id="ok9" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem label="10">
-				<mx:TextInput id="ok10" width="270"/>
+				<mx:TextInput id="ok10" width="260"/>
 			</mx:FormItem>
 			<mx:FormItem>
-				<mx:Button label="登録" id="submitButton" click="insertService.send()"/>
+				<mx:Button label="保存" id="submitButton" click="insertService.send()"/>
 			</mx:FormItem>
 		</mx:Form>
 
@@ -47,12 +47,15 @@
 			<mx:FormItem label="日付">
 				<mx:TextInput id="okDialyDateText" width="100"/>
 			</mx:FormItem>
-			<mx:DateChooser id="dateChooser" showToday="true"
-							change="ctrl.onDateChooserChanged(event)"/>
-			<mx:Spacer height="8"/>
-			<mx:Label text="思いつかないときのヒント"/>
-			<mx:TextArea id="hintText" width="100%" borderStyle="inset" editable="false"/>
-			<mx:Button id="nextHintButton" label="次のヒント" click="hintService.send()"/>
+			<mx:DateChooser id="dateChooser" showToday="true" width="100%"
+							change="ctrl.onDateChooserChanged(event)" height="162"/>
+			<mx:Spacer height="11"/>
+			<mx:Label text="思いつかないときのヒント" fontWeight="bold" textDecoration="underline"/>
+			<mx:TextArea id="hintText" width="100%" borderStyle="inset" editable="false" height="54"/>
+			<mx:HBox horizontalAlign="right">
+				<mx:Button id="nextHintButton" label="次のヒント" click="hintService.send()"/>
+			</mx:HBox>
+
 		</mx:VBox>
 	</mx:HBox>
 

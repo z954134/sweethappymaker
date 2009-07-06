@@ -5,7 +5,7 @@
 
 	<mx:VBox>
 
-		<mx:ViewStack id="viewStack" width="550" resizeToContent="true">
+		<mx:ViewStack id="viewStack" width="540" resizeToContent="true">
 
 			<welcome:Whatsthis id="whatsthis" label="これは何？" title="これは何？" showEffect="{showSeq}"
 							   hideEffect="{hideSeq}"/>

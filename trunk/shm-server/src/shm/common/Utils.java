@@ -1,5 +1,8 @@
 package shm.common;
 
+import static java.util.Calendar.DAY_OF_MONTH;
+
+import java.util.Calendar;
 import java.util.Date;
 
 import org.slim3.util.DateUtil;
@@ -23,5 +26,23 @@ public final class Utils {
     
     public static String toString(Date date) {
         return DateUtil.toString(date, Const.DATE_FORMAT);
+    }
+    
+    public static Calendar toCalendar(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+    }
+    
+    public static Date getFirstDayOfMonth(Date orig) {
+        Calendar c = toCalendar(orig);
+        c.set(DAY_OF_MONTH, c.getActualMinimum(DAY_OF_MONTH));
+        return c.getTime();
+    }
+    
+    public static Date getLastDayOfMonth(Date orig) {
+        Calendar c = toCalendar(orig);
+        c.set(DAY_OF_MONTH, c.getActualMaximum(DAY_OF_MONTH));
+        return c.getTime();        
     }
 }

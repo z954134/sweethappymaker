@@ -1,4 +1,11 @@
-<!-- Indices written at Sun, 5 Jul 2009 10:10:08 UTC -->
+<!-- Indices written at Mon, 6 Jul 2009 19:17:23 JST -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="OkDialy" ancestor="false" source="auto">
+        <property name="user" direction="asc"/>
+        <property name="dialyDate" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

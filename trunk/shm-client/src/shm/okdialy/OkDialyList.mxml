@@ -21,7 +21,7 @@
 		<mx:ControlBar>
 			<mx:Button label="再読込" click="listService.send()"/>
 			<mx:Button label="呼出" click="ctrl.onLoadButtonClicked(event)"/>
-			<mx:Button label="削除" click="deleteService.send()"/>
+			<mx:Button label="削除" click="ctrl.onDeleteButtonClicked(event)"/>
 		</mx:ControlBar>
 	</mx:VBox>
 

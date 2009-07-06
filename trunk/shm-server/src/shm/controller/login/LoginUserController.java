@@ -18,6 +18,6 @@ public class LoginUserController extends MyController {
     public Navigation run() {
         User user = UserServiceUtil.getCurrentUser();
         requestScope("loginUser", user.getNickname());
-        return forwardBase("loginUser.jsp");
+        return forward("loginUser.jsp");
     }
 }

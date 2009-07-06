@@ -28,6 +28,6 @@ public class SelectController extends OkDialyController {
         BeanMap m = detachAndCopy(dialy);
         requestScope("okDialy", m);
         
-        return forwardBase("select.jsp");
+        return forward("select.jsp");
     }
 }

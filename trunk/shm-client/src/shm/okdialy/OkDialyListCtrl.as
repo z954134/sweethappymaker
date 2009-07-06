@@ -2,7 +2,6 @@ package shm.okdialy {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
-	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	
@@ -26,6 +25,11 @@ package shm.okdialy {
 			var e:OkDialyEvent = new OkDialyEvent(OkDialyEvent.LOAD_REQUIRED);
 			e.requiredDate = view.dg.selectedItem['dialyDate'];
 			view.dispatchEvent(e);
+		}
+		public function onDeleteButtonClicked(event:MouseEvent):void {
+			if (view.dg.selectedItem) {
+				view.deleteService.send();
+			}
 		}
 	}
 }

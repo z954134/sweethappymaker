@@ -1,6 +1,7 @@
 package shm.controller.okdialy;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -13,10 +14,10 @@ import shm.model.OkDialy;
 
 import com.google.appengine.api.users.User;
 
-public class MonthlyListController extends OkDialyController {
+public class MonthlyDialyDaysController extends OkDialyController {
 
     @SuppressWarnings("unused")
-    private static final Logger logger = Logger.getLogger(MonthlyListController.class.getName());
+    private static final Logger logger = Logger.getLogger(MonthlyDialyDaysController.class.getName());
 
     @Override
     public Navigation run() {
@@ -27,13 +28,16 @@ public class MonthlyListController extends OkDialyController {
         
         User user = UserServiceUtil.getCurrentUser();
         List<OkDialy> dialyList = okDialyDao.findByMonth(user, d);
-        
-        requestScope("dialyList", detachAndCopy(dialyList));
-        return forward("monthlyList.jsp");
+        List<String> days = new ArrayList<String>(dialyList.size());
+        for (OkDialy e: dialyList) {
+            days.add(e.getDialyDateText());
+        }
+        requestScope("monthlyDialyDays", days);
+        return forward("monthlyDialyDays.jsp");
     }
     
     private Date format(int y, int m) {
-        String s = y + "/" + new DecimalFormat("00").format(m) + "/01" ;
+        String s = y + "/" + new DecimalFormat("00").format(m + 1) + "/01" ;
         Date d = Utils.toDate(s);
         return d;
     }

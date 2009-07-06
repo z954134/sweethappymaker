@@ -3,8 +3,6 @@ package shm.controller.okdialy;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slim3.util.BeanMap;
-
 import shm.common.Utils;
 import shm.common.user.MockUserService;
 import shm.model.OkDialy;
@@ -12,7 +10,7 @@ import shm.test.MyJDOControllerTestCase;
 
 import com.google.appengine.api.users.User;
 
-public class MonthlyListControllerTest extends MyJDOControllerTestCase {
+public class MonthlyDialyDaysControllerTest extends MyJDOControllerTestCase {
 
     @Override
     public void setUp() throws Exception {
@@ -63,17 +61,17 @@ public class MonthlyListControllerTest extends MyJDOControllerTestCase {
 
     public void testRun() throws Exception {
         requestScope("year", "2009");
-        requestScope("month", "1");
-        start("/okdialy/monthlyList");
-        MonthlyListController controller = getController();
+        requestScope("month", "0");
+        start("/okdialy/monthlyDialyDays");
+        MonthlyDialyDaysController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/okdialy/monthlyList.jsp", getNextPath());
+        assertEquals("/okdialy/monthlyDialyDays.jsp", getNextPath());
         
-        List<BeanMap> actual = requestScope("dialyList");
+        List<String> actual = requestScope("monthlyDialyDays");
         assertEquals(2, actual.size());
-        assertEquals("2009/01/01", actual.get(0).get("dialyDateText"));
-        assertEquals("2009/01/31", actual.get(1).get("dialyDateText"));
+        assertEquals("2009/01/01", actual.get(0));
+        assertEquals("2009/01/31", actual.get(1));
         
     }
 }

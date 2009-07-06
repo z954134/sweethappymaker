@@ -16,12 +16,27 @@ http://blog.asial.co.jp/358
 			private var _saturdayColor:int = 0x0000ff;
 			private var _sundayColor:int = 0xff0000;
 
-			public function setHilightDays(days:Array):void {
+			public function addHilightDays(days:Array):void {
 				this._hilightDays = days;
 				for (var i:int = 0; i < days.length; i++) {
 					this.hilightDaysObj[days[i]] = true;
 				}
 			}
+			
+			public function addHilightDay(day:Object):void {
+				this.hilightDaysObj[day] = true;
+			}
+			
+			public function setHilightDays(days:Array):void {
+				resetHilightDays();
+				addHilightDays(days);
+			}
+			
+			public function resetHilightDays():void {
+				this._hilightDays = [];
+				this.hilightDaysObj = {};
+			}
+			
 
 			public function set highlightColor(value:int):void {
 				_highlightColor = value;
@@ -36,8 +51,7 @@ http://blog.asial.co.jp/358
 			}
 
 			public function removeHilight():void {
-				this._hilightDays = [];
-				this.hilightDaysObj = [];
+				this.resetHilightDays();
 				this.highlight();
 			}
 

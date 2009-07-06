@@ -40,7 +40,7 @@ public class HintController extends MyController {
         requestScope("hintKey", nextHintKey);
         requestScope("hint", nextHint);
         
-        return forwardBase("hint.jsp");
+        return forward("hint.jsp");
     }
 
     private synchronized void loadHints() {

@@ -8,7 +8,6 @@ package shm.okdialy {
 	import mx.formatters.DateFormatter;
 	import mx.rpc.events.ResultEvent;
 	
-	import shm.common.ExDateChooser;
 	import shm.common.UICtrlBase;
 
 
@@ -34,21 +33,7 @@ package shm.okdialy {
 			view.okDialyDateText.text = dateFormatter.format(new Date());
 			view.addEventListener(OkDialyEvent.LOAD_REQUIRED, onLoadRequired);
 			view.hintService.send();
-			initApp();
-		}
-
-		private function initApp():void {
-			var dateChooser:ExDateChooser = view.dateChooser;
-			// YYYY-MM-DD 形式の値の配列
-			var daysArray:Array = [
-				'2009/01/01', '2009/02/11', '2009/03/20',
-				'2009/04/29', '2009/05/03', '2009/05/04',
-				'2009/05/05', '2009/05/06', '2009/07/21',
-				'2009/09/15', '2009/09/23', '2009/10/13',
-				'2009/11/03', '2009/11/24', '2009/12/32',];
-			dateChooser.setHilightDays(daysArray);
-			dateChooser.highlightColor = 0xff0000;
-			dateChooser.highlight();
+			view.monthlyListService.send();
 		}
 
 		public function onHintCompleted(event:ResultEvent):void {
@@ -61,6 +46,29 @@ package shm.okdialy {
 			var selected:Date = view.dateChooser.selectedDate;
 			select(dateFormatter.format(selected));
 		}
+		
+		public function onMonthlyListLoaded(event:ResultEvent):void {
+			var r:Object = event.result.monthlyDialyDays;
+			if (!r) {
+				return;
+			}
+			var days:ArrayCollection = extractDialyDays(r);
+			view.dateChooser.setHilightDays(days.source);
+			view.dateChooser.highlight();
+		}
+		
+		private function extractDialyDays(r:Object):ArrayCollection {
+			var dialyDays:ArrayCollection = null;
+			if (r.dialyDate is ArrayCollection) {
+				dialyDays = r.dialyDate as ArrayCollection;
+			} else {
+				dialyDays = new ArrayCollection();
+				dialyDays.addItem(r.dialyDate);
+			}
+			return dialyDays;
+		}
+		
+
 
 		public function onLoadRequired(event:OkDialyEvent):void {
 			var dt:String = event.requiredDate;

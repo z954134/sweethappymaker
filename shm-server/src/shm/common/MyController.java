@@ -77,13 +77,13 @@ public abstract class MyController extends Controller {
     protected Navigation handleError(Throwable error) {
             
         if (error instanceof SecurityViolationException) {
-            pretend404();
+            pretendToBe404();
             return null;
         }
         return super.handleError(error);
     }
     
-    private void pretend404() {
+    private void pretendToBe404() {
         try {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         } catch (IOException e) {
@@ -95,16 +95,16 @@ public abstract class MyController extends Controller {
         logger.fine(request.getParameterMap().toString());
     }
 
-    /**
-     * ベースパスを基準にフォワードする<br>
-     * 
-     * @param path
-     *            フォワード先パス
-     * @return 行き先
-     */
-    protected final Navigation forwardBase(String path) {
-        return forward(basePath + path);
-    }
+//    /**
+//     * ベースパスを基準にフォワードする<br>
+//     * 
+//     * @param path
+//     *            フォワード先パス
+//     * @return 行き先
+//     */
+//    protected final Navigation forwardBase(String path) {
+//        return forward(basePath + path);
+//    }
 
     /**
      * モデルのリストをBeanMapのリストにコピーする

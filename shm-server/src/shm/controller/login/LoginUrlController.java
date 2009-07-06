@@ -15,6 +15,6 @@ public class LoginUrlController extends MyController {
     public Navigation run() {
         String loginUrl = UserServiceUtil.getUserService().createLoginURL("/");
         requestScope("loginUrl", loginUrl);
-        return forwardBase("loginUrl.jsp");
+        return forward("loginUrl.jsp");
     }
 }

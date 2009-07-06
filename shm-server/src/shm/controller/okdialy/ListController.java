@@ -22,6 +22,6 @@ public class ListController extends OkDialyController {
         List<OkDialy> okDialyList = okDialyDao.findAll(user);
         
         requestScope("okDialyList", detachAndCopy(okDialyList));
-        return forwardBase("list.jsp");
+        return forward("list.jsp");
     }
 }

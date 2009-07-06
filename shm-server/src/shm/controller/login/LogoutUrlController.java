@@ -16,6 +16,6 @@ public class LogoutUrlController extends MyController {
     public Navigation run() {
         String logoutUrl = UserServiceUtil.getUserService().createLogoutURL("/");
         requestScope("logoutUrl", logoutUrl);
-        return forwardBase("logoutUrl.jsp");
+        return forward("logoutUrl.jsp");
     }
 }

@@ -8,6 +8,8 @@
 
 global {
 	background-alpha: 0.6;
+	font-family: "Meiryo", "Hiragino Kaku Gothic Pro","Osaka", "MS PGothic";
+	fontSize: 10;
 }
 
 TextArea {
@@ -25,9 +27,8 @@ TextArea {
 Application {
 	backgroundColor: #333333; 
 	fontStyle: normal;
-	fontFamily: ipaFont;
+/*	fontFamily: ipaFont;*/
 	fontWeight: normal;
-	fontSize: 11;
 	background-image: Embed(source="backgrounds/underwater.jpg");
 	background-alpha:1.0;
 	color: #000066;

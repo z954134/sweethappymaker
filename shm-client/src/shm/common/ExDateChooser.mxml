@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:DateChooser xmlns:mx="http://www.adobe.com/2006/mxml" fontWeight="normal" textAlign="center"
+ borderColor="#ffffff" backgroundAlpha="0.95">
+<!--
+http://blog.asial.co.jp/358
+-->
+	<mx:Script>
+		<![CDATA[
+			use namespace mx_internal;
+
+			import mx.core.UITextField;
+
+			private var hilightDaysObj:Object = {};
+			private var _hilightDays:Array = [];
+			private var _highlightColor:int = 0xff0000;
+			private var _saturdayColor:int = 0x0000ff;
+			private var _sundayColor:int = 0xff0000;
+
+			public function setHilightDays(days:Array):void {
+				this._hilightDays = days;
+				for (var i:int = 0; i < days.length; i++) {
+					this.hilightDaysObj[days[i]] = true;
+				}
+			}
+
+			public function set highlightColor(value:int):void {
+				_highlightColor = value;
+			}
+
+			public function set saturdayColor(value:int):void {
+				_saturdayColor = value;
+			}
+
+			public function set sundayColor(value:int):void {
+				_sundayColor = value;
+			}
+
+			public function removeHilight():void {
+				this._hilightDays = [];
+				this.hilightDaysObj = [];
+				this.highlight();
+			}
+
+			public function highlight():void {
+				var y:String = String(this.displayedYear);
+				var _m:int = this.displayedMonth + 1;
+				var m:String = (_m < 10) ? String("0" + _m) : String(_m);
+				var calBody:Array = this.dateGrid.dayBlocksArray;
+				var dd:Array = [];
+				for (var i:int = 0; i < calBody.length; i++) {
+					if (calBody[i] is Array) {
+						var line:Array = calBody[i];
+						for (var j:int = 1; j < line.length; j++) {
+							var txt:UITextField = line[j];
+							var _txt:String = (int(txt.text) < 10) ? "0" + txt.text :
+								txt.text;
+							var _date:String = y + "/" + m + "/" + _txt;
+							var key:String = _date;
+							//trace(i + ":" + j + ":" + key);
+							if (this.hilightDaysObj[key]) {
+								txt.setColor(this._highlightColor);
+//							} else if (i == 0) {
+//								txt.setColor(this._sundayColor);
+//							} else if (i == 6) {
+//								txt.setColor(this._saturdayColor);
+							} else {
+								txt.setColor(0x000000);
+							}
+						}
+					}
+				}
+			}
+		]]>
+	</mx:Script>
+</mx:DateChooser>

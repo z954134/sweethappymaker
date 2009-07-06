@@ -2,13 +2,13 @@ package shm.okdialy {
 	import flash.events.Event;
 	
 	import mx.collections.ArrayCollection;
-	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.CalendarLayoutChangeEvent;
 	import mx.events.FlexEvent;
 	import mx.formatters.DateFormatter;
 	import mx.rpc.events.ResultEvent;
 	
+	import shm.common.ExDateChooser;
 	import shm.common.UICtrlBase;
 
 
@@ -22,6 +22,7 @@ package shm.okdialy {
 		protected function reset(event:Event):void {
 			clearForm();
 			view.dateChooser.selectedDate = new Date();
+			view.dateChooser.highlight();
 		}
 
 		protected override function doInitialize(component:UIComponent, id:String):void {
@@ -33,12 +34,27 @@ package shm.okdialy {
 			view.okDialyDateText.text = dateFormatter.format(new Date());
 			view.addEventListener(OkDialyEvent.LOAD_REQUIRED, onLoadRequired);
 			view.hintService.send();
+			initApp();
 		}
-		
+
+		private function initApp():void {
+			var dateChooser:ExDateChooser = view.dateChooser;
+			// YYYY-MM-DD 形式の値の配列
+			var daysArray:Array = [
+				'2009/01/01', '2009/02/11', '2009/03/20',
+				'2009/04/29', '2009/05/03', '2009/05/04',
+				'2009/05/05', '2009/05/06', '2009/07/21',
+				'2009/09/15', '2009/09/23', '2009/10/13',
+				'2009/11/03', '2009/11/24', '2009/12/32',];
+			dateChooser.setHilightDays(daysArray);
+			dateChooser.highlightColor = 0xff0000;
+			dateChooser.highlight();
+		}
+
 		public function onHintCompleted(event:ResultEvent):void {
 			var hint:Object = event.result.hint;
 			view.previousHintKey = hint.key;
-			view.hintText.text = hint.value; 
+			view.hintText.text = hint.value;
 		}
 
 		public function onDateChooserChanged(event:CalendarLayoutChangeEvent):void {
@@ -70,7 +86,7 @@ package shm.okdialy {
 				view['ok' + (i + 1)].text = items[i];
 			}
 		}
-		
+
 		private function clearForm():void {
 			for (var i:int = 1; i <= 10; i++) {
 				view['ok' + i].text = "";

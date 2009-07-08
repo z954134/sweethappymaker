@@ -73,7 +73,7 @@ public class OkDialy {
 
     public void setItems(List<String> items) {
         if (items == null) {
-            setItems(new ArrayList<String>(10));
+            setItems(new ArrayList<String>(MAX_SIZE));
             return;
         }
         this.items = items;
@@ -89,8 +89,12 @@ public class OkDialy {
     }
 
     public int getItemCount() {
+        List<String> is = getItems();
+        if (is == null || is.isEmpty()) {
+            return 0;
+        }
         int cnt = 0;
-        for (String item : items) {
+        for (String item : is) {
             if (!StringUtil.isEmpty(item)) {
                 cnt++;
             }
@@ -99,10 +103,11 @@ public class OkDialy {
     }
     
     public String getFirstItem() {
-        if (getItems().size() == 0) {
+        List<String> is = getItems();
+        if (is == null || is.size() == 0) {
             return "";
         }
-        String first = getItems().get(0);
+        String first = is.get(0);
         return first == null ? "" : first;
     }
     

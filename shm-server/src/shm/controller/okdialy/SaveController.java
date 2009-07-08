@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.slim3.controller.Navigation;
+import org.slim3.util.StringUtil;
 
 import shm.common.Const;
 import shm.common.user.UserServiceUtil;
@@ -38,8 +39,11 @@ public class SaveController extends OkDialyController {
 
     private void save(User user, Date dialyDate) {
         List<String> items = createItemsFromRequest();
-        OkDialy okDialy;
-        okDialy = new OkDialy();
+        if (items.isEmpty()) {
+            return;
+        }
+        
+        OkDialy okDialy = new OkDialy();
         okDialy.setDialyDate(dialyDate);
         okDialy.setItems(items);
         okDialy.setUser(user);
@@ -47,15 +51,19 @@ public class SaveController extends OkDialyController {
     }
     
     private List<String> createItemsFromRequest() {
+        String[] param = paramValues("item");
+        if (param == null) {
+            return new ArrayList<String>(0);
+        }
+        
         List<String> items = new ArrayList<String>(10);
-        for (int i = 1; i <= 10; i++) {
-            String key = "item_" + i;
-            String item = requestScope(key);
-            if (item == null) {
-                item = "";
+        boolean empty = true;
+        for (String item : param) { 
+            if (!StringUtil.isEmpty(item)) {
+                empty = false;
             }
             items.add(item);
         }
-        return items;
+        return empty ? new ArrayList<String>(0) : items;
     }
 }

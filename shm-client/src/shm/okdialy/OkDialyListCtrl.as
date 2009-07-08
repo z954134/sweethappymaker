@@ -22,14 +22,15 @@ package shm.okdialy {
 		}
 
 		public function onLoadButtonClicked(event:MouseEvent):void {
+			if (!view.dg.selectedItem) return;
 			var e:OkDialyEvent = new OkDialyEvent(OkDialyEvent.LOAD_REQUIRED);
 			e.requiredDate = view.dg.selectedItem['dialyDate'];
 			view.dispatchEvent(e);
+
 		}
 		public function onDeleteButtonClicked(event:MouseEvent):void {
-			if (view.dg.selectedItem) {
-				view.deleteService.send();
-			}
+			if (!view.dg.selectedItem) return;
+			view.deleteService.send();
 		}
 	}
 }

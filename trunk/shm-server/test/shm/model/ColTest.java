@@ -6,5 +6,6 @@ public class ColTest extends JDOTestCase {
 
     public void test() throws Exception {
         Col col = new Col();
+        if (col == null) {}
     }
 }

@@ -1,5 +1,6 @@
 package shm.okdialy {
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	import mx.collections.ArrayCollection;
 	import mx.core.UIComponent;
@@ -69,7 +70,6 @@ package shm.okdialy {
 		}
 		
 
-
 		public function onLoadRequired(event:OkDialyEvent):void {
 			var dt:String = event.requiredDate;
 			view.dateChooser.selectedDate = new Date(dt);
@@ -83,16 +83,19 @@ package shm.okdialy {
 
 		public function onSelectCompleted(event:ResultEvent):void {
 
-			clearForm();
-
 			var dialy:Object = event.result.okDialy;
-			var items:ArrayCollection = dialy.item as ArrayCollection;
-			if (items == null) {
+			
+			var items:ArrayCollection;
+			if (dialy.item is ArrayCollection) {
+			 	items = dialy.item as ArrayCollection;
+			} else if (dialy.item) {
+				items = new ArrayCollection();
+				items.addItem(dialy.item)
+			} else {
 				return;
 			}
-			for (var i:int = 0; i < items.length; i++) {
-				view['ok' + (i + 1)].text = items[i];
-			}
+			view.items = items;
+
 		}
 
 		private function clearForm():void {
@@ -100,5 +103,6 @@ package shm.okdialy {
 				view['ok' + i].text = "";
 			}
 		}
+		
 	}
 }

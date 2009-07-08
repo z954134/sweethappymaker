@@ -12,7 +12,7 @@ http://blog.asial.co.jp/358
 
 			private var hilightDaysObj:Object = {};
 			private var _hilightDays:Array = [];
-			private var _highlightColor:int = 0x0000ff;
+			private var _highlightColor:int = 0x00BFFF;
 			private var _saturdayColor:int = 0x0000ff;
 			private var _sundayColor:int = 0xff0000;
 

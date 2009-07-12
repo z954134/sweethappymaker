@@ -18,36 +18,28 @@ public class SaveController extends OkDialyController {
 
     @Override
     public Navigation runInTx() {
-        
-        User user = UserServiceUtil.getCurrentUser();
-        
-        Date dialyDate = asDate("okDialyDate", Const.DATE_FORMAT);
-        OkDialy okDialy = okDialyDao.find(user, dialyDate);
-        if (okDialy == null) {
-            save(user, dialyDate);
-        } else {
-            update(okDialy, dialyDate);
-        }
-        return null;
-    }
 
-    private void update(OkDialy okDialy,Date dialyDate) {
-        List<String> items = createItemsFromRequest();
-        okDialy.setDialyDate(dialyDate);
-        okDialy.setItems(items);
-    }
-
-    private void save(User user, Date dialyDate) {
         List<String> items = createItemsFromRequest();
         if (items.isEmpty()) {
-            return;
+            return null;
         }
-        
-        OkDialy okDialy = new OkDialy();
-        okDialy.setDialyDate(dialyDate);
+        Date dialyDate = asDate("okDialyDate", Const.DATE_FORMAT);
+        OkDialy okDialy = getDialy(dialyDate);
         okDialy.setItems(items);
-        okDialy.setUser(user);
         okDialyDao.makePersistent(okDialy);
+
+        return null;
+    }
+    
+    private OkDialy getDialy(Date dialyDate) {
+        User user = UserServiceUtil.getCurrentUser();
+        OkDialy okDialy = okDialyDao.find(user, dialyDate);
+        if (okDialy == null) {
+            okDialy = new OkDialy();
+            okDialy.setUser(user);
+            okDialy.setDialyDate(dialyDate);
+        }
+        return okDialy;
     }
     
     private List<String> createItemsFromRequest() {

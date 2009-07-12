@@ -3,78 +3,134 @@
 		  xmlns:col="shm.circleoflife.*">
 
 	<col:ColCtrl id="ctrl" graph="{graph}"/>
-	<mx:HBox>
-		<mx:Form id="myForm">
-			<!--
-				 <mx:FormHeading label="ラベルです"/>
-			-->
+	<mx:ArrayCollection id="genre">
+		<mx:String>仕事・キャリア</mx:String>
+		<mx:String>お金・経済</mx:String>
+		<mx:String>健康</mx:String>
+		<mx:String>家族・パートナー</mx:String>
+		<mx:String>人間関係</mx:String>
+		<mx:String>学び・自己啓発</mx:String>
+		<mx:String>遊び・余暇</mx:String>
+		<mx:String>物理的環境</mx:String>
+	</mx:ArrayCollection>
+	<mx:VBox>
+		<mx:Text text="前口上"/>
+		<mx:HBox>
+			<mx:Form id="myForm">
+				<mx:FormItem label="{genre.getItemAt(0)}">
+					<mx:HBox>
+						<mx:HSlider id="elem1" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem1.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
 
-			<mx:FormItem label="仕事・キャリア">
-				<mx:HBox>
-					<mx:HSlider id="elem1" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem1.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
+				<mx:FormItem label="{genre.getItemAt(1)}">
+					<mx:HBox>
+						<mx:HSlider id="elem2" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem2.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
+				<mx:FormItem label="{genre.getItemAt(2)}">
+					<mx:HBox>
+						<mx:HSlider id="elem3" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem3.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
+				<mx:FormItem label="{genre.getItemAt(3)}">
+					<mx:HBox>
+						<mx:HSlider id="elem4" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem4.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
+				<mx:FormItem label="{genre.getItemAt(4)}">
+					<mx:HBox>
+						<mx:HSlider id="elem5" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem5.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
+				<mx:FormItem label="{genre.getItemAt(5)}">
+					<mx:HBox>
+						<mx:HSlider id="elem6" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem6.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
+				<mx:FormItem label="{genre.getItemAt(6)}">
+					<mx:HBox>
+						<mx:HSlider id="elem7" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem7.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
+				<mx:FormItem label="{genre.getItemAt(7)}">
+					<mx:HBox>
+						<mx:HSlider id="elem8" maximum="10" minimum="0" value="0" tickInterval="1"
+									snapInterval="1" labels="['0, '10']" width="70"
+									liveDragging="true"/>
+						<mx:Text width="30" text="{elem8.value}"/>
+					</mx:HBox>
+				</mx:FormItem>
+				<mx:FormItem>
+					<mx:Button label="リセット" id="resetButton" click="onResetButtonClicked(event)"/>
+				</mx:FormItem>
+			</mx:Form>
 
-			<mx:FormItem label="お金・経済">
-				<mx:HBox>
-					<mx:HSlider id="elem2" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem2.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
-			<mx:FormItem label="健康        ">
-				<mx:HBox>
-					<mx:HSlider id="elem3" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem3.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
-			<mx:FormItem label="家族・パートナー">
-				<mx:HBox>
-					<mx:HSlider id="elem4" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem4.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
-			<mx:FormItem label="人間関係">
-				<mx:HBox>
-					<mx:HSlider id="elem5" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem5.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
-			<mx:FormItem label="学び・自己啓発">
-				<mx:HBox>
-					<mx:HSlider id="elem6" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem6.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
-			<mx:FormItem label="遊び・余暇">
-				<mx:HBox>
-					<mx:HSlider id="elem7" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem7.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
-			<mx:FormItem label="物理的環境">
-				<mx:HBox>
-					<mx:HSlider id="elem8" maximum="10" minimum="0" value="0" tickInterval="1"
-								snapInterval="1" labels="['0, '10']" width="70" liveDragging="true"/>
-					<mx:Text width="30" text="{elem8.value}"/>
-				</mx:HBox>
-			</mx:FormItem>
+			<col:MiniGraph id="graph" width="240" height="240" horizontalScrollPolicy="off"
+						   verticalScrollPolicy="off"/>
 
-			<mx:FormItem>
-				<mx:Button label="リセット" id="resetButton" click="onResetButtonClicked(event)"/>
-			</mx:FormItem>
+		</mx:HBox>
 
-		</mx:Form>
-		<col:MiniGraph id="graph" width="240" height="240" horizontalScrollPolicy="off"
-					   verticalScrollPolicy="off"/>
-	</mx:HBox>
+		<mx:HBox>
+			<mx:VBox>
+				<mx:Label text="満足度を上げたい項目は？"/>
+				<mx:ComboBox id="mostImportant" dataProvider="{genre}"/>
+			</mx:VBox>
+			<mx:Spacer width="100%"/>
+			<mx:VBox>
+				<mx:Label text="その為に何をしたらいいですか？"/>
+				<mx:TextArea id="nextAction" width="350" height="50"/>
+			</mx:VBox>
+		</mx:HBox>
+		<mx:HBox>
+		<mx:Button label="保存" id="saveButton" click="saveService.send()"/>
+		<mx:Label text="最終更新日 "/>
+		<mx:Text id="lastUpdate"/>			
+		</mx:HBox>
+	</mx:VBox>
+	
+	
+	<mx:HTTPService id="saveService" url="/col/save" method="post" showBusyCursor="true">
+		<mx:request>
+			<score>{elem1.value}</score>
+			<score>{elem2.value}</score>
+			<score>{elem3.value}</score>
+			<score>{elem4.value}</score>
+			<score>{elem5.value}</score>
+			<score>{elem6.value}</score>
+			<score>{elem7.value}</score>
+			<score>{elem8.value}</score>
+			<mostImportant>{mostImportant.selectedIndex}</mostImportant>
+			<nextAction>{nextAction.text}</nextAction>
+		</mx:request>
+	</mx:HTTPService>
+	
+	<mx:HTTPService id="selectService" url="/col/select" method="post" showBusyCursor="true"
+		result="ctrl.onSelectCompleted(event)"/>
+		
+
+		
 	<mx:Script>
 		<![CDATA[
 			private function onResetButtonClicked(event:MouseEvent):void {

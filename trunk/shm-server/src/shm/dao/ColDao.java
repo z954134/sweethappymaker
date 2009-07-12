@@ -1,7 +1,5 @@
 package shm.dao;
 
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -34,13 +32,8 @@ public class ColDao extends MyGenericDao<Col> {
         return new SelectQuery<Col>(pm, m.getModelClass());
     }
 
-    public List<Col> findAll(User user) {
-        return from().where(m.user.eq(user)).getResultList();
+    public Col find(User user) {
+        return from().where(m.user.eq(user)).getSingleResult();
     }
 
-    public Col find(User user, Date date) {
-        Col col =
-            from().where(m.user.eq(user), m.date.eq(date)).getSingleResult();
-        return col;
-    }
 }

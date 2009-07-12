@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*" width="100%">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:shm="shm.*" width="100%">
 
 	<shm:HeaderCtrl id="ctrl"/>
 
@@ -10,17 +10,32 @@
 		]]>
 	</mx:Script>
 
-	<mx:VBox width="100%">
-		<mx:HBox width="100%">
-			<mx:LinkBar dataProvider="{body.viewStack}" disabledColor="#555F5F"/>
-			<mx:Spacer width="100%"/>
-			<mx:Label text="ようこそ"/>
-			<mx:Text id="loginUserText" text="{loginUserService.lastResult.loginUser}"
-					 fontWeight="bold"/>
-			<mx:Label text="さん"/>
-			<mx:Button id="loginoutButton" label="ログイン" click="ctrl.onLoginOutButttonClicked(event)"/>
-		</mx:HBox>
-	</mx:VBox>
+
+	<mx:HBox width="100%">
+		<!--
+			 <mx:MenuBar labelField="@label" cornerRadius="5" alpha="1.0">
+			 <mx:XMLList>
+			 <menuitem label="これは何？"/>
+			 <menuitem label="人生の輪"/>
+			 <menuitem label="OK日記">
+			 <menuitem label="編集"/>
+			 <menuitem label="今までの一覧"/>
+			 </menuitem>
+			 </mx:XMLList>
+			 </mx:MenuBar>
+		-->
+
+		<mx:LinkBar dataProvider="{body.viewStack}" disabledColor="#555F5F"/>
+
+		<mx:Spacer width="100%"/>
+
+		<mx:Label text="ようこそ"/>
+		<mx:Text id="loginUserText" text="{loginUserService.lastResult.loginUser}" fontWeight="bold"/>
+		<mx:Label text="さん"/>
+
+		<mx:Button id="loginoutButton" label="ログイン" click="ctrl.onLoginOutButttonClicked(event)"/>
+	</mx:HBox>
+
 
 
 	<mx:Model id="urlModel">
@@ -45,4 +60,4 @@
 			<mx:SetProperty target="{loginoutButton}" name="label" value="ログイン"/>
 		</mx:State>
 	</mx:states>
-</mx:Panel>
+</mx:Canvas>

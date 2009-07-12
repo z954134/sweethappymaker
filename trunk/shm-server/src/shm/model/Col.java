@@ -16,12 +16,16 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Version;
 import javax.jdo.annotations.VersionStrategy;
 
+import shm.common.Utils;
+
 import com.google.appengine.api.users.User;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
 public class Col implements Serializable {
 
+    private static final int MAX_SIZE = 8;
+    
     private static final long serialVersionUID = 1L;
 
     @SuppressWarnings("unused")
@@ -39,10 +43,15 @@ public class Col implements Serializable {
     private List<Integer> scores;
     
     @Persistent
-    private Date date;
+    private Date lastUpdate;
+    
+    @Persistent
+    private Integer mostImportant;
+    
+    @Persistent
+    private String nextAction;
     
     public Col() {
-        setScores(new ArrayList<Integer>(10));
     }
     
     /**
@@ -69,19 +78,43 @@ public class Col implements Serializable {
     }
     
     public List<Integer> getScores() {
-        return scores;
+        return scores == null ? emptyScores() : scores;
     }
 
     public void setScores(List<Integer> scores) {
         this.scores = scores;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setLastUpdate(Date date) {
+        this.lastUpdate = date;
+    }
+    
+    public void setLastUpdate() {
+        setLastUpdate(new Date());
+    }
+
+    public Integer getMostImportant() {
+        return mostImportant == null ? new Integer(0) : mostImportant;
+    }
+
+    public void setMostImportant(Integer mostImportant) {
+        this.mostImportant = mostImportant;
+    }
+
+    public String getNextAction() {
+        return nextAction == null ? "" : nextAction;
+    }
+
+    public void setNextAction(String nextAction) {
+        this.nextAction = nextAction;
+    }
+    
+    public String getLastUpdateText() {
+        return lastUpdate == null ? "" : Utils.toString(lastUpdate);
     }
 
     /**
@@ -89,5 +122,13 @@ public class Col implements Serializable {
      */
     public long getVersion() {
         return (Long) JDOHelper.getVersion(this);
+    }
+    
+    private List<Integer> emptyScores() {
+        List<Integer> s = new ArrayList<Integer>(MAX_SIZE);
+        for (int i = 0; i < MAX_SIZE; i++) {
+            s.add(new Integer(0));
+        }
+        return s;
     }
 }

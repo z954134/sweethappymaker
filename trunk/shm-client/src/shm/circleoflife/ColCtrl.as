@@ -1,37 +1,33 @@
 package shm.circleoflife {
+
 	import flash.events.Event;
 	
+	import mx.collections.ArrayCollection;
 	import mx.controls.HSlider;
 	import mx.controls.sliderClasses.Slider;
-	import mx.core.Application;
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	import mx.events.SliderEvent;
+	import mx.rpc.events.ResultEvent;
 	
 	import shm.common.UICtrlBase;
 
 	public class ColCtrl extends UICtrlBase {
-		private var view:ColPanel;
 
 		public var graph:MiniGraph;
+		private var view:ColPanel;
 
-		public function reset(event:Event):void {
-			for (var i:int = 1; i <= 8; i++) {
-				var slider:HSlider = view['elem' + i] as HSlider;
-				if (slider)	slider.value = 0;
+		public function onSelectCompleted(event:ResultEvent):void {
+			var col:Object =event.result.col;
+			var score:ArrayCollection = col.score as ArrayCollection;
+			for (var i:int = 0; i < score.length;i++) {
+				var slider:HSlider = view['elem' + (i + 1)] as HSlider;
+				var s:Number = new Number(score.getItemAt(i));
+				slider.value = s;
 			}
-		}
-
-
-		protected override function doInitialize(component:UIComponent, id:String):void {
-			view = ColPanel(component);
-		}
-
-		protected override function onCreationCompleted(event:FlexEvent):void {
-			for (var i:int = 1; i <= 8; i++) {
-				var slider:HSlider = view['elem' + i] as HSlider;
-				slider.addEventListener(SliderEvent.CHANGE, onSliderChanged);
-			}
+			view.mostImportant.selectedIndex = col.mostImportant;
+			view.nextAction.text = col.nextAction;
+			view.lastUpdate.text = col.lastUpdate;
 		}
 
 		public function onSliderChanged(event:SliderEvent):void {
@@ -42,5 +38,26 @@ package shm.circleoflife {
 			graph.ctrl.draw(idx, score);
 
 		}
+
+		public function reset(event:Event):void {
+			for (var i:int = 1; i <= 8; i++) {
+				var slider:HSlider = view['elem' + i] as HSlider;
+				if (slider)	slider.value = 0;
+			}
+		}
+
+
+		override protected  function doInitialize(component:UIComponent, id:String):void {
+			view = ColPanel(component);
+		}
+
+		override protected  function onCreationCompleted(event:FlexEvent):void {
+			for (var i:int = 1; i <= 8; i++) {
+				var slider:HSlider = view['elem' + i] as HSlider;
+				slider.addEventListener(SliderEvent.CHANGE, onSliderChanged);
+			}
+			view.selectService.send();
+		}
+
 	}
 }

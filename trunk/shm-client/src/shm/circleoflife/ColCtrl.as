@@ -24,6 +24,7 @@ package shm.circleoflife {
 				var slider:HSlider = view['elem' + (i + 1)] as HSlider;
 				var s:Number = new Number(score.getItemAt(i));
 				slider.value = s;
+				graph.ctrl.draw(i + 1, s);
 			}
 			view.mostImportant.selectedIndex = col.mostImportant;
 			view.nextAction.text = col.nextAction;

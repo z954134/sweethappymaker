@@ -2,6 +2,7 @@ package shm.common;
 
 import static java.util.Calendar.DAY_OF_MONTH;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -44,5 +45,14 @@ public final class Utils {
         Calendar c = toCalendar(orig);
         c.set(DAY_OF_MONTH, c.getActualMaximum(DAY_OF_MONTH));
         return c.getTime();        
+    }
+    
+    public static String convertIfNull(String orig) {
+        return orig == null ? "" : orig;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static <T> T convertIfNull(T orig) {
+        return (T) (orig == null ? new ArrayList<T>(0) : orig);
     }
 }

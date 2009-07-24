@@ -1,8 +1,8 @@
 package shm.okdialy {
 	import flash.events.Event;
-	import flash.events.MouseEvent;
 	
 	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
 	import mx.core.UIComponent;
 	import mx.events.CalendarLayoutChangeEvent;
 	import mx.events.FlexEvent;
@@ -35,6 +35,8 @@ package shm.okdialy {
 			view.addEventListener(OkDialyEvent.LOAD_REQUIRED, onLoadRequired);
 			view.hintService.send();
 			view.monthlyListService.send();
+			select(dateFormatter.format(new Date()));
+			
 		}
 
 		public function onHintCompleted(event:ResultEvent):void {
@@ -42,6 +44,11 @@ package shm.okdialy {
 			view.previousHintKey = hint.key;
 			view.hintText.text = hint.value;
 		}
+		
+		public function onSaveCompleted(event:ResultEvent):void {
+			Alert.show("保存しました。");
+		}		
+		
 
 		public function onDateChooserChanged(event:CalendarLayoutChangeEvent):void {
 			var selected:Date = view.dateChooser.selectedDate;

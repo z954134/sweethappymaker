@@ -11,5 +11,16 @@
 	<mx:Image id="score8" y="43" scaleX="0.5" scaleY="0.5" x="44.6" rotation="315"/>
 
 	<circleoflife:GraphCtrl id="ctrl"/>
+	<mx:Label x="135.6" y="25" text="仕事・"/>
+	<mx:Label x="135.6" y="40" text="キャリア"/>
+	<mx:Label x="178.4" y="92" text="お金・経済"/>
+	<mx:Label x="197.5" y="152" text="健康"/>
+	<mx:Label x="135.6" y="192.5" text="家族・"/>
+	<mx:Label x="135.6" y="205.5" text="パートナー"/>
+	<mx:Label x="66.5" y="192.5" text="人間関係"/>
+	<mx:Label x="25" y="140" text="学び・"/>
+	<mx:Label x="24" y="152" text="自己啓発"/>
+	<mx:Label x="25" y="92" text="遊び・余暇"/>
+	<mx:Label x="64.6" y="40" text="物理的環境"/>
 
 </mx:Canvas>

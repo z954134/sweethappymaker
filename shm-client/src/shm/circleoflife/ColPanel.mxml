@@ -111,7 +111,8 @@
 	</mx:VBox>
 	
 	
-	<mx:HTTPService id="saveService" url="/col/save" method="post" showBusyCursor="true">
+	<mx:HTTPService id="saveService" url="/col/save" method="post" showBusyCursor="true"
+		result="ctrl.onSaveCompleted(event)">
 		<mx:request>
 			<score>{elem1.value}</score>
 			<score>{elem2.value}</score>

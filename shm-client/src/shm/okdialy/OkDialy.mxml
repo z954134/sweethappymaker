@@ -3,11 +3,13 @@
 		  xmlns:okd="shm.okdialy.*">
 
 	<okd:OkDialyCtrl id="ctrl"/>
-	<mx:TabNavigator id="okTab" width="100%" height="100%">
+<!--	<mx:TabNavigator id="okTab" width="100%" height="100%">
+-->
 		<okd:DailyInputForm id="okForm" label="編集"/>
+<!--		
 		<okd:OkDialyList id="okList" label="今までの一覧"/>
 
 	</mx:TabNavigator>
-
+-->
 
 </mx:Panel>

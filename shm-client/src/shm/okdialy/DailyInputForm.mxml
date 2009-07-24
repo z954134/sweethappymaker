@@ -36,15 +36,16 @@
 		</mx:VBox>
 	</mx:HBox>
 
-	<mx:HTTPService id="selectService" url="/okdialy/select" method="post" showBusyCursor="true"
-					result="ctrl.onSelectCompleted(event)">
+	<mx:HTTPService id="selectService" url="/okdialy/select" method="post" 
+		showBusyCursor="true" result="ctrl.onSelectCompleted(event)">
 		<mx:request>
 			<dialyDate>{okDialyDateText.text}</dialyDate>
 		</mx:request>
 	</mx:HTTPService>
 
 
-	<mx:HTTPService id="saveService" url="/okdialy/save" method="post" showBusyCursor="true">
+	<mx:HTTPService id="saveService" url="/okdialy/save" method="post" 
+		showBusyCursor="true" result="ctrl.onSaveCompleted(event)">
 		<mx:request>
 			<okDialyDate>{okDialyDateText.text}</okDialyDate>
 			<item>{items.getItemAt(0).value}</item>
@@ -64,9 +65,6 @@
 		<![CDATA[
 			import mx.events.DataGridEvent;
 			import mx.collections.ArrayCollection;
-
-
-
 
 			[Bindable]
 			public var previousHintKey:String = "";

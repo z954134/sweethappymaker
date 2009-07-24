@@ -8,7 +8,7 @@ public class SaveControllerTest extends JDOControllerTestCase {
         start("/col/save");
         SaveController controller = getController();
         assertNotNull(controller);
-        assertTrue(isRedirect());
-        assertEquals("/col/", getNextPath());
+        assertFalse(isRedirect());
+        assertNull(getNextPath());
     }
 }

@@ -17,11 +17,11 @@ package shm.okdialy {
 
 		protected override function onCreationCompleted(event:FlexEvent):void {
 			view.okForm.initialize();
-			view.okList.addEventListener(OkDialyEvent.LOAD_REQUIRED, onLoadRequired);
+			//view.okList.addEventListener(OkDialyEvent.LOAD_REQUIRED, onLoadRequired);
 		}
 
 		private function onLoadRequired(event:OkDialyEvent):void {
-			view.okTab.selectedChild = view.okForm;
+			//view.okTab.selectedChild = view.okForm;
 			// TODO イベントの伝播に失敗するので無理やり
 			view.okForm.ctrl.onLoadRequired(event);
 		}

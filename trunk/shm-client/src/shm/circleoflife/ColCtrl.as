@@ -3,6 +3,7 @@ package shm.circleoflife {
 	import flash.events.Event;
 	
 	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
 	import mx.controls.HSlider;
 	import mx.controls.sliderClasses.Slider;
 	import mx.core.UIComponent;
@@ -45,6 +46,11 @@ package shm.circleoflife {
 				var slider:HSlider = view['elem' + i] as HSlider;
 				if (slider)	slider.value = 0;
 			}
+		}
+
+		public function onSaveCompleted(event:ResultEvent):void {
+			Alert.show("保存しました。");
+			view.selectService.send();
 		}
 
 

@@ -2,7 +2,6 @@ package shm.controller.okdialy;
 
 import java.util.List;
 
-import shm.common.MyController;
 import shm.common.Utils;
 import shm.common.user.MockUserService;
 import shm.model.OkDialy;
@@ -18,7 +17,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
     public void setUp() throws Exception {
         super.setUp();
         deleteAllInTx(OkDialy.class);
-
+        assertEquals(0, count(OkDialy.class));
         OkDialy d = new OkDialy();
         d.setDialyDate(Utils.toDate("2009/01/01"));
         d.addItem("あああ");
@@ -26,7 +25,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         User user = new User("aaa@gmail.com", "gmail.com");
         d.setUser(user);
         makePersistentInTx(d);
-
+        assertEquals(1, count(OkDialy.class));
         okDialyKey = d.getKey();
         MockUserService mus = new MockUserService(user);
         mus.register();
@@ -56,7 +55,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         request.setParameter("item", new String[] { "aaa", "bbb", "ccc" });
 
         start("/okdialy/save");
-        MyController controller = getController();
+        SaveController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertNull(getNextPath());

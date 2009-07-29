@@ -11,9 +11,11 @@ public class DeleteControllerTest extends MyJDOControllerTestCase {
     public void setUp() throws Exception {
         super.setUp();
         deleteAllInTx(Member.class);
+        assertEquals(0, count(Member.class));
         member = new Member();
         member.setMemberId("aaa");
         makePersistentInTx(member);
+        assertEquals(1, count(Member.class));
     }
 
     public void testRun() throws Exception {

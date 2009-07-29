@@ -13,19 +13,21 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        deleteAllInTx(Member.class);
-        
-        Member member = new Member();
-        member.setMemberId("aaa");
-        member.setUser(new User("aaa@gmail.com", "gmail.com"));
-        makePersistentInTx(member);
 
-        MockUserService mus = new MockUserService("aaa@gmail.com", "gmail.com", false, true);
-        mus.register();
         
     }
     
     public void testRun() throws Exception {
+        deleteAllInTx(Member.class);
+        assertEquals(0, count(Member.class));
+        Member member = new Member();
+        member.setMemberId("aaa");
+        member.setUser(new User("aaa@gmail.com", "gmail.com"));
+        makePersistentInTx(member);
+        assertEquals(1, count(Member.class));
+        
+        MockUserService mus = new MockUserService("aaa@gmail.com", "gmail.com", false, true);
+        mus.register();
         
         start("/member/select");
         SelectController controller = getController();

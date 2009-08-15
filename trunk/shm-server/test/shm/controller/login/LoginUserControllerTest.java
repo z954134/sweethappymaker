@@ -9,7 +9,7 @@ public class LoginUserControllerTest extends MyJDOControllerTestCase {
         LoginUserController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/login/loginUser.jsp", getNextPath());
+        assertEquals("/login/loginUser.jsp", getDestinationPath());
         assertEquals("GUEST", asString("loginUser"));
     }
 }

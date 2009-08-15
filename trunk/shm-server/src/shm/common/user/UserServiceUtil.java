@@ -8,7 +8,6 @@ public class UserServiceUtil {
     private static final UserServiceFactory DEFAULT_FACTORY = new GoogleUserServiceFactory();
     private static UserServiceFactory factoryInstance = DEFAULT_FACTORY;
 
-    private static final User GUEST = new User("GUEST@gmail.com", "gmail.com"); 
     
     public static UserService getUserService() {
         return factoryInstance.getUserService();
@@ -16,10 +15,11 @@ public class UserServiceUtil {
     
     public static User getCurrentUser() {
         User user = getUserService().getCurrentUser();
-        if (user == null) {
-            user = GUEST;
-        }
         return user;
+    }
+    
+    public static boolean isLoggedIn() {
+        return getCurrentUser() != null;
     }
     
     public static void resetUserServiceFactory() {

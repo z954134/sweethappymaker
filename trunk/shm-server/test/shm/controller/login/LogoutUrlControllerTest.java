@@ -9,7 +9,7 @@ public class LogoutUrlControllerTest extends JDOControllerTestCase {
         LogoutUrlController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/login/logoutUrl.jsp", getNextPath());
+        assertEquals("/login/logoutUrl.jsp", getDestinationPath());
         
         assertNotNull(requestScope("logoutUrl"));
     }

@@ -28,7 +28,7 @@ public class ListControllerTest extends MyJDOControllerTestCase {
         ListController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/member/list.jsp", getNextPath());
+        assertEquals("/member/list.jsp", getDestinationPath());
     }
 
 }

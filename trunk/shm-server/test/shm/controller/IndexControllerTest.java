@@ -10,6 +10,6 @@ public class IndexControllerTest extends ControllerTestCase {
         IndexController controller = getController();
         assertNotNull(controller);
         assertTrue(isRedirect());
-        assertEquals("/flex-bin/main.html", getNextPath());
+        assertEquals("/flex-bin/main.html", getDestinationPath());
     }
 }

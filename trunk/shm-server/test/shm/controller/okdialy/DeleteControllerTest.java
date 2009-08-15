@@ -37,7 +37,7 @@ public class DeleteControllerTest extends MyJDOControllerTestCase {
         DeleteController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertNull(getNextPath());
+        assertNull(getDestinationPath());
         assertEquals(0, count(OkDialy.class));
     }
 }

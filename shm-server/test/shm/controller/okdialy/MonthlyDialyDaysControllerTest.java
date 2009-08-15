@@ -66,7 +66,7 @@ public class MonthlyDialyDaysControllerTest extends MyJDOControllerTestCase {
         MonthlyDialyDaysController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/okdialy/monthlyDialyDays.jsp", getNextPath());
+        assertEquals("/okdialy/monthlyDialyDays.jsp", getDestinationPath());
         
         List<String> actual = requestScope("monthlyDialyDays");
         assertEquals(2, actual.size());

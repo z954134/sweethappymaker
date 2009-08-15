@@ -1,7 +1,5 @@
 package shm.model;
 
-import java.util.List;
-
 import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
@@ -81,5 +79,8 @@ public class Member {
     public boolean isValidPassword(String password) {
         return getPassword().equals(password);
     }
+    
+    public boolean isGoogleUser() {
+        return getUser() != null;
+    }
 }    
-

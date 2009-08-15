@@ -33,7 +33,7 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         SelectController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/member/select.jsp", getNextPath());
+        assertEquals("/member/select.jsp", getDestinationPath());
         
         BeanMap actual = requestScope("member");
         assertEquals("aaa", actual.get("memberId"));

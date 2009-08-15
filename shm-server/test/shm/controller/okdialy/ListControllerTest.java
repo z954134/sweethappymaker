@@ -40,7 +40,7 @@ public class ListControllerTest extends MyJDOControllerTestCase {
         ListController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/okdialy/list.jsp", getNextPath());
+        assertEquals("/okdialy/list.jsp", getDestinationPath());
         
         List<OkDialy> actual = requestScope("okDialyList");
         assertNotNull(actual);

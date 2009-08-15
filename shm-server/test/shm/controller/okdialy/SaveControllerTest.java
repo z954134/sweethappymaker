@@ -40,7 +40,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         SaveController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertNull(getNextPath());
+        assertNull(getDestinationPath());
         assertEquals(2, count(OkDialy.class));
         tx.begin();
         OkDialy stored = pm.getObjectById(OkDialy.class, okDialyKey);
@@ -58,7 +58,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         SaveController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertNull(getNextPath());
+        assertNull(getDestinationPath());
         assertEquals(1, count(OkDialy.class));
         tx.begin();
         OkDialy actual = pm.getObjectById(OkDialy.class, okDialyKey);

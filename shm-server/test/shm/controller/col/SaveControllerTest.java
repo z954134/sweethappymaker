@@ -9,6 +9,6 @@ public class SaveControllerTest extends JDOControllerTestCase {
         SaveController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertNull(getNextPath());
+        assertNull(getDestinationPath());
     }
 }

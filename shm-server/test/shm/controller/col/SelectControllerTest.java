@@ -9,6 +9,6 @@ public class SelectControllerTest extends JDOControllerTestCase {
         SelectController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/col/select.jsp", getNextPath());
+        assertEquals("/col/select.jsp", getDestinationPath());
     }
 }

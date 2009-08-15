@@ -12,7 +12,7 @@ public class HintControllerTest extends MyJDOControllerTestCase {
         HintController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/okdialy/hint.jsp", getNextPath());
+        assertEquals("/okdialy/hint.jsp", getDestinationPath());
         assertNotNull(requestScope("hint"));
         assertNotNull(requestScope("hintKey"));
         assertFalse("hint.001".equals(requestScope("hintKey")));

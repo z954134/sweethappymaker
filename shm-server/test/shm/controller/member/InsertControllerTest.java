@@ -23,7 +23,7 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
         InsertController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/member/success.jsp", getNextPath());
+        assertEquals("/member/success.jsp", getDestinationPath());
         assertEquals(1, count(Member.class));
     }
     
@@ -37,7 +37,7 @@ public class InsertControllerTest extends MyJDOControllerTestCase {
         param("email", "pass");
         start("/member/insert");
         assertFalse(isRedirect());
-        assertEquals("/member/failure.jsp", getNextPath());
+        assertEquals("/member/failure.jsp", getDestinationPath());
         assertEquals(1, count(Member.class));
         List<String> messageList = requestScope("messageList");
         assertEquals(1, messageList.size());

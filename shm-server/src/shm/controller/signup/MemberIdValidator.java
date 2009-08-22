@@ -14,15 +14,14 @@ public class MemberIdValidator extends SingleItemValidator {
     public MemberIdValidator(String message) {
         super(message);
     }
-    
 
     @Override
     protected boolean isValid(Object param) {
-      MemberDao dao = new MemberDao();      
-      String memberId = param.toString();
-      return !dao.exists(memberId);
+        MemberDao dao = new MemberDao();
+        String memberId = param.toString();
+        return !dao.exists(memberId);
     }
-    
+
     @Override
     protected String getDefaultMessage(Object param, String name) {
         return ApplicationMessage.get("validator.memberId", param);

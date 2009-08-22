@@ -1,14 +1,19 @@
 package shm.controller.signup;
 
-import org.slim3.tester.JDOControllerTestCase;
+import shm.common.user.MockUserService;
+import shm.test.MyJDOControllerTestCase;
 
-public class RegisterIdControllerTest extends JDOControllerTestCase {
+public class RegisterIdControllerTest extends MyJDOControllerTestCase {
 
     public void testRun() throws Exception {
+        MockUserService mock = new MockUserService("aaa", "gmail.com");
+        mock.register();
+        requestScope("memberId", "aaa");
+        
         start("/signup/registerId");
         RegisterIdController controller = getController();
         assertNotNull(controller);
-        assertFalse(isRedirect());
-        assertEquals("/signup/registerId.jsp", getDestinationPath());
+        assertTrue(isRedirect());
+        assertEquals("signup.jsp", getDestinationPath());
     }
 }

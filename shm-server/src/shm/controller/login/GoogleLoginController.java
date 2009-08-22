@@ -1,7 +1,6 @@
 package shm.controller.login;
 
 import java.util.logging.Logger;
-
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
@@ -11,21 +10,26 @@ import shm.model.Member;
 
 import com.google.appengine.api.users.User;
 
-public class GLoginController extends Controller {
+public class GoogleLoginController extends Controller {
 
+    
+    
     @SuppressWarnings("unused")
-    private static final Logger logger = Logger.getLogger(GLoginController.class.getName());
+    private static final Logger logger = Logger.getLogger(GoogleLoginController.class.getName());
 
     @Override
     public Navigation run() {
         User user = UserServiceUtil.getCurrentUser();
         if (user == null) {
-            return redirect("");
+            String loginUrl = UserServiceUtil.getUserService().createLoginURL("/login/GoogleLogin");
+            return redirect(loginUrl);
         }
         
         MemberDao dao = new MemberDao();
         Member member = dao.findMember(user);
-        
+        if (member == null) {
+            return forward("/signup/registerId");
+        }
         sessionScope("memberId", member.getMemberId());
         
         return redirect(basePath);

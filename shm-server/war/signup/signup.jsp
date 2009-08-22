@@ -1,7 +1,4 @@
 <%@page pageEncoding="UTF-8" isELIgnored="false"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <html>
 <head>
@@ -10,6 +7,6 @@
 <link rel="stylesheet" type="text/css" href="/css/global.css" />
 </head>
 <body>
-<a href="${f:url('signup')}">${f:url('signup')}</a>
+
 </body>
 </html>

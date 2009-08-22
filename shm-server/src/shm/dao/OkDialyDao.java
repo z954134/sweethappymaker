@@ -7,7 +7,7 @@ import javax.jdo.PersistenceManager;
 
 import shm.common.Utils;
 import shm.model.OkDialy;
-import shm.model.OkDialyMeta;
+import shm.meta.OkDialyMeta;
 
 import com.google.appengine.api.users.User;
 

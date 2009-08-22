@@ -1,4 +1,4 @@
-package shm.controller.login;
+package shm.cool.filter;
 
 import java.io.IOException;
 
@@ -14,6 +14,7 @@ public class LoginCheckFilter implements Filter {
 
     private static final String MEMBER_ID_KEY = "memberId";
     private String loginUrl;
+
 
     @Override
     public void destroy() {
@@ -32,6 +33,15 @@ public class LoginCheckFilter implements Filter {
             HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
+
+        checkLogin(request, response, chain);
+
+    }
+
+    private void checkLogin(HttpServletRequest request,
+            HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        
         if (isLoggedIn(request)) {
             chain.doFilter(request, response);
         } else {

@@ -15,7 +15,8 @@ public class LoginController extends Controller {
         if (!validate()) {
             return forward("index");
         }
-        
+        String memberId = requestScope("memberId");
+        sessionScope("memberId", memberId);
         return redirect("/");
     }
     

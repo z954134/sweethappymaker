@@ -13,7 +13,7 @@ public class IndexController extends Controller {
 
     @Override
     public Navigation run() {
-        String loginUrl = UserServiceUtil.getUserService().createLoginURL("/");
+        String loginUrl = UserServiceUtil.getUserService().createLoginURL("/login/GoogleLogin");
         requestScope("loginUrl", loginUrl);
         return forward("index.jsp");
     }

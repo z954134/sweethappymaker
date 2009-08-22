@@ -2,22 +2,22 @@ package shm.controller.signup;
 
 import java.util.logging.Logger;
 
-import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Validators;
 
-import com.google.appengine.api.users.User;
-
+import shm.common.MyController;
 import shm.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
 import shm.model.Member;
+
+import com.google.appengine.api.users.User;
 
 /**
  * Google User用のID登録
  * @author Tsuyoshi
  *
  */
-public class RegisterIdController extends Controller {
+public class RegisterIdController extends MyController {
 
     @SuppressWarnings("unused")
     private static final Logger logger = Logger.getLogger(RegisterIdController.class.getName());
@@ -26,7 +26,7 @@ public class RegisterIdController extends Controller {
     private MemberDao dao = new MemberDao();
     
     @Override
-    public Navigation run() {
+    public Navigation runInTx() {
         if (!validate()) {
             return forward("index");
         }
@@ -35,8 +35,9 @@ public class RegisterIdController extends Controller {
         member.setMemberId(asString("memberId"));
         User user = UserServiceUtil.getCurrentUser();
         if (user == null) {
-            String url = UserServiceUtil.getUserService().createLoginURL("/");
-            redirect(url);
+            // ユーザが無い場合（通常ありえない）
+            String url = UserServiceUtil.getUserService().createLoginURL("/login/GoogleLogin");
+            return redirect(url);
         }
         member.setUser(user);
         dao.makePersistent(member);

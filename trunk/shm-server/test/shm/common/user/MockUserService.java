@@ -49,12 +49,12 @@ public class MockUserService implements UserService {
 
     @Override
     public String createLoginURL(String destinationURL) {
-        return "";
+        return destinationURL;
     }
 
     @Override
     public String createLogoutURL(String destinationURL) {
-        return "";
+        return destinationURL;
     }
 
     @Override

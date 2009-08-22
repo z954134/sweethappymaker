@@ -2,7 +2,7 @@ package shm.controller.signup;
 
 import org.slim3.tester.JDOControllerTestCase;
 
-import shm.controller.login.IndexController;
+import shm.controller.signup.IndexController;
 
 public class IndexControllerTest extends JDOControllerTestCase {
 

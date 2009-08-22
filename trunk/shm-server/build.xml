@@ -1,10 +1,5 @@
 <project name="shm-server" default="copy" basedir=".">
-    <property name="ver" value="EA1-SNAPSHOT"/>
-    <property name="srcDir" value="src"/>
-    <property name="testDir" value="test"/>
-    <property name="warDir" value="war"/>
-	<property name="superclassName" value="org.slim3.controller.Controller"/>
-	<property name="testCaseSuperclassName" value="org.slim3.tester.JDOControllerTestCase"/>
+	<property file="build.properties" />
 
 	<path id="classpath">
         <fileset dir="war/WEB-INF/classes">
@@ -46,9 +41,9 @@
     </target>
 
     <target name="gen-model">
-        <input message="Input a model simple name." addproperty="modelSimpleName"/>
-        <gen-model srcdir="${srcDir}" testdir="${testDir}" wardir="${warDir}" simpleName="${modelSimpleName}" modelClassNameProperty="modelClassName"/>
-        <gen-dao srcdir="${srcDir}" testdir="${testDir}" wardir="${warDir}" modelClassName="${modelClassName}"/>
+        <input message="Input a model name. (ex.  Foo -> root.model.Foo,  bar.Foo -> root.model.bar.Foo)" addproperty="modelRelativeClassName"/>
+        <gen-model srcdir="${srcDir}" testdir="${testDir}" wardir="${warDir}" modelRelativeClassName="${modelRelativeClassName}" modelClassNameProperty="modelClassName"/>
+        <gen-dao srcdir="${srcDir}" testdir="${testDir}" wardir="${warDir}" modelRelativeClassName="${modelRelativeClassName}" modelClassName="${modelClassName}"/>
     </target>
 
 </project>

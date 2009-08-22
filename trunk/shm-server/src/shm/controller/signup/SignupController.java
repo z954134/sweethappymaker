@@ -27,7 +27,7 @@ public class SignupController extends Controller {
         m.setPassword(asString("password"));
 
         dao.makePersistent(m);
-        return redirect("signup.jsp");
+        return forward("signup.jsp");
     }
     
     protected boolean validate() {

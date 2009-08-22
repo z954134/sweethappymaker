@@ -7,7 +7,7 @@ import javax.jdo.PersistenceManager;
 import org.slim3.jdo.SelectQuery;
 
 import shm.model.Col;
-import shm.meta.ColMeta;
+import shm.model.ColMeta;
 
 import com.google.appengine.api.users.User;
 

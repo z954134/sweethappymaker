@@ -5,7 +5,7 @@ import javax.jdo.PersistenceManager;
 import com.google.appengine.api.users.User;
 
 import shm.model.Member;
-import shm.meta.MemberMeta;
+import shm.model.MemberMeta;
 
 public class MemberDao extends MyGenericDao<Member> {
 

@@ -1,6 +1,8 @@
 package shm.controller.signup;
 
 import shm.common.user.MockUserService;
+import shm.dao.MemberDao;
+import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 
 public class RegisterIdControllerTest extends MyJDOControllerTestCase {
@@ -15,5 +17,26 @@ public class RegisterIdControllerTest extends MyJDOControllerTestCase {
         assertNotNull(controller);
         assertTrue(isRedirect());
         assertEquals("signup.jsp", getDestinationPath());
+    }
+    
+    public void testDuplicated() throws Exception {
+        deleteAllInTx(Member.class);
+        Member m = new Member();
+        m.setMemberId("aaa");
+        m.setPassword("12345678");
+        makePersistentInTx(m);
+        
+        MemberDao dao = new MemberDao();
+        assertTrue(dao.exists("aaa"));
+        
+        MockUserService mock = new MockUserService("aaa", "gmail.com");
+        mock.register();
+        requestScope("memberId", "aaa");
+        
+        start("/signup/registerId");
+        RegisterIdController controller = getController();
+        assertNotNull(controller);
+        assertFalse(isRedirect());
+        assertEquals("/signup/index.jsp", getDestinationPath());
     }
 }

@@ -8,10 +8,8 @@ import org.slim3.controller.Navigation;
 import org.slim3.util.StringUtil;
 
 import shm.common.Const;
-import shm.common.user.UserServiceUtil;
+import shm.model.Member;
 import shm.model.OkDialy;
-
-import com.google.appengine.api.users.User;
 
 
 public class SaveController extends OkDialyController {
@@ -32,11 +30,11 @@ public class SaveController extends OkDialyController {
     }
     
     private OkDialy getDialy(Date dialyDate) {
-        User user = UserServiceUtil.getCurrentUser();
-        OkDialy okDialy = okDialyDao.find(user, dialyDate);
+        Member member = getMember();
+        OkDialy okDialy = okDialyDao.find(member, dialyDate);
         if (okDialy == null) {
             okDialy = new OkDialy();
-            okDialy.setUser(user);
+            okDialy.setMember(member);
             okDialy.setDialyDate(dialyDate);
         }
         return okDialy;

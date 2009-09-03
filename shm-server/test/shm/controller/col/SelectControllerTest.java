@@ -1,10 +1,12 @@
 package shm.controller.col;
 
-import org.slim3.tester.JDOControllerTestCase;
+import shm.test.MyJDOControllerTestCase;
 
-public class SelectControllerTest extends JDOControllerTestCase {
+public class SelectControllerTest extends MyJDOControllerTestCase {
 
     public void testRun() throws Exception {
+        login("aaa");
+        
         start("/col/select");
         SelectController controller = getController();
         assertNotNull(controller);

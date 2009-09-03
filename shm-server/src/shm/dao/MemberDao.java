@@ -5,7 +5,7 @@ import javax.jdo.PersistenceManager;
 import com.google.appengine.api.users.User;
 
 import shm.model.Member;
-import shm.model.MemberMeta;
+import shm.meta.MemberMeta;
 
 public class MemberDao extends MyGenericDao<Member> {
 
@@ -47,6 +47,12 @@ public class MemberDao extends MyGenericDao<Member> {
         Member m = findMember(memberId);
         return m != null;
     }
+    
+    public boolean exists(User user) {
+        Member m = findMember(user);
+        return m != null;
+    }
+    
     
     public String getKeyByMemberId(String memberId) {
         Member m = findMember(memberId);

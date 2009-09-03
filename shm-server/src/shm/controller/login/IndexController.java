@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
+import com.google.appengine.api.users.UserService;
+
 import shm.common.user.UserServiceUtil;
 
 public class IndexController extends Controller {
@@ -13,8 +15,12 @@ public class IndexController extends Controller {
 
     @Override
     public Navigation run() {
-        String loginUrl = UserServiceUtil.getUserService().createLoginURL("/login/GoogleLogin");
+        UserService userService = UserServiceUtil.getUserService();
+        String loginUrl = userService.createLoginURL("/login/GoogleLogin");
         requestScope("loginUrl", loginUrl);
+        
+        String signupUrl = userService.createLoginURL("/signup/gaccount");
+        requestScope("signupUrl", signupUrl);
         return forward("index.jsp");
     }
 }

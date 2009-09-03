@@ -15,5 +15,7 @@ Password
 <input type="submit" value="Login"/>
 </form>
 <a href="${loginUrl}">Googleアカウントでログイン</a><br>
+<a href="${f:url('/signup')}">サインアップ</a>
+<a href="${signupUrl}">Googleアカウントでサインアップ</a>
 </body>
 </html>

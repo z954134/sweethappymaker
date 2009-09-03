@@ -6,9 +6,12 @@ import org.slim3.tester.JDOControllerTestCase;
 
 import shm.common.Utils;
 import shm.common.user.UserServiceUtil;
+import shm.controller.member.MemberController;
 
 
 public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
+    
+
     
     @Override
     protected void tearDown() throws Exception {
@@ -16,13 +19,16 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
         super.tearDown();
     }
 
+    protected final void login(String memberId) {
+        sessionScope(MemberController.MEMBER_ID_KEY, memberId);
+    }
     /**
      * モデルを削除する。
      * @param modelClasses
      */
     protected final void deleteAllInTx(Class<?>...  modelClasses) {
         tx.begin();
-        deleteAll();
+        deleteAll(modelClasses);
         tx.commit();
     }
     

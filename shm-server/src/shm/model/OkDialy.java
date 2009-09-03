@@ -18,8 +18,6 @@ import org.slim3.util.StringUtil;
 
 import shm.common.Utils;
 
-import com.google.appengine.api.users.User;
-
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
 public class OkDialy {
@@ -37,7 +35,7 @@ public class OkDialy {
     private List<String> items;
     
     @Persistent
-    private User user;
+    private Member member;
     
     public OkDialy() {
         super();
@@ -80,12 +78,13 @@ public class OkDialy {
     }
 
 
-    public User getUser() {
-        return user;
+    public Member getMember() {
+        return member;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setMember(Member member) {
+        this.member = member;
+        member.getOkDialies().add(this);
     }
 
     public int getItemCount() {

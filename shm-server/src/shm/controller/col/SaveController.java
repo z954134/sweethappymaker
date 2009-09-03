@@ -6,14 +6,12 @@ import java.util.logging.Logger;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.MyController;
-import shm.common.user.UserServiceUtil;
+import shm.controller.member.MemberController;
 import shm.dao.ColDao;
 import shm.model.Col;
+import shm.model.Member;
 
-import com.google.appengine.api.users.User;
-
-public class SaveController extends MyController {
+public class SaveController extends MemberController {
 
     private ColDao colDao = new ColDao();
 
@@ -35,11 +33,11 @@ public class SaveController extends MyController {
     }
 
     private Col getCol() {
-        User user = UserServiceUtil.getCurrentUser();
-        Col col = colDao.find(user);
+        Member member = getMember();
+        Col col = colDao.find(member);
         if (col == null) {
             col = new Col();
-            col.setUser(user);
+            col.setMember(member);
         }
         return col;
     }

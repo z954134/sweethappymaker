@@ -3,9 +3,18 @@ package shm.controller.login;
 import org.slim3.controller.validator.Errors;
 import org.slim3.tester.JDOControllerTestCase;
 
+import shm.dao.MemberDao;
+import shm.model.Member;
+
 public class LoginControllerTest extends JDOControllerTestCase {
 
     public void testRun() throws Exception {
+        MemberDao dao = new MemberDao();
+        Member m = new Member();
+        m.setMemberId("aaa");
+        m.setPassword("12345678");
+        dao.makePersistentInTx(m);
+        
         requestScope("memberId", "aaa");
         requestScope("password", "12345678");
         

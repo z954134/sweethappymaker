@@ -1,12 +1,10 @@
 package shm.controller.member;
 
-import org.slim3.util.BeanMap;
-
-import com.google.appengine.api.users.User;
-
 import shm.common.user.MockUserService;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
+
+import com.google.appengine.api.users.User;
 
 public class SelectControllerTest extends MyJDOControllerTestCase {
 
@@ -26,16 +24,16 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         makePersistentInTx(member);
         assertEquals(1, count(Member.class));
         
-        MockUserService mus = new MockUserService("aaa@gmail.com", "gmail.com", false, true);
+        MockUserService mus = new MockUserService("aaa", "gmail.com", false, true);
         mus.register();
-        
+        login("aaa");
         start("/member/select");
         SelectController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertEquals("/member/select.jsp", getDestinationPath());
         
-        BeanMap actual = requestScope("member");
-        assertEquals("aaa", actual.get("memberId"));
+        Member actual = requestScope("member");
+        assertEquals("aaa", actual.getMemberId());
     }
 }

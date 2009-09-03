@@ -18,11 +18,19 @@ public abstract class ValidatorTemplate extends AbstractValidator {
         if (isValid(parameters, name)) {
             return null;
         }
-        if (message == null) {
-            return getDefaultMessage(parameters, name);
-        }
-        return message;
+        String msg = getMessage(parameters, name);
+        return msg;
     }
+    
+    private String getMessage(Map<String, Object> parameters, String name) {
+        String msg = null;
+        msg = message != null ? message : getDefaultMessage(parameters, name);
+        if (msg == null) {
+            throw new IllegalStateException("Can't get message");
+        }
+        return msg;
+    }
+    
     protected abstract String getDefaultMessage(Map<String, Object> parameters, String name); 
 
     protected abstract boolean isValid(Map<String, Object> parameters, String name);

@@ -18,8 +18,6 @@ import javax.jdo.annotations.VersionStrategy;
 
 import shm.common.Utils;
 
-import com.google.appengine.api.users.User;
-
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)
 public class Col implements Serializable {
@@ -37,7 +35,7 @@ public class Col implements Serializable {
     private String key;
 
     @Persistent
-    private User user;
+    private Member member;
     
     @Persistent
     private List<Integer> scores;
@@ -69,12 +67,12 @@ public class Col implements Serializable {
         this.key = key;
     }
 
-    public User getUser() {
-        return user;
+    public Member getMember() {
+        return member;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setMember(Member member) {
+        this.member = member;
     }
     
     public List<Integer> getScores() {

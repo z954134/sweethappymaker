@@ -6,10 +6,8 @@ import java.util.logging.Logger;
 import org.slim3.controller.Navigation;
 
 import shm.common.Utils;
-import shm.common.user.UserServiceUtil;
+import shm.model.Member;
 import shm.model.OkDialy;
-
-import com.google.appengine.api.users.User;
 
 public class DeleteController extends OkDialyController {
 
@@ -18,9 +16,9 @@ public class DeleteController extends OkDialyController {
 
     @Override
     public Navigation runInTx() {
-        User user = UserServiceUtil.getCurrentUser();
+        Member member = getMember();
         Date dialyDate = Utils.toDate(requestScope("okDialyDate"));
-        OkDialy okDialy = okDialyDao.find(user, dialyDate);
+        OkDialy okDialy = okDialyDao.find(member, dialyDate);
         okDialyDao.deletePersistent(okDialy);
         return null;
     }

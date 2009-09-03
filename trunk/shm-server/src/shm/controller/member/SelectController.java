@@ -16,7 +16,7 @@ public class SelectController extends MemberController {
     public Navigation run() {
         begin();
         Member member = getMember();
-        requestScope("member", detachAndCopy(member));
+        requestScope("member", member);
         return forward("select.jsp");
     }
 }

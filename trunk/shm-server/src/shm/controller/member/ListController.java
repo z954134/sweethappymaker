@@ -12,7 +12,7 @@ public class ListController extends MemberController {
     public Navigation runInTx() {
 
         List<Member> memberList = memberDao.findAll();
-        requestScope("memberList", copy(memberList));
+        requestScope("memberList", memberList);
         return forward("list.jsp");
     }
 }

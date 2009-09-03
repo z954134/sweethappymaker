@@ -2,10 +2,9 @@ package shm.controller.okdialy;
 
 import shm.common.Utils;
 import shm.common.user.MockUserService;
+import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
-
-import com.google.appengine.api.users.User;
 
 public class DeleteControllerTest extends MyJDOControllerTestCase {
 
@@ -19,9 +18,9 @@ public class DeleteControllerTest extends MyJDOControllerTestCase {
         d.setDialyDate(Utils.toDate("2009/01/01"));
         d.addItem("あああ");
         d.addItem("いいい");
-        d.setUser(new User("aaa@gmail.com", "gmail.com"));
+        d.setMember(new Member("aaa", "gmail.com"));
         makePersistentInTx(d);
-        
+        login(("aaa"));
 
     }
     

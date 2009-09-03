@@ -34,6 +34,11 @@
 			<param-name>loginUrl</param-name>
 			<param-value>/login</param-value>
 		</init-param>
+		<init-param>
+			<param-name>includes</param-name>
+			<param-value>^/col/.*,^/member/.*,^/okdialy/.*</param-value>
+		</init-param>
+
 	</filter>
 
 
@@ -47,6 +52,13 @@
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+		<filter-mapping>
+		<filter-name>loginCheckFilter</filter-name>
+		<url-pattern>/col/*</url-pattern>
+		<url-pattern>/member/*</url-pattern>
+		<url-pattern>/okdialy/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
 	<filter-mapping>
 		<filter-name>frontController</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -55,13 +67,8 @@
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-	<filter-mapping>
-		<filter-name>loginCheckFilter</filter-name>
-		<url-pattern>/col/*</url-pattern>
-		<url-pattern>/member/*</url-pattern>
-		<url-pattern>/okdialy/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
+
+	
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>

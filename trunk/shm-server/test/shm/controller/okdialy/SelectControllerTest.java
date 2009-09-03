@@ -3,11 +3,10 @@ package shm.controller.okdialy;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slim3.util.BeanMap;
-import org.slim3.util.BeanUtil;
 import org.slim3.util.DateUtil;
 
 import shm.common.user.MockUserService;
+import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
 
@@ -27,7 +26,10 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         items.add("いいこと２");
         okDialy.setItems(items);
         User user = new User("aaa@gmail.com", "gmail.com");
-        okDialy.setUser(user);
+        Member member = new Member("aaa", user);
+        login("aaa");
+        member.setUser(user);
+        okDialy.setMember(member);
         
         makePersistentInTx(okDialy);
 
@@ -43,10 +45,8 @@ public class SelectControllerTest extends MyJDOControllerTestCase {
         assertNotNull(controller);
         assertFalse(isRedirect());
         assertEquals("/okdialy/select.jsp", getDestinationPath());
-        BeanMap map = requestScope("okDialy");
-        assertNotNull(map);
-        OkDialy okDialy = new OkDialy();
-        BeanUtil.copy(map, okDialy);
+        OkDialy okDialy = requestScope("okDialy");
+        assertNotNull(okDialy);
         assertEquals("2009/01/22", okDialy.getDialyDate());
         List<String> items = okDialy.getItems();
         assertEquals(2, items.size());

@@ -4,6 +4,7 @@ import java.util.List;
 
 import shm.common.Utils;
 import shm.common.user.MockUserService;
+import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
 
@@ -23,12 +24,15 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         d.addItem("あああ");
         d.addItem("いいい");
         User user = new User("aaa@gmail.com", "gmail.com");
-        d.setUser(user);
+        Member member = new Member("aaa", user);
+        member.setUser(user);
+        d.setMember(member);
         makePersistentInTx(d);
         assertEquals(1, count(OkDialy.class));
         okDialyKey = d.getKey();
         MockUserService mus = new MockUserService(user);
         mus.register();
+        login("aaa");
     }
 
     public void testInsert() throws Exception {
@@ -45,7 +49,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         tx.begin();
         OkDialy stored = pm.getObjectById(OkDialy.class, okDialyKey);
         assertNotNull(stored);
-        User user = stored.getUser();
+        User user = stored.getMember().getUser();
         assertEquals("aaa@gmail.com", user.getEmail());
     }
 
@@ -69,7 +73,7 @@ public class SaveControllerTest extends MyJDOControllerTestCase {
         assertEquals("bbb", actualItems.get(1));
         assertEquals("ccc", actualItems.get(2));
 
-        User m = actual.getUser();
+        User m = actual.getMember().getUser();
         assertEquals("aaa@gmail.com", m.getEmail());
     }
 }

@@ -6,10 +6,9 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 
 import shm.common.Utils;
+import shm.meta.OkDialyMeta;
+import shm.model.Member;
 import shm.model.OkDialy;
-import shm.model.OkDialyMeta;
-
-import com.google.appengine.api.users.User;
 
 public class OkDialyDao extends MyGenericDao<OkDialy> {
 
@@ -23,31 +22,32 @@ public class OkDialyDao extends MyGenericDao<OkDialy> {
         super(OkDialy.class, pm);
     }
 
-    public OkDialy find(User user, Date dialyDate) {
+    public OkDialy find(Member member, Date dialyDate) {
         OkDialy okDialy =
             from()
-                .where(ok.user.eq(user), ok.dialyDate.eq(dialyDate))
+                .where(ok.member.eq(member), ok.dialyDate.eq(dialyDate))
                 .getSingleResult();
         return okDialy;
     }
 
-    public List<OkDialy> findAll(User user) {
-        List<OkDialy> list = from().where(ok.user.eq(user)).getResultList();
+    public List<OkDialy> findAll(Member member) {
+        Utils.notNull(member, "member");
+        List<OkDialy> list = from().where(ok.member.eq(member)).getResultList();
         return list;
     }
 
-    public List<OkDialy> findByMonth(User user, Date month) {
+    public List<OkDialy> findByMonth(Member member, Date month) {
         Date firstDayOfMonth = Utils.getFirstDayOfMonth(month);
         Date lastDayOfMonth = Utils.getLastDayOfMonth(month);
-        return findByRange(user, firstDayOfMonth, lastDayOfMonth);
+        return findByRange(member, firstDayOfMonth, lastDayOfMonth);
     }
     
-    public List<OkDialy> findByRange(User user, Date from, Date to) {
+    public List<OkDialy> findByRange(Member member, Date from, Date to) {
         checkRange(from, to);
         
         List<OkDialy> list =
             from().where(
-                ok.user.eq(user),
+                ok.member.eq(member),
                 ok.dialyDate.ge(from),
                 ok.dialyDate.le(to)).getResultList();
         return list;

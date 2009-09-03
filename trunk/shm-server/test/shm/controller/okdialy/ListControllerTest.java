@@ -6,6 +6,8 @@ import java.util.List;
 import org.slim3.util.DateUtil;
 
 import shm.common.user.MockUserService;
+import shm.model.Col;
+import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
 
@@ -17,7 +19,7 @@ public class ListControllerTest extends MyJDOControllerTestCase {
     public void setUp() throws Exception {
         super.setUp();
 
-        deleteAllInTx(new Class[] { OkDialy.class });
+        deleteAllInTx(new Class[] { Member.class, OkDialy.class, Col.class });
         
         OkDialy okDialy = new OkDialy();
         okDialy.setDialyDate(DateUtil.toDate("2009-01-22"));
@@ -26,12 +28,15 @@ public class ListControllerTest extends MyJDOControllerTestCase {
         items.add("いいこと２");
         okDialy.setItems(items);
         User user = new User("aaa@gmail.com", "gmail.com");
-        okDialy.setUser(user);
-        makePersistentInTx(okDialy);
+        Member member = new Member("aaa", user);
+        
+        okDialy.setMember(member);
+        makePersistentInTx(member);
 
         MockUserService mus = new MockUserService(user);
         mus.register();
         
+        login("aaa");
     }
     
     public void testRun() throws Exception {

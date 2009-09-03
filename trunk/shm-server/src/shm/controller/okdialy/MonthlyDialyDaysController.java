@@ -9,10 +9,8 @@ import java.util.logging.Logger;
 import org.slim3.controller.Navigation;
 
 import shm.common.Utils;
-import shm.common.user.UserServiceUtil;
+import shm.model.Member;
 import shm.model.OkDialy;
-
-import com.google.appengine.api.users.User;
 
 public class MonthlyDialyDaysController extends OkDialyController {
 
@@ -26,8 +24,8 @@ public class MonthlyDialyDaysController extends OkDialyController {
         int m = asInteger("month");
         Date d = format(y, m);
         
-        User user = UserServiceUtil.getCurrentUser();
-        List<OkDialy> dialyList = okDialyDao.findByMonth(user, d);
+        Member member = getMember();
+        List<OkDialy> dialyList = okDialyDao.findByMonth(member, d);
         List<String> days = new ArrayList<String>(dialyList.size());
         for (OkDialy e: dialyList) {
             days.add(e.getDialyDateText());

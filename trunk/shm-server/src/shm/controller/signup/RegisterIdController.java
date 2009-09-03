@@ -28,7 +28,7 @@ public class RegisterIdController extends MyController {
     @Override
     public Navigation runInTx() {
         if (!validate()) {
-            return forward("index");
+            return forward("gaccount.jsp");
         }
         
         Member member = new Member();

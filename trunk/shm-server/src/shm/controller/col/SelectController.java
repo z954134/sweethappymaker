@@ -3,16 +3,13 @@ package shm.controller.col;
 import java.util.logging.Logger;
 
 import org.slim3.controller.Navigation;
-import org.slim3.util.BeanMap;
 
-import shm.common.MyController;
-import shm.common.user.UserServiceUtil;
+import shm.controller.member.MemberController;
 import shm.dao.ColDao;
 import shm.model.Col;
+import shm.model.Member;
 
-import com.google.appengine.api.users.User;
-
-public class SelectController extends MyController {
+public class SelectController extends MemberController {
 
     private ColDao colDao = new ColDao();
     
@@ -22,14 +19,14 @@ public class SelectController extends MyController {
     @Override
     public Navigation run() {
         begin();
-        User user = UserServiceUtil.getCurrentUser();
+        Member member = getMember();
         
-        Col col = colDao.find(user);
+        Col col = colDao.find(member);
         if (col == null) {
             col = new Col();
         }
-        BeanMap m = detachAndCopy(col);
-        requestScope("col", m);
+        
+        requestScope("col", col);
         return forward("select.jsp");
     }
 }

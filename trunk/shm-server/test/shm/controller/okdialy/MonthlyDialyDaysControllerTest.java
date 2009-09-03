@@ -5,6 +5,7 @@ import java.util.List;
 
 import shm.common.Utils;
 import shm.common.user.MockUserService;
+import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;
 
@@ -19,6 +20,9 @@ public class MonthlyDialyDaysControllerTest extends MyJDOControllerTestCase {
         deleteAllInTx(new Class[] { OkDialy.class });
 
         User user = new User("aaa@gmail.com", "gmail.com");
+        Member member = new Member("aaa", user);
+        login("aaa");
+        
         List<String> items = new ArrayList<String>();
         items.add("いいこと１");
         items.add("いいこと２");
@@ -27,7 +31,7 @@ public class MonthlyDialyDaysControllerTest extends MyJDOControllerTestCase {
             OkDialy okDialy = new OkDialy();
             okDialy.setDialyDate(Utils.toDate("2008/12/31"));
             okDialy.setItems(items);
-            okDialy.setUser(user);
+            okDialy.setMember(member);
             makePersistentInTx(okDialy);
         }
         
@@ -35,21 +39,21 @@ public class MonthlyDialyDaysControllerTest extends MyJDOControllerTestCase {
             OkDialy okDialy = new OkDialy();
             okDialy.setDialyDate(Utils.toDate("2009/01/01"));
             okDialy.setItems(items);
-            okDialy.setUser(user);
+            okDialy.setMember(member);
             makePersistentInTx(okDialy);
         }
         {
             OkDialy okDialy = new OkDialy();
             okDialy.setDialyDate(Utils.toDate("2009/01/31"));
             okDialy.setItems(items);
-            okDialy.setUser(user);
+            okDialy.setMember(member);
             makePersistentInTx(okDialy);
         }
         {
             OkDialy okDialy = new OkDialy();
             okDialy.setDialyDate(Utils.toDate("2009/02/01"));
             okDialy.setItems(items);
-            okDialy.setUser(user);
+            okDialy.setMember(member);
             makePersistentInTx(okDialy);
         }
         

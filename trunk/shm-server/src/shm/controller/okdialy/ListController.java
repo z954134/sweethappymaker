@@ -5,10 +5,8 @@ import java.util.logging.Logger;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.user.UserServiceUtil;
+import shm.model.Member;
 import shm.model.OkDialy;
-
-import com.google.appengine.api.users.User;
 
 public class ListController extends OkDialyController {
 
@@ -18,10 +16,10 @@ public class ListController extends OkDialyController {
     @Override
     public Navigation run() {
         begin();
-        User user = UserServiceUtil.getCurrentUser();
-        List<OkDialy> okDialyList = okDialyDao.findAll(user);
+        Member member = getMember();
+        List<OkDialy> okDialyList = okDialyDao.findAll(member);
         
-        requestScope("okDialyList", detachAndCopy(okDialyList));
+        requestScope("okDialyList", okDialyList);
         return forward("list.jsp");
     }
 }

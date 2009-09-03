@@ -6,10 +6,9 @@ import javax.jdo.PersistenceManager;
 
 import org.slim3.jdo.SelectQuery;
 
+import shm.meta.ColMeta;
 import shm.model.Col;
-import shm.model.ColMeta;
-
-import com.google.appengine.api.users.User;
+import shm.model.Member;
 
 public class ColDao extends MyGenericDao<Col> {
 
@@ -32,8 +31,8 @@ public class ColDao extends MyGenericDao<Col> {
         return new SelectQuery<Col>(pm, m.getModelClass());
     }
 
-    public Col find(User user) {
-        return from().where(m.user.eq(user)).getSingleResult();
+    public Col find(Member member) {
+        return from().where(m.member.eq(member)).getSingleResult();
     }
 
 }

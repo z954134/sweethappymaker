@@ -2,11 +2,11 @@ package shm {
 	import flash.events.MouseEvent;
 	import flash.net.URLRequest;
 	import flash.net.navigateToURL;
-
+	
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
 	import mx.rpc.events.ResultEvent;
-
+	
 	import shm.common.UICtrlBase;
 
 	public class HeaderCtrl extends UICtrlBase {
@@ -25,7 +25,12 @@ package shm {
 		}
 
 		public function onLoginUserLoaded(event:ResultEvent):void {
-			header.loginUserText.text = event.result.loginUser;
+			var loginUser:String = event.result.loginUser;
+			if (loginUser == null || loginUser.length == 0) {
+				navigate("/login");
+			}
+			
+			header.loginUserText.text = loginUser; 
 			if (isLoggedIn()) {
 				header.currentState = "loggedIn";
 			} else {

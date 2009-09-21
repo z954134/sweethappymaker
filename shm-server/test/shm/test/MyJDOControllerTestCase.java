@@ -2,7 +2,10 @@ package shm.test;
 import java.util.Date;
 import java.util.List;
 
+import javax.jdo.Transaction;
+
 import org.slim3.tester.JDOControllerTestCase;
+
 
 import shm.common.Utils;
 import shm.common.user.UserServiceUtil;
@@ -11,7 +14,9 @@ import shm.controller.member.MemberController;
 
 public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
     
-
+    protected final Transaction tx() {
+        return pm.currentTransaction();
+    }
     
     @Override
     protected void tearDown() throws Exception {
@@ -27,9 +32,9 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
      * @param modelClasses
      */
     protected final void deleteAllInTx(Class<?>...  modelClasses) {
-        tx.begin();
+        tx().begin();
         deleteAll(modelClasses);
-        tx.commit();
+        tx().commit();
     }
     
     protected final void deleteAll(Class<?>... modelClasses) {
@@ -42,8 +47,8 @@ public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {
     
     /** トランザクションを開始する */
     protected final void beginTx() {
-        if (!tx.isActive()) {
-            tx.begin();
+        if (!tx().isActive()) {
+            tx().begin();
         }
     }
 

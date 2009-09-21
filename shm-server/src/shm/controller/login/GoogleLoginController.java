@@ -28,7 +28,8 @@ public class GoogleLoginController extends Controller {
         MemberDao dao = new MemberDao();
         Member member = dao.findMember(user);
         if (member == null) {
-            return forward("/signup/registerId");
+            requestScope("msg", "メンバー登録されていません。登録をお願いします。");
+            return forward("/signup/gaccount");
         }
         sessionScope("memberId", member.getMemberId());
         

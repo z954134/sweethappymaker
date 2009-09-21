@@ -16,7 +16,7 @@ public class RegisterIdControllerTest extends MyJDOControllerTestCase {
         RegisterIdController controller = getController();
         assertNotNull(controller);
         assertTrue(isRedirect());
-        assertEquals("signup.jsp", getDestinationPath());
+        assertEquals("/flex-bin/main.html", getDestinationPath());
     }
     
     public void testDuplicated() throws Exception {
@@ -37,6 +37,6 @@ public class RegisterIdControllerTest extends MyJDOControllerTestCase {
         RegisterIdController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/signup/index.jsp", getDestinationPath());
+        assertEquals("/signup/gaccount.jsp", getDestinationPath());
     }
 }

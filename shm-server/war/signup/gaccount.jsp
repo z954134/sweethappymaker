@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/css/global.css" />
 </head>
 <body>
-
+<div id="msg">${f:h(msg)}</div>
 <form action="${f:url('/signup/registerId')}" method="post">
 Googleアカウント
 <input type="text" 

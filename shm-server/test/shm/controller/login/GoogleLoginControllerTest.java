@@ -25,7 +25,7 @@ public class GoogleLoginControllerTest extends MyJDOControllerTestCase {
         GoogleLoginController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/signup/registerId", getDestinationPath());
+        assertEquals("/signup/gaccount", getDestinationPath());
         
     }
     

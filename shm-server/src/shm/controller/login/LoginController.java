@@ -31,7 +31,7 @@ public class LoginController extends MemberController {
         }
         // ログイン成功
         sessionScope("memberId", memberId);
-        return redirect("/");
+        return redirect("/flex-bin/main.html");
     }
 
     protected Errors validate() {

@@ -22,7 +22,7 @@ public class LoginControllerTest extends JDOControllerTestCase {
         LoginController controller = getController();
         assertNotNull(controller);
         assertTrue(isRedirect());
-        assertEquals("/", getDestinationPath());
+        assertEquals("/flex-bin/main.html", getDestinationPath());
     }
     
     

@@ -27,7 +27,7 @@ public class SignupController extends Controller {
         m.setPassword(asString("password"));
 
         dao.makePersistent(m);
-        return forward("signup.jsp");
+        return forward("/flex-bin/main.html");
     }
     
     protected boolean validate() {

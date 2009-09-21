@@ -41,7 +41,7 @@ public class RegisterIdController extends MyController {
         }
         member.setUser(user);
         dao.makePersistent(member);
-        return redirect("signup.jsp");
+        return redirect("/flex-bin/main.html");
     }
     
     protected boolean validate() {

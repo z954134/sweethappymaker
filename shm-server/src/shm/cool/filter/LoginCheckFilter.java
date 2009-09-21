@@ -18,11 +18,9 @@ public class LoginCheckFilter implements Filter {
     private String loginUrl;
     private String[] includes;
 
-    @Override
     public void destroy() {
     }
 
-    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
         doFilter(
@@ -73,7 +71,6 @@ public class LoginCheckFilter implements Filter {
         return memberId != null;
     }
 
-    @Override
     public void init(FilterConfig config) throws ServletException {
         loginUrl = config.getInitParameter("loginUrl");
         includes = config.getInitParameter("includes").split(",");

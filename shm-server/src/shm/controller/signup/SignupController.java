@@ -27,7 +27,9 @@ public class SignupController extends Controller {
         m.setPassword(asString("password"));
 
         dao.makePersistent(m);
-        return forward("/flex-bin/main.html");
+        // ログイン成功
+        sessionScope("memberId", m.getMemberId());
+        return redirect("/flex-bin/main.html");
     }
     
     protected boolean validate() {

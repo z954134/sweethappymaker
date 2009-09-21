@@ -11,7 +11,7 @@ public class SignupControllerTest extends JDOControllerTestCase {
         start("/signup/signup");
         SignupController controller = getController();
         assertNotNull(controller);
-        assertFalse(isRedirect());
+        assertTrue(isRedirect());
         assertEquals("/flex-bin/main.html", getDestinationPath());
     }
 }

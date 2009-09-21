@@ -50,6 +50,6 @@ public class LoginControllerTest extends JDOControllerTestCase {
         assertEquals("/login/index", getDestinationPath());
         Errors errors = requestScope("errors");
         assertNotNull(errors);
-        assertEquals(1, errors.size());
+        assertEquals(2, errors.size());
     }
 }

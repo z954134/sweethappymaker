@@ -1,3 +1,5 @@
+<%@page pageEncoding="UTF-8" isELIgnored="false"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -10,7 +12,7 @@ MemberID
 <input type="text" ${f:text("memberId")} class="${f:errorClass('memberId', 'error')}"/>
 &nbsp;${f:h(errors.memberId)}<br/>
 Password
-<input type="text" ${f:text("password")} class="${f:errorClass('password', 'error')}"/>
+<input type="password" ${f:text("password")} class="${f:errorClass('password', 'error')}"/>
 &nbsp;${f:h(errors.password)}<br/>
 <input type="submit" value="Login"/>
 </form>

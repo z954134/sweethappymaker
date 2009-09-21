@@ -1,6 +1,7 @@
 package shm.controller.member;
 
 import shm.common.MyController;
+import shm.common.SecurityViolationException;
 import shm.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
 import shm.model.Member;
@@ -33,7 +34,7 @@ public abstract class MemberController extends MyController {
     protected final Member getMember() {
         String memberId = getMemberIdInSession();
         if (memberId == null) {
-            throw new IllegalStateException("ログインされていません。");
+            throw new SecurityViolationException("ログインされていません。");
         }
         return memberDao.findMember(memberId);
     }

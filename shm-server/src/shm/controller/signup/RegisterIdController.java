@@ -26,7 +26,7 @@ public class RegisterIdController extends MyController {
     private MemberDao dao = new MemberDao();
     
     @Override
-    public Navigation runInTx() {
+    public Navigation run() {
         if (!validate()) {
             return forward("gaccount.jsp");
         }
@@ -41,7 +41,7 @@ public class RegisterIdController extends MyController {
         }
         
         member.setUser(user);
-        dao.makePersistent(member);
+        dao.makePersistentInTx(member);
         return redirect("/flex-bin/main.html");
     }
     

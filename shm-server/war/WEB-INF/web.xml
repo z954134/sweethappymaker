@@ -33,7 +33,7 @@
 		</init-param>
 		<init-param>
 			<param-name>includes</param-name>
-			<param-value>^/col/.*,^/member/.*,^/okdialy/.*</param-value>
+			<param-value>^/flex-bin/main.html,^/col/.*,^/member/.*,^/okdialy/.*</param-value>
 		</init-param>
 	</filter>
     <filter-mapping>

@@ -26,6 +26,7 @@ public abstract class MyController extends Controller {
     private static final Logger logger =
         Logger.getLogger(MyController.class.getName());
 
+    @Override
     public Navigation run() {
         begin();
         Navigation navigation = runInTx();

@@ -25,11 +25,11 @@ public class DeleteControllerTest extends MyJDOControllerTestCase {
     }
     
     public void testRun() throws Exception {
-        tx.begin();
+        tx().begin();
         assertEquals(1, count(OkDialy.class));
         MockUserService mus = new MockUserService("aaa@gmail.com", "gmail.com");
         mus.register();
-        tx.rollback();
+        tx().rollback();
         param("okDialyDate", "2009/01/01");
         
         start("/okdialy/delete");

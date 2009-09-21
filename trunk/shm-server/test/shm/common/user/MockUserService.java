@@ -47,29 +47,38 @@ public class MockUserService implements UserService {
         UserServiceUtil.setUserServiceFactory(factory);
     }
 
-    @Override
     public String createLoginURL(String destinationURL) {
         return destinationURL;
     }
 
-    @Override
+
     public String createLogoutURL(String destinationURL) {
         return destinationURL;
     }
 
-    @Override
+
     public User getCurrentUser() {
         return user;
     }
 
-    @Override
+
     public boolean isUserAdmin() {
         return isUserAdmin;
     }
 
-    @Override
+
     public boolean isUserLoggedIn() {
         return isUserLoggedIn;
+    }
+
+ 
+    public String createLoginURL(String destinationURL, String authDomain) {
+        return destinationURL;
+    }
+
+
+    public String createLogoutURL(String destinationURL, String authDomain) {
+        return destinationURL;
     }
 
 }

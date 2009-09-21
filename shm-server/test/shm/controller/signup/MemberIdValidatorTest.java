@@ -1,11 +1,12 @@
 package shm.controller.signup;
 
+import shm.dao.MemberDao;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 
 public class MemberIdValidatorTest extends MyJDOControllerTestCase {
 
-    private MemberIdValidator target = new MemberIdValidator();
+    private MemberIdValidator target = new MemberIdValidator(new MemberDao());
     
     @Override
     public void setUp() throws Exception {

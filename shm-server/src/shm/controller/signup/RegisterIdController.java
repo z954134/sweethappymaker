@@ -39,6 +39,7 @@ public class RegisterIdController extends MyController {
             String url = UserServiceUtil.getUserService().createLoginURL("/login/GoogleLogin");
             return redirect(url);
         }
+        
         member.setUser(user);
         dao.makePersistent(member);
         return redirect("/flex-bin/main.html");
@@ -46,7 +47,8 @@ public class RegisterIdController extends MyController {
     
     protected boolean validate() {
         Validators v = new Validators(request);
-        v.add("memberId", v.required(), new MemberIdValidator());
+        v.add("memberId", v.required(), new MemberIdValidator(dao));
+        v.add("gaccount", new GoogleAccountValidator(dao));
         return v.validate();
     }
 }

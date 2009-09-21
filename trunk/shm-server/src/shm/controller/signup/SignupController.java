@@ -34,7 +34,7 @@ public class SignupController extends Controller {
     
     protected boolean validate() {
         Validators v = new Validators(request);
-        v.add("memberId", v.required(), new MemberIdValidator());
+        v.add("memberId", v.required(), new MemberIdValidator(dao));
         v.add("password", v.required(), v.minlength(8));
         return v.validate();
     }

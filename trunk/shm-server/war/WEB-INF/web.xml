@@ -69,7 +69,7 @@
 			<el-ignored>false</el-ignored>
 			<page-encoding>UTF-8</page-encoding>
 			<scripting-invalid>false</scripting-invalid>
-			<include-prelude>/WEB-INF/prelude.jsp</include-prelude>
+			<include-prelude>/prelude.jsp</include-prelude>
 			<trim-directive-whitespaces>true</trim-directive-whitespaces>
 		</jsp-property-group>
 	</jsp-config>

@@ -2,27 +2,30 @@ package shm.controller.signup;
 
 import org.slim3.util.ApplicationMessage;
 
+import com.google.appengine.api.users.User;
+
 import shm.common.SingleItemValidator;
+import shm.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
 
-public class MemberIdValidator extends SingleItemValidator {
+public class GoogleAccountValidator extends SingleItemValidator {
 
     private MemberDao dao;
     
-    public MemberIdValidator(MemberDao dao) {
+    public GoogleAccountValidator(MemberDao dao) {
+        super();
         this.dao = dao;
     }
-    
-//    public MemberIdValidator() {
-//        super();
-//    }
+
+    public GoogleAccountValidator(String message) {
+        super(message);
+    }
 
     @Override
     protected boolean isValid(Object param) {
-
-        String memberId = param.toString();
+        User user = UserServiceUtil.getCurrentUser();
         // メンバーIDが既に存在する場合はNG
-        if (dao.exists(memberId)) {
+        if (dao.exists(user)) {
             return false;
         }
         return true;
@@ -30,7 +33,7 @@ public class MemberIdValidator extends SingleItemValidator {
 
     @Override
     protected String getDefaultMessage(Object param, String name) {
-        return ApplicationMessage.get("validator.memberId.duplicated", param);
+        return ApplicationMessage.get("validator.user.already-registered", param);
     }
 
 }

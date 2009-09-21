@@ -33,6 +33,6 @@ public class GoogleLoginController extends Controller {
         }
         sessionScope("memberId", member.getMemberId());
         
-        return redirect(basePath);
+        return redirect("/flex-bin/main.html");
     }
 }

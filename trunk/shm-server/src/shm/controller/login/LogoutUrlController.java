@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import org.slim3.controller.Navigation;
 
 import shm.common.MyController;
-import shm.common.user.UserServiceUtil;
 
 public class LogoutUrlController extends MyController {
 
@@ -14,7 +13,8 @@ public class LogoutUrlController extends MyController {
 
     @Override
     public Navigation run() {
-        String logoutUrl = UserServiceUtil.getUserService().createLogoutURL("/");
+//        String logoutUrl = UserServiceUtil.getUserService().createLogoutURL("/");
+        String logoutUrl = "/login/logout";
         requestScope("logoutUrl", logoutUrl);
         return forward("logoutUrl.jsp");
     }

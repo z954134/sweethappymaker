@@ -37,7 +37,7 @@ public class LoginController extends MemberController {
     protected Errors validate() {
         Validators v = new Validators(request);
         v.add("memberId", v.required());
-        v.add("password", v.required(), v.minlength(8));
+        v.add("password", v.required());
         v.validate();
         return v.getErrors();
         

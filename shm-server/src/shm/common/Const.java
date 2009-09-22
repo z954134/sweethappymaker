@@ -6,6 +6,8 @@ public final class Const {
 
     public static final String MESSAGE_KEY = "messageList";
     
+    public static final String APP_MAIN_URL = "/flex-bin/main.html";
+    
     private Const() {
     }
     

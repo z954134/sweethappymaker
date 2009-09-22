@@ -6,6 +6,7 @@ import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Errors;
 import org.slim3.controller.validator.Validators;
 
+import shm.common.Const;
 import shm.controller.member.MemberController;
 import shm.model.Member;
 
@@ -31,7 +32,7 @@ public class LoginController extends MemberController {
         }
         // ログイン成功
         sessionScope("memberId", memberId);
-        return redirect("/flex-bin/main.html");
+        return redirect(Const.APP_MAIN_URL);
     }
 
     protected Errors validate() {

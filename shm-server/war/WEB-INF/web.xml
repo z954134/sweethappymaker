@@ -3,26 +3,30 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/javaee">
 
 	<context-param>
-        <param-name>slim3.rootPackage</param-name>
-        <param-value>shm</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-        <param-value>application</param-value>
-    </context-param>
+		<param-name>slim3.rootPackage</param-name>
+		<param-value>shm</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext
+		</param-name>
+		<param-value>application</param-value>
+	</context-param>
 
-    <filter>
-        <filter-name>hotReloadingFilter</filter-name>
-        <filter-class>org.slim3.controller.HotReloadingFilter</filter-class>
-    </filter>
-    <filter>
-        <filter-name>jdoFilter</filter-name>
-        <filter-class>org.slim3.jdo.JDOFilter</filter-class>
-    </filter>    
 	<filter>
-        <filter-name>frontController</filter-name>
-        <filter-class>org.slim3.controller.FrontController</filter-class>
-    </filter>
+		<filter-name>hotReloadingFilter</filter-name>
+		<filter-class>org.slim3.controller.HotReloadingFilter
+		</filter-class>
+	</filter>
+	<filter>
+		<filter-name>jdoFilter</filter-name>
+		<filter-class>org.slim3.jdo.JDOFilter
+		</filter-class>
+	</filter>
+	<filter>
+		<filter-name>frontController</filter-name>
+		<filter-class>org.slim3.controller.FrontController
+		</filter-class>
+	</filter>
 	<filter>
 		<filter-name>loginCheckFilter</filter-name>
 		<filter-class>shm.cool.filter.LoginCheckFilter
@@ -33,35 +37,40 @@
 		</init-param>
 		<init-param>
 			<param-name>includes</param-name>
-			<param-value>^/flex-bin/main.html,^/col/.*,^/member/.*,^/okdialy/.*</param-value>
+			<param-value>^/flex-bin/main.html,^/col/.*,^/member/.*,^/okdialy/.*
+			</param-value>
 		</init-param>
 	</filter>
-    <filter-mapping>
-        <filter-name>hotReloadingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>    
-    <filter-mapping>
-        <filter-name>jdoFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>frontController</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-        <dispatcher>ERROR</dispatcher>
-    </filter-mapping>
-		<filter-mapping>
+	<filter-mapping>
+		<filter-name>hotReloadingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>jdoFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>frontController</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
 		<filter-name>loginCheckFilter</filter-name>
 		<url-pattern>/col/*</url-pattern>
 		<url-pattern>/member/*</url-pattern>
 		<url-pattern>/okdialy/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
-	
+	<taglib>
+		<taglib-uri>http://shm.org/functions</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/shm.tld</taglib-location>
+	</taglib>
+
 	<jsp-config>
 		<jsp-property-group>
 			<el-ignored>false</el-ignored>

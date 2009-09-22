@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>login Index</title>
-<link rel="stylesheet" type="text/css" href="/css/global.css" />
+${shm:css('global')}
 </head>
 <body>
 <form action="${f:url('login')}" method="post">

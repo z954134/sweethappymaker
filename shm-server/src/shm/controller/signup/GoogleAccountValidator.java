@@ -17,10 +17,6 @@ public class GoogleAccountValidator extends SingleItemValidator {
         this.dao = dao;
     }
 
-    public GoogleAccountValidator(String message) {
-        super(message);
-    }
-
     @Override
     protected boolean isValid(Object param) {
         User user = UserServiceUtil.getCurrentUser();

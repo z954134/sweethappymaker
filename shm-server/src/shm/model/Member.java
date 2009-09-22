@@ -107,7 +107,7 @@ public class Member {
 
     public void setUser(User user) {
         this.user = user;
-        setMemberId(user.getNickname());
+//        setMemberId(user.getNickname());
     }
 
     public Col getCol() {

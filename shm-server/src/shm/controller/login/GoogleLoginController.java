@@ -32,7 +32,6 @@ public class GoogleLoginController extends Controller {
             return forward("/signup/gaccount");
         }
         sessionScope("memberId", member.getMemberId());
-        
         return redirect("/flex-bin/main.html");
     }
 }

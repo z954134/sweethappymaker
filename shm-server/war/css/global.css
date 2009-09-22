@@ -31,4 +31,18 @@
  clear: left;
 }
 
-
+.blue_gradation {
+    -moz-border-radius-bottomleft: 0px;
+    -moz-border-radius-bottomright: 0px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-topright: 20px;
+    background-color: #3333FF;
+    background-image: url(/images/backrepeat.jpg);
+    background-repeat: repeat-x;
+    border: 8px solid #FFFFFF;
+	border-bottom: 5px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+}

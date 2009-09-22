@@ -1,10 +1,9 @@
 <%@page pageEncoding="UTF-8" isELIgnored="false"%>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>login Index</title>
-${shm:css('global')}
-</head>
+<jsp:include page="/header.jsp">
+    <jsp:param name="title" value="Google Account"/>
+</jsp:include>
+
 <body>
 <form action="${f:url('login')}" method="post">
 UserID

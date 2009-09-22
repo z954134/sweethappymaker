@@ -1,12 +1,7 @@
 <%@page pageEncoding="UTF-8" isELIgnored="false"%>
-
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>signup Signup</title>
+<title>${param.title}</title>
 ${shm:css('global')}
+${shm:jquery()}
 </head>
-<body>
-
-</body>
-</html>

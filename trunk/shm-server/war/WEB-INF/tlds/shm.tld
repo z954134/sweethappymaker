@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>shm functions library</description>
+	<display-name>shm functions</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>shm</short-name>
+	<uri>http://shm.org/functions</uri>
+
+	<function>
+		<description>スタイルシートタグを生成</description>
+		<name>css</name>
+		<function-class>shm.common.Functions</function-class>
+		<function-signature>java.lang.String css(java.lang.String)</function-signature>
+		<example>${shm:css(param)}</example>
+	</function>
+
+	<function>
+		<description>scriptタグを生成</description>
+		<name>js</name>
+		<function-class>shm.common.Functions</function-class>
+		<function-signature>java.lang.String js(java.lang.String)</function-signature>
+		<example>${shm:js(param)}</example>
+	</function>
+	
+	<function>
+		<description>JQuery scriptタグを生成</description>
+		<name>jquery</name>
+		<function-class>shm.common.Functions</function-class>
+		<function-signature>java.lang.String jquery()</function-signature>
+		<example>${shm:jquery()}</example>
+	</function>
+</taglib>

@@ -63,4 +63,27 @@ public final class Utils {
                 + "] must not be null");
         }
     }
+    
+    public static void notEmpty(String str) {
+        notEmpty(str, null);
+    }
+    
+    public static void notEmpty(String str, String argName) {
+        String name = "";
+        if (argName != null && argName.length() > 0) {
+            name = "[" + argName + "]"; 
+        }
+        
+        if (str == null) {
+            throw new IllegalArgumentException("argument" 
+                + name
+                + " must not be null", new NullPointerException());
+        }
+        
+        if (str.length() == 0) {
+            throw new IllegalArgumentException("argument"
+                + name
+                + " must not be empty");
+        }
+    }
 }

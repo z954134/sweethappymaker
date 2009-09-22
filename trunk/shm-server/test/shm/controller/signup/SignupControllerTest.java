@@ -2,7 +2,7 @@ package shm.controller.signup;
 
 import org.slim3.tester.JDOControllerTestCase;
 
-import shm.common.Const;
+import shm.cool.common.Const;
 
 public class SignupControllerTest extends JDOControllerTestCase {
 

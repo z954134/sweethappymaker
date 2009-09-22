@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.Utils;
+import shm.cool.common.Utils;
 import shm.model.Member;
 import shm.model.OkDialy;
 

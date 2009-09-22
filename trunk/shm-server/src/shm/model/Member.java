@@ -12,7 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Version;
 import javax.jdo.annotations.VersionStrategy;
 
-import shm.common.Utils;
+import shm.cool.common.Utils;
 
 import com.google.appengine.api.users.User;
 

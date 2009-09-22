@@ -7,9 +7,9 @@ import javax.jdo.Transaction;
 import org.slim3.tester.JDOControllerTestCase;
 
 
-import shm.common.Utils;
-import shm.common.user.UserServiceUtil;
 import shm.controller.member.MemberController;
+import shm.cool.common.Utils;
+import shm.cool.common.user.UserServiceUtil;
 
 
 public abstract class MyJDOControllerTestCase extends JDOControllerTestCase {

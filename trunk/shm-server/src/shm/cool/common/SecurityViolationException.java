@@ -1,4 +1,4 @@
-package shm.common;
+package shm.cool.common;
 
 
 public class SecurityViolationException extends RuntimeException {

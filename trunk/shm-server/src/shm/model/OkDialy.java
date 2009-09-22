@@ -16,7 +16,7 @@ import javax.jdo.annotations.VersionStrategy;
 
 import org.slim3.util.StringUtil;
 
-import shm.common.Utils;
+import shm.cool.common.Utils;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
 @Version(strategy = VersionStrategy.VERSION_NUMBER)

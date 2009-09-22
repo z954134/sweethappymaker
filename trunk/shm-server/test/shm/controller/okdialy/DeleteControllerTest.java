@@ -1,7 +1,7 @@
 package shm.controller.okdialy;
 
-import shm.common.Utils;
-import shm.common.user.MockUserService;
+import shm.cool.common.Utils;
+import shm.cool.common.user.MockUserService;
 import shm.model.Member;
 import shm.model.OkDialy;
 import shm.test.MyJDOControllerTestCase;

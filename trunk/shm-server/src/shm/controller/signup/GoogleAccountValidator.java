@@ -4,8 +4,8 @@ import org.slim3.util.ApplicationMessage;
 
 import com.google.appengine.api.users.User;
 
-import shm.common.SingleItemValidator;
-import shm.common.user.UserServiceUtil;
+import shm.cool.common.SingleItemValidator;
+import shm.cool.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
 
 public class GoogleAccountValidator extends SingleItemValidator {

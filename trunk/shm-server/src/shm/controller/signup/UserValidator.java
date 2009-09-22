@@ -2,8 +2,8 @@ package shm.controller.signup;
 
 import org.slim3.util.ApplicationMessage;
 
-import shm.common.SingleItemValidator;
-import shm.common.user.UserServiceUtil;
+import shm.cool.common.SingleItemValidator;
+import shm.cool.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
 
 import com.google.appengine.api.users.User;

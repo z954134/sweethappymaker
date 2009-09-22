@@ -1,4 +1,4 @@
-package shm.common;
+package shm.cool.common;
 
 import static java.util.Calendar.DAY_OF_MONTH;
 

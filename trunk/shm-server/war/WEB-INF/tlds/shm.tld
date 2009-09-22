@@ -13,7 +13,7 @@
 	<function>
 		<description>スタイルシートタグを生成</description>
 		<name>css</name>
-		<function-class>shm.common.Functions</function-class>
+		<function-class>shm.cool.common.Functions</function-class>
 		<function-signature>java.lang.String css(java.lang.String)</function-signature>
 		<example>${shm:css(param)}</example>
 	</function>
@@ -21,7 +21,7 @@
 	<function>
 		<description>scriptタグを生成</description>
 		<name>js</name>
-		<function-class>shm.common.Functions</function-class>
+		<function-class>shm.cool.common.Functions</function-class>
 		<function-signature>java.lang.String js(java.lang.String)</function-signature>
 		<example>${shm:js(param)}</example>
 	</function>
@@ -29,7 +29,7 @@
 	<function>
 		<description>JQuery scriptタグを生成</description>
 		<name>jquery</name>
-		<function-class>shm.common.Functions</function-class>
+		<function-class>shm.cool.common.Functions</function-class>
 		<function-signature>java.lang.String jquery()</function-signature>
 		<example>${shm:jquery()}</example>
 	</function>

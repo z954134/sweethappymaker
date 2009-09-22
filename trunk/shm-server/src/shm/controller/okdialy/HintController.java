@@ -11,8 +11,8 @@ import org.slim3.controller.Navigation;
 import org.slim3.util.ThrowableUtil;
 
 
-import shm.common.MyController;
-import shm.common.SystemException;
+import shm.cool.common.MyController;
+import shm.cool.common.SystemException;
 
 public class HintController extends MyController {
 

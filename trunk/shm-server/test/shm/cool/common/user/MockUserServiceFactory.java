@@ -1,4 +1,6 @@
-package shm.common.user;
+package shm.cool.common.user;
+
+import shm.cool.common.user.UserServiceFactory;
 
 import com.google.appengine.api.users.UserService;
 

@@ -1,4 +1,4 @@
-package shm.common;
+package shm.cool.common;
 
 import org.slim3.util.ApplicationMessage;
 

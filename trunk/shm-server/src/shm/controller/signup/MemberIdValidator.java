@@ -2,7 +2,7 @@ package shm.controller.signup;
 
 import org.slim3.util.ApplicationMessage;
 
-import shm.common.SingleItemValidator;
+import shm.cool.common.SingleItemValidator;
 import shm.dao.MemberDao;
 
 public class MemberIdValidator extends SingleItemValidator {

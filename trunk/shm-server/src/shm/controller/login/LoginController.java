@@ -6,8 +6,8 @@ import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Errors;
 import org.slim3.controller.validator.Validators;
 
-import shm.common.Const;
 import shm.controller.member.MemberController;
+import shm.cool.common.Const;
 import shm.model.Member;
 
 public class LoginController extends MemberController {

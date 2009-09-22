@@ -1,9 +1,11 @@
-package shm.common;
+package shm.cool.common;
 
 import java.util.Calendar;
 import java.util.Date;
 
 import org.slim3.util.DateUtil;
+
+import shm.cool.common.Utils;
 
 import junit.framework.TestCase;
 

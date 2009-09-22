@@ -1,5 +1,6 @@
-package shm.common;
+package shm.cool.common;
 
+import shm.cool.common.Functions;
 import junit.framework.TestCase;
 
 public class FunctionsTest extends TestCase {

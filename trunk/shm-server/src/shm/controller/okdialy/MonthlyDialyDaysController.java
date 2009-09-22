@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.Utils;
+import shm.cool.common.Utils;
 import shm.model.Member;
 import shm.model.OkDialy;
 

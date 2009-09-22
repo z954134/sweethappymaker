@@ -42,6 +42,7 @@ public class RegisterIdController extends MyController {
         
         member.setUser(user);
         dao.makePersistentInTx(member);
+        sessionScope("memberId", member.getMemberId());
         return redirect("/flex-bin/main.html");
     }
     

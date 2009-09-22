@@ -30,18 +30,4 @@ public class MemberIdValidator extends AbstractValidator {
       return null;
       
     }
-
-
-//    @Override
-//    protected boolean isValid(Object param) {
-//        MemberDao dao = new MemberDao();
-//        String memberId = param.toString();
-//        return dao.exists(memberId);
-//    }
-//
-//    @Override
-//    protected String getDefaultMessage(Object param, String name) {
-//        return ApplicationMessage.get("validator.memberId", param);
-//    }
-
 }

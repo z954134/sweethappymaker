@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Validators;
 
+import shm.common.Const;
 import shm.common.MyController;
 import shm.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
@@ -43,7 +44,7 @@ public class RegisterIdController extends MyController {
         member.setUser(user);
         dao.makePersistentInTx(member);
         sessionScope("memberId", member.getMemberId());
-        return redirect("/flex-bin/main.html");
+        return redirect(Const.APP_MAIN_URL);
     }
     
     protected boolean validate() {

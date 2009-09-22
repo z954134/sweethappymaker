@@ -2,6 +2,8 @@ package shm.controller.signup;
 
 import org.slim3.tester.JDOControllerTestCase;
 
+import shm.common.Const;
+
 public class SignupControllerTest extends JDOControllerTestCase {
 
     public void testRun() throws Exception {
@@ -12,6 +14,6 @@ public class SignupControllerTest extends JDOControllerTestCase {
         SignupController controller = getController();
         assertNotNull(controller);
         assertTrue(isRedirect());
-        assertEquals("/flex-bin/main.html", getDestinationPath());
+        assertEquals(Const.APP_MAIN_URL, getDestinationPath());
     }
 }

@@ -1,9 +1,11 @@
 package shm.controller.login;
 
 import java.util.logging.Logger;
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
+import shm.common.Const;
 import shm.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
 import shm.model.Member;
@@ -32,6 +34,6 @@ public class GoogleLoginController extends Controller {
             return forward("/signup/gaccount");
         }
         sessionScope("memberId", member.getMemberId());
-        return redirect("/flex-bin/main.html");
+        return redirect(Const.APP_MAIN_URL);
     }
 }

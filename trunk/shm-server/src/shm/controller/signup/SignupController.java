@@ -6,6 +6,7 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Validators;
 
+import shm.common.Const;
 import shm.dao.MemberDao;
 import shm.model.Member;
 
@@ -29,7 +30,7 @@ public class SignupController extends Controller {
         dao.makePersistent(m);
         // ログイン成功
         sessionScope("memberId", m.getMemberId());
-        return redirect("/flex-bin/main.html");
+        return redirect(Const.APP_MAIN_URL);
     }
     
     protected boolean validate() {

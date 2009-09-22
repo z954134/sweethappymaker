@@ -3,6 +3,7 @@ package shm.controller.login;
 import org.slim3.controller.validator.Errors;
 import org.slim3.tester.JDOControllerTestCase;
 
+import shm.common.Const;
 import shm.dao.MemberDao;
 import shm.model.Member;
 
@@ -22,7 +23,7 @@ public class LoginControllerTest extends JDOControllerTestCase {
         LoginController controller = getController();
         assertNotNull(controller);
         assertTrue(isRedirect());
-        assertEquals("/flex-bin/main.html", getDestinationPath());
+        assertEquals(Const.APP_MAIN_URL, getDestinationPath());
     }
     
     

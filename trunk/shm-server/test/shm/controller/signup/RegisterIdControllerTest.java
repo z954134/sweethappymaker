@@ -1,5 +1,6 @@
 package shm.controller.signup;
 
+import shm.common.Const;
 import shm.common.user.MockUserService;
 import shm.dao.MemberDao;
 import shm.model.Member;
@@ -16,7 +17,7 @@ public class RegisterIdControllerTest extends MyJDOControllerTestCase {
         RegisterIdController controller = getController();
         assertNotNull(controller);
         assertTrue(isRedirect());
-        assertEquals("/flex-bin/main.html", getDestinationPath());
+        assertEquals(Const.APP_MAIN_URL, getDestinationPath());
     }
     
     public void testDuplicated() throws Exception {

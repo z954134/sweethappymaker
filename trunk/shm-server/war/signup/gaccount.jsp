@@ -1,13 +1,12 @@
 <%@page pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@page import="com.google.appengine.api.users.User"%>
-<%@page import="shm.common.user.UserServiceUtil"%><html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>login Index</title>
-${shm:css('global')}
-<link rel="stylesheet" type="text/css" href="/css/global.css" />
-</head>
+<%@page import="shm.common.user.UserServiceUtil"%>
+
+<html>
+<jsp:include page="/header.jsp">
+    <jsp:param name="title" value="Google Account"/>
+</jsp:include>
 <body>
 <div id="msg">${f:h(msg)}</div>
 <form action="${f:url('/signup/registerId')}" method="post">

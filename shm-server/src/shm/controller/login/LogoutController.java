@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
-import shm.common.user.UserServiceUtil;
+import shm.cool.common.user.UserServiceUtil;
 
 public class LogoutController extends Controller {
 

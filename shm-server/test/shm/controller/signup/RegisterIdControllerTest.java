@@ -1,7 +1,7 @@
 package shm.controller.signup;
 
-import shm.common.Const;
-import shm.common.user.MockUserService;
+import shm.cool.common.Const;
+import shm.cool.common.user.MockUserService;
 import shm.dao.MemberDao;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;

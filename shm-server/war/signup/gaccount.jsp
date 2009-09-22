@@ -1,7 +1,7 @@
 <%@page pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@page import="com.google.appengine.api.users.User"%>
-<%@page import="shm.common.user.UserServiceUtil"%>
+<%@page import="shm.cool.common.user.UserServiceUtil"%>
 
 <html>
 <jsp:include page="/header.jsp">

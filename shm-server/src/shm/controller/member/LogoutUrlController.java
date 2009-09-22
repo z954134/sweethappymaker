@@ -7,7 +7,7 @@ import org.slim3.controller.Navigation;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import shm.common.MyController;
+import shm.cool.common.MyController;
 
 public class LogoutUrlController extends MyController {
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.slim3.util.DateUtil;
 
-import shm.common.user.MockUserService;
+import shm.cool.common.user.MockUserService;
 import shm.model.Col;
 import shm.model.Member;
 import shm.model.OkDialy;

@@ -1,6 +1,6 @@
 package shm.controller.login;
 
-import shm.common.user.MockUserService;
+import shm.cool.common.user.MockUserService;
 import shm.test.MyJDOControllerTestCase;
 
 public class GoogleLoginControllerTest extends MyJDOControllerTestCase {

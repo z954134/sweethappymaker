@@ -1,6 +1,6 @@
 package shm.controller.member;
 
-import shm.common.user.MockUserService;
+import shm.cool.common.user.MockUserService;
 import shm.model.Member;
 import shm.test.MyJDOControllerTestCase;
 

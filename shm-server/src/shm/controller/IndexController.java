@@ -2,7 +2,7 @@ package shm.controller;
 
 import org.slim3.controller.Navigation;
 
-import shm.common.MyController;
+import shm.cool.common.MyController;
 
 public class IndexController extends MyController {
     

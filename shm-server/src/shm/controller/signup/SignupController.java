@@ -6,7 +6,7 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Validators;
 
-import shm.common.Const;
+import shm.cool.common.Const;
 import shm.dao.MemberDao;
 import shm.model.Member;
 

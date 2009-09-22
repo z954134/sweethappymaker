@@ -3,7 +3,7 @@ package shm.controller.login;
 import org.slim3.controller.validator.Errors;
 import org.slim3.tester.JDOControllerTestCase;
 
-import shm.common.Const;
+import shm.cool.common.Const;
 import shm.dao.MemberDao;
 import shm.model.Member;
 

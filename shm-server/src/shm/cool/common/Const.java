@@ -1,4 +1,4 @@
-package shm.common;
+package shm.cool.common;
 
 public final class Const {
 

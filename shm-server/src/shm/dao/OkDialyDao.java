@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
-import shm.common.Utils;
+import shm.cool.common.Utils;
 import shm.meta.OkDialyMeta;
 import shm.model.Member;
 import shm.model.OkDialy;

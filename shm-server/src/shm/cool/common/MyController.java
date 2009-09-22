@@ -1,7 +1,7 @@
 /**
  * 
  */
-package shm.common;
+package shm.cool.common;
 
 import java.io.IOException;
 import java.util.Arrays;

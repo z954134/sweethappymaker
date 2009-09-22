@@ -7,7 +7,7 @@ import java.util.List;
 import org.slim3.controller.Navigation;
 import org.slim3.util.StringUtil;
 
-import shm.common.Const;
+import shm.cool.common.Const;
 import shm.model.Member;
 import shm.model.OkDialy;
 

@@ -6,7 +6,7 @@ import org.slim3.controller.Navigation;
 
 import com.google.appengine.api.users.UserService;
 
-import shm.common.user.UserServiceUtil;
+import shm.cool.common.user.UserServiceUtil;
 
 public class IndexController extends Controller {
 

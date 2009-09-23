@@ -1,6 +1,6 @@
 package shm.controller.member;
 
-import shm.cool.common.MyController;
+import shm.controller.MyController;
 import shm.cool.common.SecurityViolationException;
 import shm.cool.common.user.UserServiceUtil;
 import shm.dao.MemberDao;

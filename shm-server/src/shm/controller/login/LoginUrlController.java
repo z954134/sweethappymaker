@@ -3,7 +3,7 @@ package shm.controller.login;
 import java.util.logging.Logger;
 import org.slim3.controller.Navigation;
 
-import shm.cool.common.MyController;
+import shm.controller.MyController;
 import shm.cool.common.user.UserServiceUtil;
 
 public class LoginUrlController extends MyController {

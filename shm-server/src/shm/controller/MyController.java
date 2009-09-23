@@ -1,7 +1,7 @@
 /**
  * 
  */
-package shm.cool.common;
+package shm.controller;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -16,6 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.jdo.CurrentPersistenceManager;
+
+import shm.cool.common.Const;
+import shm.cool.common.SecurityViolationException;
+import shm.cool.common.SystemException;
 
 /**
  * @author Tsuyoshi
@@ -35,24 +39,24 @@ public abstract class MyController extends Controller {
     }
 
     protected final void begin() {
-        currentTx().begin();
+        tx().begin();
         logger.fine("Transaction started.");
     }
 
     protected final void commit() {
-        currentTx().commit();
+        tx().commit();
         logger.fine("Transaction committed.");
     }
 
     protected final void rollback() {
-        Transaction tx = currentTx();
+        Transaction tx = tx();
         if (tx.isActive()) {
             tx.rollback();
         }
-        logger.fine("Transaction rollbacked.");
+        logger.fine("Transaction rolledback.");
     }
 
-    private Transaction currentTx() {
+    private Transaction tx() {
         return pm().currentTransaction();
     }
 

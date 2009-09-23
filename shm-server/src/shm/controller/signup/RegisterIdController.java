@@ -5,8 +5,8 @@ import java.util.logging.Logger;
 import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Validators;
 
+import shm.controller.MyController;
 import shm.cool.common.Const;
-import shm.cool.common.MyController;
 import shm.cool.common.user.UserServiceUtil;
 import shm.dao.MemberDao;
 import shm.model.Member;

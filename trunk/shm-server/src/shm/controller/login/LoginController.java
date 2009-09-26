@@ -20,7 +20,7 @@ public class LoginController extends MemberController {
     public Navigation run() {
         Errors errors = validate();
         if (errors != null && !errors.isEmpty()) {
-            return forward("index");
+            return forward("index.jsp");
         }
         String memberId = requestScope("memberId");
         String password = requestScope("password");
@@ -28,7 +28,7 @@ public class LoginController extends MemberController {
             String msg = "メンバーIDかパスワードに誤りがあります。";
             errors.put("memberId", msg);
             errors.put("password", msg);
-            return forward("index");
+            return forward("index.jsp");
         }
         // ログイン成功
         sessionScope("memberId", memberId);

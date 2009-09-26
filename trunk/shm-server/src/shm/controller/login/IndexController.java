@@ -1,12 +1,13 @@
 package shm.controller.login;
 
 import java.util.logging.Logger;
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
-import com.google.appengine.api.users.UserService;
-
 import shm.cool.common.user.UserServiceUtil;
+
+import com.google.appengine.api.users.UserService;
 
 public class IndexController extends Controller {
 
@@ -21,6 +22,9 @@ public class IndexController extends Controller {
         
         String signupUrl = userService.createLoginURL("/signup/gaccount");
         requestScope("signupUrl", signupUrl);
+
         return forward("index.jsp");
     }
+    
+
 }

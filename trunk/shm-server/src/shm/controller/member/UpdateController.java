@@ -15,7 +15,7 @@ public class UpdateController extends MemberController {
         String memberId = getMemberIdInRequest();
 
         // Keyから更新前のメンバー取得
-        Member member = memberDao.find(requestScope("key"));
+        Member member = memberDao.getObjectById(asString("key"));
         
         // メンバーIDの変更確認
         if (!memberId.equals(member.getMemberId())) {

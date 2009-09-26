@@ -27,11 +27,8 @@ public abstract class MyGenericDao<T> extends GenericDao<T> {
     }
 
     public void deleteObjectById(Object key) {
-        T model = find(key);
+        T model = getObjectById(key.toString());
         deletePersistent(model);
     }
     
-    public T find(Object key) {
-        return find(key.toString());
-    }
 }

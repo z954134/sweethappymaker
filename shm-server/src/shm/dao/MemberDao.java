@@ -32,6 +32,9 @@ public class MemberDao extends MyGenericDao<Member> {
     }
     
     public Member findMember(User user) {
+        if (user == null) {
+            return null;
+        }
         Member member = from().where(m.user.eq(user)).getSingleResult();
         return member;
     }

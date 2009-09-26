@@ -18,7 +18,7 @@ public class GaccountController extends Controller {
     @Override
     public Navigation run() {
         if (!validate()) {
-            return forward("/login");
+            return forward("gaccount.jsp");
         }
         return forward("gaccount.jsp");
     }

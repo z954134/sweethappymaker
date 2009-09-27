@@ -3,8 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>${param.title}</title>
 ${shm:jquery()}
-${shm:js('jquery.dimensions.min')}
-${shm:js('jquery.inputHintBox')}
+${shm:js('jquery.qtip-1.0.0-rc3.min')}
 ${shm:css('inputHintBox')}
 ${shm:css('global')}
 </head>

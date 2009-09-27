@@ -33,4 +33,13 @@
 		<function-signature>java.lang.String jquery()</function-signature>
 		<example>${shm:jquery()}</example>
 	</function>
+	
+	<function>
+		<description>imgタグを生成</description>
+		<name>img</name>
+		<function-class>shm.cool.common.Functions</function-class>
+		<function-signature>java.lang.String img(java.lang.String, java.lang.String)</function-signature>
+		<example>${shm:img(imgName, append)}</example>
+	</function>
+
 </taglib>

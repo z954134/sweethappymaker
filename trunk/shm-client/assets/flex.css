@@ -39,4 +39,12 @@ Panel {
 	padding-right:7px;
 	padding-bottom:7px;
 }
+	
+	
+	
+	
+Label.colLabel {
+	font-weight: bold;
+	color: #000000;
+}
 

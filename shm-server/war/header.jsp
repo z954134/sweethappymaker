@@ -4,6 +4,5 @@
 <title>${param.title}</title>
 ${shm:jquery()}
 ${shm:js('jquery.qtip-1.0.0-rc3.min')}
-${shm:css('inputHintBox')}
 ${shm:css('global')}
 </head>

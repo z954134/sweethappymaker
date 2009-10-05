@@ -2,6 +2,8 @@ package shm.cool.common;
 
 import org.slim3.util.StringUtil;
 
+import shm.cool.common.user.UserServiceUtil;
+
 
 public final class Functions {
 
@@ -45,6 +47,10 @@ public final class Functions {
         imgTag.append(append);
         imgTag.append("/>");
         return imgTag.toString();
+    }
+    
+    public static String loginUrl(String destinationUrl) {
+        return UserServiceUtil.getUserService().createLoginURL(destinationUrl);
     }
     
 }

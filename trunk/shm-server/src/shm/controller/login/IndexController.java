@@ -16,12 +16,7 @@ public class IndexController extends Controller {
 
     @Override
     public Navigation run() {
-        UserService userService = UserServiceUtil.getUserService();
-        String loginUrl = userService.createLoginURL("/login/GoogleLogin");
-        requestScope("loginUrl", loginUrl);
         
-        String signupUrl = userService.createLoginURL("/signup/gaccount");
-        requestScope("signupUrl", signupUrl);
 
         return forward("index.jsp");
     }

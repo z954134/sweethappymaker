@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
+import shm.cool.common.user.UserServiceUtil;
+
 public class IndexController extends Controller {
 
     @SuppressWarnings("unused")
@@ -11,6 +13,9 @@ public class IndexController extends Controller {
 
     @Override
     public Navigation run() {
+        String signupUrl = UserServiceUtil.getUserService().createLoginURL("/signup/gaccount");
+        requestScope("signupUrl", signupUrl);
+
         return forward("index.jsp");
     }
 }

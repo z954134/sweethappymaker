@@ -5,37 +5,37 @@
 	<jsp:param name="title" value="Index" />
 </jsp:include>
 <body>
-<form action="${f:url('login')}" method="post">
-<div class="blue_gradation">
-<h3>ログイン
-${shm:img("help.ico", "id='help'") }
-</h3>
-MemberID
 
+<div class="blue_gradation">
+
+<h2>ログイン
+${shm:img("help.ico", "id='help' class='help'") }
+</h2>
+
+<form action="${f:url('login')}" method="post">
+メンバーID
 <input id="memberId" type="text" tooltip="ユーザー名を入力してください。" 
 	${f:text("memberId")} class="${f:errorClass('memberId', 'error')}" />
 &nbsp;${f:h(errors.memberId)}
 
 <br />
-Password
+パスワード
 <input id="password" type="password" tooltip="パスワードを入力して下さい" 
 	${f:text("password")} class="${f:errorClass('password', 'error')}" />
 &nbsp;${f:h(errors.password)}<br />
 <input id="login" type="submit" value="Login" tooltip="ログインします"/> <br />
-<br />
-
-Googleアカウントでログイン
-<input type="button" value="go"
-	onclick="javascript:location.href='${loginUrl}'" />
-	<br/>
-</div>
 </form>
 
-<div class="blue_gradation" style="background-color: #DDDDDD">
-<h3>アカウント登録</h3>
-<a tooltip="aaaa" href="${f:url('/signup')}">登録</a><br />
-<a href="${signupUrl}">Googleアカウントで登録</a></div>
+<ul><li>
+<a tooltip="Googleアカウントを使ってログインします" href='${shm:loginUrl("/login/GoogleLogin")}'> 
+Googleアカウントでログイン</a></li>
+<li>
+<a tooltip="アカウントを新規登録をします"
+ href="${f:url('/signup')}">アカウント登録</a>
+</li></ul>
+</div>
 
+<br/>
 <script type='text/javascript'>
 $(document).ready(function() {
 	$('*[tooltip]').each(function() {

@@ -34,7 +34,7 @@ public class LoginControllerTest extends JDOControllerTestCase {
         LoginController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/login/index", getDestinationPath());
+        assertEquals("/login/index.jsp", getDestinationPath());
         Errors errors = requestScope("errors");
         assertNotNull(errors);
         assertEquals(1, errors.size());
@@ -48,7 +48,7 @@ public class LoginControllerTest extends JDOControllerTestCase {
         LoginController controller = getController();
         assertNotNull(controller);
         assertFalse(isRedirect());
-        assertEquals("/login/index", getDestinationPath());
+        assertEquals("/login/index.jsp", getDestinationPath());
         Errors errors = requestScope("errors");
         assertNotNull(errors);
         assertEquals(2, errors.size());

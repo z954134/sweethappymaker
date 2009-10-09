@@ -27,7 +27,8 @@ ${shm:img("help.ico", "id='help' class='help'") }
 </form>
 
 <ul><li>
-<a tooltip="Googleアカウントを使ってログインします" href='${shm:loginUrl("/login/GoogleLogin")}'> 
+<a tooltip="Googleアカウントを使ってログインします (Googleのアカウント認証画面に遷移します)" 
+	href='${shm:loginUrl("/login/GoogleLogin")}'> 
 Googleアカウントでログイン</a></li>
 <li>
 <a tooltip="アカウントを新規登録をします"
